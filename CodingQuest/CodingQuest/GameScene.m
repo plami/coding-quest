@@ -1,45 +1,76 @@
-//
-//  GameScene.m
-//  CodingQuest
-//
-//  Created by User-06 on 11/21/14.
-//  Copyright (c) 2014 User-06. All rights reserved.
-//
 
 #import "GameScene.h"
+#import "Player.h"
+
+@interface GameScene ()
+@property Player* player;
+@property SKTextureAtlas* runAtlas;
+
+@end
 
 @implementation GameScene
 
+-(instancetype)initWithSize:(CGSize)size{
+    
+    self = [super initWithSize:size];
+    
+    if(self){
+        
+        // [self initializingBackground];
+        self.runAtlas = [SKTextureAtlas atlasNamed:@"Run"];
+        [self loadPlayer];
+        self.backgroundColor = [UIColor lightGrayColor];
+    }
+    return self;
+    
+}
+
+
+-(void) performRunningAnimation{
+    
+    NSMutableArray* frames = [[NSMutableArray alloc] init];
+    NSInteger numberOfImages = self.runAtlas.textureNames.count;
+    
+    for(int index = 1; index <= numberOfImages; index++){
+        
+        NSString* textureName = [NSString stringWithFormat:@"player%d.png",index];
+        SKTexture* temp = [self.runAtlas textureNamed: textureName];
+        
+        [frames addObject: temp];
+    }
+    
+    SKAction* runAction = [SKAction animateWithTextures:frames timePerFrame:0.1f];
+    SKAction* foreverRunning = [SKAction repeatActionForever:runAction];
+    
+    [self.player runAction:foreverRunning withKey:@"Run"];
+}
+
+-(void) loadPlayer{
+    
+    self.player = [[Player alloc]initWithImageNamed:@"player1.png"];
+    self.player.position = CGPointMake(100,self.size.height / 2);
+    self.player.size = CGSizeMake(100, 90);
+    
+    self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
+    self.player.physicsBody.mass = 1.0;
+    self.player.physicsBody.affectedByGravity = NO;
+    self.player.physicsBody.allowsRotation = NO;
+    
+    [self addChild:self.player];
+    [self performRunningAnimation];
+
+}
+
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
+   
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
+   
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
