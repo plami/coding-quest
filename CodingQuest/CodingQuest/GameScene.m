@@ -15,10 +15,8 @@
     self = [super initWithSize:size];
     
     if(self){
-        
-        // [self initializingBackground];
-        self.runAtlas = [SKTextureAtlas atlasNamed:@"Run"];
-        [self loadPlayer];
+      
+        [self initializingFloor];
         self.backgroundColor = [UIColor lightGrayColor];
     }
     return self;
@@ -26,51 +24,40 @@
 }
 
 
--(void) performRunningAnimation{
-    
-    NSMutableArray* frames = [[NSMutableArray alloc] init];
-    NSInteger numberOfImages = self.runAtlas.textureNames.count;
-    
-    for(int index = 1; index <= numberOfImages; index++){
-        
-        NSString* textureName = [NSString stringWithFormat:@"player%d.png",index];
-        SKTexture* temp = [self.runAtlas textureNamed: textureName];
-        
-        [frames addObject: temp];
-    }
-    
-    SKAction* runAction = [SKAction animateWithTextures:frames timePerFrame:0.1f];
-    SKAction* foreverRunning = [SKAction repeatActionForever:runAction];
-    
-    [self.player runAction:foreverRunning withKey:@"Run"];
-}
 
--(void) loadPlayer{
+-(void) initializingFloor{
     
-    self.player = [[Player alloc]initWithImageNamed:@"player1.png"];
-    self.player.position = CGPointMake(100,self.size.height / 2);
-    self.player.size = CGSizeMake(100, 90);
+    SKSpriteNode* floor = [SKSpriteNode spriteNodeWithImageNamed:@"ground.png"];
     
-    self.player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.player.size];
-    self.player.physicsBody.mass = 1.0;
-    self.player.physicsBody.affectedByGravity = NO;
-    self.player.physicsBody.allowsRotation = NO;
     
-    [self addChild:self.player];
-    [self performRunningAnimation];
-
+    floor.position = CGPointMake(330, 40);
+    floor.size = CGSizeMake(self.frame.size.width, floor.size.height);
+    floor.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:floor.size];
+    floor.physicsBody.dynamic = NO;
+    floor.physicsBody.affectedByGravity  = NO;
+    
+    [self addChild:floor];
 }
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-   
+  
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
+    for(UITouch* touch in touches){
+        
+        CGPoint location = [touch locationInNode:self];
+        
+        if(!_player){
+            
+            _player  = [Player initNewPlayer:self startingPoint:location ];
+        }
+        else{
+            [_player runRight];
+        }
+    }
    
-    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
