@@ -19,6 +19,8 @@
 		CF0A118D1A24D79B00B29664 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0A118C1A24D79B00B29664 /* Player.m */; };
 		CF0A118F1A24DB2200B29664 /* Jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CF0A118E1A24DB2200B29664 /* Jump.atlas */; };
 		CF0A11911A24DB2A00B29664 /* Run.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CF0A11901A24DB2A00B29664 /* Run.atlas */; };
+		CF0A11931A24E13D00B29664 /* ground.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CF0A11921A24E13D00B29664 /* ground.atlas */; };
+		CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA347B41A2C73CD004B671E /* SpriteTextures.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,9 @@
 		CF0A118C1A24D79B00B29664 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = SOURCE_ROOT; };
 		CF0A118E1A24DB2200B29664 /* Jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Jump.atlas; path = Images/Jump.atlas; sourceTree = SOURCE_ROOT; };
 		CF0A11901A24DB2A00B29664 /* Run.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Run.atlas; path = Images/Run.atlas; sourceTree = SOURCE_ROOT; };
+		CF0A11921A24E13D00B29664 /* ground.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = ground.atlas; path = Images/ground.atlas; sourceTree = SOURCE_ROOT; };
+		CFA347B31A2C73CD004B671E /* SpriteTextures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteTextures.h; sourceTree = "<group>"; };
+		CFA347B41A2C73CD004B671E /* SpriteTextures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteTextures.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +98,7 @@
 		CD202AC21A1F7D74000D7A8F /* CodingQuest */ = {
 			isa = PBXGroup;
 			children = (
+				CF0A11921A24E13D00B29664 /* ground.atlas */,
 				CF0A11901A24DB2A00B29664 /* Run.atlas */,
 				CF0A118E1A24DB2200B29664 /* Jump.atlas */,
 				CD202AC71A1F7D74000D7A8F /* AppDelegate.h */,
@@ -108,6 +114,8 @@
 				CD202AC31A1F7D74000D7A8F /* Supporting Files */,
 				CF0A118B1A24D79B00B29664 /* Player.h */,
 				CF0A118C1A24D79B00B29664 /* Player.m */,
+				CFA347B31A2C73CD004B671E /* SpriteTextures.h */,
+				CFA347B41A2C73CD004B671E /* SpriteTextures.m */,
 			);
 			path = CodingQuest;
 			sourceTree = "<group>";
@@ -222,6 +230,7 @@
 				CF0A11911A24DB2A00B29664 /* Run.atlas in Resources */,
 				CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */,
 				CD202ACE1A1F7D74000D7A8F /* GameScene.sks in Resources */,
+				CF0A11931A24E13D00B29664 /* ground.atlas in Resources */,
 				CF0A118F1A24DB2200B29664 /* Jump.atlas in Resources */,
 				CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */,
 			);
@@ -245,6 +254,7 @@
 				CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */,
 				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
 				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,
+				CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */,
 				CF0A118D1A24D79B00B29664 /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
