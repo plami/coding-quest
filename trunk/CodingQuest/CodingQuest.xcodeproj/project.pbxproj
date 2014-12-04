@@ -58,8 +58,8 @@
 		CF0A11921A24E13D00B29664 /* ground.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = ground.atlas; path = Images/ground.atlas; sourceTree = SOURCE_ROOT; };
 		CFA347B31A2C73CD004B671E /* SpriteTextures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteTextures.h; sourceTree = "<group>"; };
 		CFA347B41A2C73CD004B671E /* SpriteTextures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteTextures.m; sourceTree = "<group>"; };
-		CFD498CB1A3078BA00509F75 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
-		CFD498CC1A3078BA00509F75 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
+		CFD498CB1A3078BA00509F75 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = ../Background.h; sourceTree = "<group>"; };
+		CFD498CC1A3078BA00509F75 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = ../Background.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +83,6 @@
 		CD202AB71A1F7D74000D7A8F = {
 			isa = PBXGroup;
 			children = (
-				CFD498CB1A3078BA00509F75 /* Background.h */,
-				CFD498CC1A3078BA00509F75 /* Background.m */,
 				CD202AC21A1F7D74000D7A8F /* CodingQuest */,
 				CD202AE11A1F7D74000D7A8F /* CodingQuestTests */,
 				CD202AC11A1F7D74000D7A8F /* Products */,
@@ -121,6 +119,8 @@
 				CF0A118C1A24D79B00B29664 /* Player.m */,
 				CFA347B31A2C73CD004B671E /* SpriteTextures.h */,
 				CFA347B41A2C73CD004B671E /* SpriteTextures.m */,
+				CFD498CB1A3078BA00509F75 /* Background.h */,
+				CFD498CC1A3078BA00509F75 /* Background.m */,
 			);
 			path = CodingQuest;
 			sourceTree = "<group>";

@@ -21,7 +21,7 @@
         self.background = [[SKSpriteNode alloc] initWithImageNamed:background];
         
         // position background
-        self.position = CGPointMake(size.width / 2, size.height / 2);
+        self.position = CGPointMake(size.width / 2, size.height / 1.25 );
         
         // speed
         self.currentSpeed = speed;
@@ -53,17 +53,10 @@
     CGFloat newBgX = bg.position.x, newBgY = bg.position.y,
     newCbgX = cBg.position.x, newCbgY = cBg.position.y;
     
-    newBgX += speed;
-    newCbgX += speed;
-    if (newBgX >= bg.size.width){
-        
-        newBgX = newCbgX - cBg.size.width;
-    }
-    
-    if (newCbgX >= cBg.size.width){
-        
-        newCbgX =  newBgX - bg.size.width;
-    }
+    newBgX -= speed;
+    newCbgX -= speed;
+    if (newBgX <= -bg.size.width) newBgX += 2*bg.size.width;
+    if (newCbgX <= -cBg.size.width) newCbgX += 2*cBg.size.width;
     
     bg.position = CGPointMake(newBgX, newBgY);
     cBg.position = CGPointMake(newCbgX, newCbgY);
