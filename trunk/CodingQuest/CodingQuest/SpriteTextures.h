@@ -3,10 +3,16 @@
 
 @interface SpriteTextures : NSObject
 
-@property NSArray* playerRunRightTextures;
+-(void) createRunningAnimation;
+-(void) createJumpingAnimation;
 
--(void) createAnimationTextures;
 
+
+-(NSMutableArray*) runningRight;
+-(NSMutableArray*) runningLeft;
+
+-(NSMutableArray*) jumpingRight;
+-(NSMutableArray*) jumpingLeft;
 @end
 
 
