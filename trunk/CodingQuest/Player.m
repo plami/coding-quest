@@ -48,7 +48,7 @@
     
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
-    
+  
     SKAction* moveRight = [SKAction moveByX:100 y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveRight];
     

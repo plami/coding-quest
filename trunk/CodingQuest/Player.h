@@ -8,4 +8,5 @@
 +(Player*) initNewPlayer:(GameScene*) whichScene startingPoint: (CGPoint) location;
 
 -(void) runRight;
+-(void) jumpRight;
 @end

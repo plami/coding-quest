@@ -24,7 +24,7 @@ CGPoint _velocity;
              self.backgroundColor = [SKColor whiteColor];
              
              NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
-             Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:5];
+             Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:2];
              
              self.scrollingBackground = scrollingBackground;
              [self addChild: self.scrollingBackground];
@@ -53,6 +53,7 @@ CGPoint _velocity;
         }
         else{
             [_player runRight];
+            [_player jumpRight];
         }
     }
    
