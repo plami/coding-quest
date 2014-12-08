@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD88E1A35B7D200192C22 /* StartingPage.m */; };
+		CD0DD8911A35CE2900192C22 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8901A35CE2900192C22 /* background.jpg */; };
+		CD0DD8991A35DD8300192C22 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8981A35DD8300192C22 /* apple.png */; };
+		CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */; };
 		CD202AC61A1F7D74000D7A8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC51A1F7D74000D7A8F /* main.m */; };
 		CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC81A1F7D74000D7A8F /* AppDelegate.m */; };
 		CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202ACB1A1F7D74000D7A8F /* GameScene.m */; };
@@ -14,7 +18,6 @@
 		CD202AD11A1F7D74000D7A8F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AD01A1F7D74000D7A8F /* GameViewController.m */; };
 		CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD21A1F7D74000D7A8F /* Main.storyboard */; };
 		CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD51A1F7D74000D7A8F /* Images.xcassets */; };
-		CD202AD91A1F7D74000D7A8F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD71A1F7D74000D7A8F /* LaunchScreen.xib */; };
 		CD202AE51A1F7D74000D7A8F /* CodingQuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */; };
 		CF0A118D1A24D79B00B29664 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0A118C1A24D79B00B29664 /* Player.m */; };
 		CF0A118F1A24DB2200B29664 /* Jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CF0A118E1A24DB2200B29664 /* Jump.atlas */; };
@@ -35,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD0DD88D1A35B7D200192C22 /* StartingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingPage.h; sourceTree = "<group>"; };
+		CD0DD88E1A35B7D200192C22 /* StartingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartingPage.m; sourceTree = "<group>"; };
+		CD0DD8901A35CE2900192C22 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		CD0DD8981A35DD8300192C22 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		CD0DD89D1A35E63600192C22 /* GameSceneLevel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneLevel2.h; sourceTree = "<group>"; };
+		CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneLevel2.m; sourceTree = "<group>"; };
 		CD202AC01A1F7D74000D7A8F /* CodingQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AC41A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AC51A1F7D74000D7A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,7 +56,6 @@
 		CD202AD01A1F7D74000D7A8F /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		CD202AD31A1F7D74000D7A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD202AD51A1F7D74000D7A8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CD202AD81A1F7D74000D7A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CD202ADE1A1F7D74000D7A8F /* CodingQuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodingQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AE31A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingQuestTests.m; sourceTree = "<group>"; };
@@ -80,6 +88,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD0DD89A1A35DF1D00192C22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD0DD88E1A35B7D200192C22 /* StartingPage.m */,
+				CD0DD88D1A35B7D200192C22 /* StartingPage.h */,
+				CD202ACD1A1F7D74000D7A8F /* GameScene.sks */,
+				CD202ACB1A1F7D74000D7A8F /* GameScene.m */,
+				CD202ACA1A1F7D74000D7A8F /* GameScene.h */,
+				CF0A118E1A24DB2200B29664 /* Jump.atlas */,
+				CF0A11901A24DB2A00B29664 /* Run.atlas */,
+				CF0A11921A24E13D00B29664 /* ground.atlas */,
+				CD0DD8901A35CE2900192C22 /* background.jpg */,
+				CD0DD8981A35DD8300192C22 /* apple.png */,
+				CD0DD89D1A35E63600192C22 /* GameSceneLevel2.h */,
+				CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CD0DD89B1A35DF5900192C22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFD498CC1A3078BA00509F75 /* Background.m */,
+				CFD498CB1A3078BA00509F75 /* Background.h */,
+				CFA347B41A2C73CD004B671E /* SpriteTextures.m */,
+				CFA347B31A2C73CD004B671E /* SpriteTextures.h */,
+				CF0A118C1A24D79B00B29664 /* Player.m */,
+				CF0A118B1A24D79B00B29664 /* Player.h */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CD0DD89C1A35E5E600192C22 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CD202AD01A1F7D74000D7A8F /* GameViewController.m */,
+				CD202ACF1A1F7D74000D7A8F /* GameViewController.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		CD202AB71A1F7D74000D7A8F = {
 			isa = PBXGroup;
 			children = (
@@ -101,24 +150,14 @@
 		CD202AC21A1F7D74000D7A8F /* CodingQuest */ = {
 			isa = PBXGroup;
 			children = (
-				CF0A11921A24E13D00B29664 /* ground.atlas */,
-				CF0A11901A24DB2A00B29664 /* Run.atlas */,
-				CF0A118E1A24DB2200B29664 /* Jump.atlas */,
+				CD0DD89B1A35DF5900192C22 /* Model */,
+				CD0DD89A1A35DF1D00192C22 /* View */,
+				CD0DD89C1A35E5E600192C22 /* Controller */,
 				CD202AC71A1F7D74000D7A8F /* AppDelegate.h */,
 				CD202AC81A1F7D74000D7A8F /* AppDelegate.m */,
-				CD202ACA1A1F7D74000D7A8F /* GameScene.h */,
-				CD202ACB1A1F7D74000D7A8F /* GameScene.m */,
-				CD202ACD1A1F7D74000D7A8F /* GameScene.sks */,
-				CD202ACF1A1F7D74000D7A8F /* GameViewController.h */,
-				CD202AD01A1F7D74000D7A8F /* GameViewController.m */,
 				CD202AD21A1F7D74000D7A8F /* Main.storyboard */,
 				CD202AD51A1F7D74000D7A8F /* Images.xcassets */,
-				CD202AD71A1F7D74000D7A8F /* LaunchScreen.xib */,
 				CD202AC31A1F7D74000D7A8F /* Supporting Files */,
-				CF0A118B1A24D79B00B29664 /* Player.h */,
-				CF0A118C1A24D79B00B29664 /* Player.m */,
-				CFA347B31A2C73CD004B671E /* SpriteTextures.h */,
-				CFA347B41A2C73CD004B671E /* SpriteTextures.m */,
 				CFD498CB1A3078BA00509F75 /* Background.h */,
 				CFD498CC1A3078BA00509F75 /* Background.m */,
 			);
@@ -232,12 +271,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD202AD91A1F7D74000D7A8F /* LaunchScreen.xib in Resources */,
+				CD0DD8991A35DD8300192C22 /* apple.png in Resources */,
 				CF0A11911A24DB2A00B29664 /* Run.atlas in Resources */,
 				CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */,
 				CD202ACE1A1F7D74000D7A8F /* GameScene.sks in Resources */,
 				CF0A11931A24E13D00B29664 /* ground.atlas in Resources */,
 				CF0A118F1A24DB2200B29664 /* Jump.atlas in Resources */,
+				CD0DD8911A35CE2900192C22 /* background.jpg in Resources */,
 				CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,10 +298,12 @@
 			files = (
 				CD202AD11A1F7D74000D7A8F /* GameViewController.m in Sources */,
 				CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */,
+				CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */,
 				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
 				CFD498CD1A3078BA00509F75 /* Background.m in Sources */,
 				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,
 				CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */,
+				CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */,
 				CF0A118D1A24D79B00B29664 /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,14 +333,6 @@
 				CD202AD31A1F7D74000D7A8F /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CD202AD71A1F7D74000D7A8F /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD202AD81A1F7D74000D7A8F /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -1,13 +1,6 @@
-//
-//  GameViewController.m
-//  CodingQuest
-//
-//  Created by User-06 on 11/21/14.
-//  Copyright (c) 2014 User-06. All rights reserved.
-//
-
 #import "GameViewController.h"
 #import "GameScene.h"
+#import "StartingPage.h"
 
 @implementation SKScene (Unarchive)
 
@@ -21,13 +14,13 @@
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+    skView.showsFPS = NO;
+    skView.showsNodeCount = NO;
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    GameScene *scene = [GameScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [StartingPage sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
