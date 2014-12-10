@@ -1,6 +1,7 @@
 #import "SpriteTextures.h"
 
 @interface SpriteTextures ()
+
 @property NSMutableArray* playerRunRightTextures;
 @property NSMutableArray* playerRunLeftTextures;
 @property NSMutableArray* playerJumpRightTextures;
@@ -32,12 +33,12 @@
     self.playerRunRightTextures = [[NSMutableArray alloc]init];
     self.playerRunLeftTextures = [[NSMutableArray alloc]init];
     
-    for(NSInteger pic = 1 ; pic <= 12 ;pic++){
+    for(NSInteger pic = 1 ; pic <= 13 ;pic++){
         
-        SKTexture* runRight = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%ld.png",(long)pic]];
+        SKTexture* runRight = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%ldRight.png",(long)pic]];
         [self.playerRunRightTextures addObject:runRight];
         
-        SKTexture* runLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"leftPlayer%ld.png",(long)pic]];
+        SKTexture* runLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%ldLeft.png",(long)pic]];
         [self.playerRunLeftTextures addObject:runLeft];
     }
     
@@ -48,14 +49,14 @@
     self.playerJumpRightTextures = [[NSMutableArray alloc]init];
     self.playerJumpLeftTextures = [[NSMutableArray alloc]init];
     
-    for(NSInteger picture = 1; picture <= 5; picture++){
+    for(NSInteger picture = 1; picture <= 7; picture++){
         
-        SKTexture* jumpRight = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"jump%ld.png",(long)picture]];
+        SKTexture* jumpRight = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%ldRightJump.png",(long)picture]];
         
         [self.playerJumpRightTextures addObject:jumpRight];
-        SKTexture* jumpLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"leftJump%ld.png",(long)picture]];
+        SKTexture* jumpLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player%ldLeftJump.png",(long)picture]];
         
-        [self.playerRunLeftTextures addObject:jumpLeft];
+        [self.playerJumpLeftTextures addObject:jumpLeft];
     }
     
 }

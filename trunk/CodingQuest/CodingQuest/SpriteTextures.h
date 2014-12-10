@@ -7,7 +7,6 @@
 -(void) createJumpingAnimation;
 
 
-
 -(NSMutableArray*) runningRight;
 -(NSMutableArray*) runningLeft;
 

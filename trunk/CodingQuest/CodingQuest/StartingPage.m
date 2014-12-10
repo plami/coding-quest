@@ -1,5 +1,6 @@
 #import "StartingPage.h"
 #import "GameScene.h"
+#import "GameSceneLevel2.h"
 
 @implementation StartingPage
 
@@ -8,9 +9,15 @@
         
         /* Setup your scene here */
         
+        //adding background
         SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
+        
+        //adding logos
+        SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"itTalents.png"];
+        logo.position = CGPointMake(830, 580);
+        [self addChild:logo];
         
         //button for Level 1
         NSString *LevelOneButton;
@@ -19,9 +26,9 @@
         SKLabelNode *myLabelLevelOne = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         
         myLabelLevelOne.text = LevelOneButton;
-        myLabelLevelOne.fontSize = 40;
+        myLabelLevelOne.fontSize = 80;
         myLabelLevelOne.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelLevelOne.position = CGPointMake(130, 260);
+        myLabelLevelOne.position = CGPointMake(200, 500);
         myLabelLevelOne.name = @"Level 1 button";
         
         [self addChild:myLabelLevelOne];
@@ -33,9 +40,9 @@
         SKLabelNode *myLabelLevelTwo = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         
         myLabelLevelTwo.text = LevelTwoButton;
-        myLabelLevelTwo.fontSize = 40;
+        myLabelLevelTwo.fontSize = 80;
         myLabelLevelTwo.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelLevelTwo.position = CGPointMake(130, 200);
+        myLabelLevelTwo.position = CGPointMake(200, 350);
         myLabelLevelTwo.name = @"Level 2 button";
         
         [self addChild:myLabelLevelTwo];
@@ -47,10 +54,10 @@
         SKLabelNode *myLabelLevelThree = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         
         myLabelLevelThree.text = LevelThreeButton;
-        myLabelLevelThree.fontSize = 40;
+        myLabelLevelThree.fontSize = 80;
         myLabelLevelThree.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelLevelThree.position = CGPointMake(130, 140);
-        myLabelLevelThree.name = @"Level 2 button";
+        myLabelLevelThree.position = CGPointMake(200, 200);
+        myLabelLevelThree.name = @"Level 3 button";
         
         [self addChild:myLabelLevelThree];
         
@@ -61,9 +68,9 @@
         SKLabelNode *myLabelHighScore = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         
         myLabelHighScore.text = HighScoreButton;
-        myLabelHighScore.fontSize = 40;
+        myLabelHighScore.fontSize = 70;
         myLabelHighScore.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelHighScore.position = CGPointMake(130, 60);
+        myLabelHighScore.position = CGPointMake(700, 70);
         myLabelHighScore.name = @"High Score button";
         
         [self addChild:myLabelHighScore];
@@ -83,6 +90,15 @@
         SKTransition *reveal = [SKTransition fadeWithDuration:2];
         
         GameScene *scene = [GameScene sceneWithSize:self.view.bounds.size];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene:scene transition:reveal];
+    }
+    
+    if ([node.name isEqualToString:@"Level 2 button"]) {
+        
+        SKTransition *reveal = [SKTransition fadeWithDuration:2];
+        
+        GameSceneLevel2 *scene = [GameSceneLevel2 sceneWithSize:self.view.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene:scene transition:reveal];
     }

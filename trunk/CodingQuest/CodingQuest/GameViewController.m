@@ -1,6 +1,7 @@
 #import "GameViewController.h"
 #import "GameScene.h"
 #import "StartingPage.h"
+#import "GameSceneLevel2.h"
 
 @implementation SKScene (Unarchive)
 
@@ -8,9 +9,9 @@
 
 @implementation GameViewController
 
-- (void)viewDidLoad
+- (void)viewWillLayoutSubviews
 {
-    [super viewDidLoad];
+   [super viewWillLayoutSubviews];
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -20,7 +21,7 @@
     skView.ignoresSiblingOrder = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [StartingPage sceneWithSize:skView.bounds.size];
+    SKScene * scene = [StartingPage sceneWithSize:CGSizeMake(skView.bounds.size.width*2,skView.bounds.size.height*2)];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
