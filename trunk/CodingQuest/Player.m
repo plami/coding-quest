@@ -35,15 +35,16 @@
 
 +(Player *)initNewPlayer2:(GameSceneLevel2 *)whichScene2 startingPoint:(CGPoint)location{
     
-    SpriteTextures* playerTexture = [[SpriteTextures alloc]init];
-    [playerTexture createRunningAnimation];
-    [playerTexture createJumpingAnimation];
-    
+    SpriteTextures* playerTexture2 = [[SpriteTextures alloc]init];
+    [playerTexture2 createRunningAnimation];
+    [playerTexture2 createJumpingAnimation];
+    [playerTexture2 createSkiddingAnimation];
+    [playerTexture2 createStillAnimation];
     SKTexture* f2 = [SKTexture textureWithImageNamed:@"playerStillRight.png"];
     
     Player *player2 = [Player spriteNodeWithTexture:f2];
     player2.position = location;
-    player2.spriteTextures = playerTexture;
+    player2.spriteTextures = playerTexture2;
     player2.size = CGSizeMake(50, 70);
     player2.physicsBody.affectedByGravity = YES;
     [whichScene2 addChild:player2];

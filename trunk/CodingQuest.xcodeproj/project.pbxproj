@@ -12,6 +12,13 @@
 		CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */; };
 		CD0DD8A51A35F5B600192C22 /* itTalents.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8A41A35F5B600192C22 /* itTalents.png */; };
 		CD0DD8C01A374CF700192C22 /* bulletLevel2.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */; };
+		CD0DD9131A39E43800192C22 /* backgroundLevel2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD9121A39E43800192C22 /* backgroundLevel2.jpeg */; };
+		CD0DD9151A39E45B00192C22 /* thirdBugHit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD9141A39E45B00192C22 /* thirdBugHit.atlas */; };
+		CD0DD9171A39E46200192C22 /* thirdBugMoving.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD9161A39E46200192C22 /* thirdBugMoving.atlas */; };
+		CD0DD9191A39E46800192C22 /* secondBugHit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD9181A39E46800192C22 /* secondBugHit.atlas */; };
+		CD0DD91B1A39E47000192C22 /* secondBugMoving.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD91A1A39E47000192C22 /* secondBugMoving.atlas */; };
+		CD0DD91D1A39E47600192C22 /* firstBugHit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD91C1A39E47600192C22 /* firstBugHit.atlas */; };
+		CD0DD91F1A39E47C00192C22 /* firstBugMoving.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD91E1A39E47C00192C22 /* firstBugMoving.atlas */; };
 		CD202AC61A1F7D74000D7A8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC51A1F7D74000D7A8F /* main.m */; };
 		CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC81A1F7D74000D7A8F /* AppDelegate.m */; };
 		CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202ACB1A1F7D74000D7A8F /* GameScene.m */; };
@@ -49,6 +56,13 @@
 		CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneLevel2.m; sourceTree = "<group>"; };
 		CD0DD8A41A35F5B600192C22 /* itTalents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itTalents.png; sourceTree = "<group>"; };
 		CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulletLevel2.png; sourceTree = "<group>"; };
+		CD0DD9121A39E43800192C22 /* backgroundLevel2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroundLevel2.jpeg; sourceTree = "<group>"; };
+		CD0DD9141A39E45B00192C22 /* thirdBugHit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = thirdBugHit.atlas; sourceTree = "<group>"; };
+		CD0DD9161A39E46200192C22 /* thirdBugMoving.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = thirdBugMoving.atlas; sourceTree = "<group>"; };
+		CD0DD9181A39E46800192C22 /* secondBugHit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = secondBugHit.atlas; sourceTree = "<group>"; };
+		CD0DD91A1A39E47000192C22 /* secondBugMoving.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = secondBugMoving.atlas; sourceTree = "<group>"; };
+		CD0DD91C1A39E47600192C22 /* firstBugHit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = firstBugHit.atlas; sourceTree = "<group>"; };
+		CD0DD91E1A39E47C00192C22 /* firstBugMoving.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = firstBugMoving.atlas; sourceTree = "<group>"; };
 		CD202AC01A1F7D74000D7A8F /* CodingQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AC41A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AC51A1F7D74000D7A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,12 +114,19 @@
 		CD0DD89A1A35DF1D00192C22 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CD0DD91E1A39E47C00192C22 /* firstBugMoving.atlas */,
+				CD0DD91C1A39E47600192C22 /* firstBugHit.atlas */,
+				CD0DD91A1A39E47000192C22 /* secondBugMoving.atlas */,
+				CD0DD9181A39E46800192C22 /* secondBugHit.atlas */,
+				CD0DD9161A39E46200192C22 /* thirdBugMoving.atlas */,
+				CD0DD9141A39E45B00192C22 /* thirdBugHit.atlas */,
 				CF9C9FD91A39E00900D05DA1 /* ground.atlas */,
 				CF9C9FDA1A39E00900D05DA1 /* leftJump.atlas */,
 				CF9C9FDB1A39E00900D05DA1 /* leftRunning.atlas */,
 				CF9C9FDC1A39E00900D05DA1 /* rightJump.atlas */,
 				CF9C9FDD1A39E00900D05DA1 /* rightRunning.atlas */,
 				CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */,
+				CD0DD9121A39E43800192C22 /* backgroundLevel2.jpeg */,
 				CD0DD8AC1A35FB6700192C22 /* logos */,
 				CD0DD88D1A35B7D200192C22 /* StartingPage.h */,
 				CD0DD88E1A35B7D200192C22 /* StartingPage.m */,
@@ -293,15 +314,22 @@
 			files = (
 				CF9C9FE11A39E00900D05DA1 /* rightJump.atlas in Resources */,
 				CF9C9FE21A39E00900D05DA1 /* rightRunning.atlas in Resources */,
+				CD0DD91B1A39E47000192C22 /* secondBugMoving.atlas in Resources */,
 				CF9C9FDF1A39E00900D05DA1 /* leftJump.atlas in Resources */,
+				CD0DD9151A39E45B00192C22 /* thirdBugHit.atlas in Resources */,
+				CD0DD9131A39E43800192C22 /* backgroundLevel2.jpeg in Resources */,
 				CD0DD8C01A374CF700192C22 /* bulletLevel2.png in Resources */,
+				CD0DD9171A39E46200192C22 /* thirdBugMoving.atlas in Resources */,
+				CD0DD91D1A39E47600192C22 /* firstBugHit.atlas in Resources */,
 				CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */,
 				CD202ACE1A1F7D74000D7A8F /* GameScene.sks in Resources */,
+				CD0DD9191A39E46800192C22 /* secondBugHit.atlas in Resources */,
 				CD0DD8A51A35F5B600192C22 /* itTalents.png in Resources */,
 				CF9C9FDE1A39E00900D05DA1 /* ground.atlas in Resources */,
 				CD0DD8911A35CE2900192C22 /* background.jpg in Resources */,
 				CF9C9FE01A39E00900D05DA1 /* leftRunning.atlas in Resources */,
 				CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */,
+				CD0DD91F1A39E47C00192C22 /* firstBugMoving.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
