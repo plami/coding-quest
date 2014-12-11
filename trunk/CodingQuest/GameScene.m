@@ -2,18 +2,19 @@
 #import "GameScene.h"
 #import "Player.h"
 #import "Background.h"
-
+#import "Monster.h"
 
 @interface GameScene ()
 @property Player* player;
+@property Monster* monster;
 @property SKTextureAtlas* runAtlas;
 @property Background* scrollingBackground;
+@property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
+@property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @end
 
 @implementation GameScene
-NSTimeInterval _lastUpdateTime;
-NSTimeInterval _dt;
-CGPoint _velocity;
+
 
 
 -(instancetype)initWithSize:(CGSize)size{
@@ -89,6 +90,15 @@ CGPoint _velocity;
     if(_player.position.x < 10){
         [_player runRight];
     }
+    
+    self.lastSpawnTimeInterval += currentTime;
+    if (self.lastSpawnTimeInterval > 1) {
+        self.lastSpawnTimeInterval = 0;
+        Monster* newMonster = [Monster initNewMonster:self startingPoint:CGPointMake(self.size.width + 10, self.size.height / 3 + self.size.height / 2)];
+        
+        [newMonster spawnInScene:self];
+    }
+   
 }
 
 

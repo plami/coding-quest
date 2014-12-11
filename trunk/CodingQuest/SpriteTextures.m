@@ -10,7 +10,7 @@
 @property NSMutableArray* playerSkiddingRightTextures;
 @property NSMutableArray* playerStillFacingRightTextures;
 @property NSMutableArray* playerStillFacingLeftTextures;
-
+@property NSMutableArray* bugMovingLeftTextures;
 @end
 
 @implementation SpriteTextures
@@ -47,6 +47,23 @@
 
 -(NSMutableArray *)stillLeft{
     return self.playerStillFacingLeftTextures;
+}
+
+-(NSMutableArray *)leftMovingBug{
+    return self.bugMovingLeftTextures;
+}
+
+-(void)createMonsterRunningAnimation{
+    
+    self.bugMovingLeftTextures = [[NSMutableArray alloc]init];
+    
+    for(NSInteger move = 1; move <= 4; ++move){
+        
+        SKTexture* moveLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bug1Moving.png"]];
+        
+        [self.bugMovingLeftTextures addObject:moveLeft];
+    }
+
 }
 
 -(void)createRunningAnimation{
