@@ -5,7 +5,14 @@
 
 -(void) createRunningAnimation;
 -(void) createJumpingAnimation;
+-(void) createSkiddingAnimation;
+-(void) createStillAnimation;
 
+-(NSMutableArray*) stillRight;
+-(NSMutableArray*) stillLeft;
+
+-(NSMutableArray*) skiddingRight;
+-(NSMutableArray*) skiddingLeft;
 
 -(NSMutableArray*) runningRight;
 -(NSMutableArray*) runningLeft;
