@@ -50,8 +50,8 @@ CGPoint _velocity;
             _player  = [Player initNewPlayer2:self startingPoint:CGPointMake(40, 60)];
         }
         else{
-            [_player runRight];
-            [_player jumpRight];
+          //  [_player runRight];
+          //  [_player jumpRight];
         }
     }
 }
