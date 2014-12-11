@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD88E1A35B7D200192C22 /* StartingPage.m */; };
+		CD0DD8911A35CE2900192C22 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8901A35CE2900192C22 /* background.jpg */; };
+		CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */; };
+		CD0DD8A51A35F5B600192C22 /* itTalents.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8A41A35F5B600192C22 /* itTalents.png */; };
+		CD0DD8B61A37087900192C22 /* leftRunning.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8B51A37087800192C22 /* leftRunning.atlas */; };
+		CD0DD8B81A37089F00192C22 /* rightRunning.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8B71A37089F00192C22 /* rightRunning.atlas */; };
+		CD0DD8BC1A370A3900192C22 /* ground.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8BB1A370A3900192C22 /* ground.atlas */; };
+		CD0DD8BE1A3715B400192C22 /* rightJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8BD1A3715B400192C22 /* rightJump.atlas */; };
+		CD0DD8C01A374CF700192C22 /* bulletLevel2.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */; };
+		CD202AC61A1F7D74000D7A8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC51A1F7D74000D7A8F /* main.m */; };
+		CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC81A1F7D74000D7A8F /* AppDelegate.m */; };
+		CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202ACB1A1F7D74000D7A8F /* GameScene.m */; };
+		CD202ACE1A1F7D74000D7A8F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CD202ACD1A1F7D74000D7A8F /* GameScene.sks */; };
+		CD202AD11A1F7D74000D7A8F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AD01A1F7D74000D7A8F /* GameViewController.m */; };
+		CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD21A1F7D74000D7A8F /* Main.storyboard */; };
+		CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD51A1F7D74000D7A8F /* Images.xcassets */; };
+		CD202AE51A1F7D74000D7A8F /* CodingQuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */; };
+		CF0A118D1A24D79B00B29664 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0A118C1A24D79B00B29664 /* Player.m */; };
+		CF7C7DB91A3879F000749F15 /* leftJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CF7C7DB81A3879F000749F15 /* leftJump.atlas */; };
+		CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA347B41A2C73CD004B671E /* SpriteTextures.m */; };
+		CFD498CD1A3078BA00509F75 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD498CC1A3078BA00509F75 /* Background.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD202ADF1A1F7D74000D7A8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD202AB81A1F7D74000D7A8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD202ABF1A1F7D74000D7A8F;
+			remoteInfo = CodingQuest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CD0DD88D1A35B7D200192C22 /* StartingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingPage.h; sourceTree = "<group>"; };
+		CD0DD88E1A35B7D200192C22 /* StartingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartingPage.m; sourceTree = "<group>"; };
+		CD0DD8901A35CE2900192C22 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		CD0DD89D1A35E63600192C22 /* GameSceneLevel2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneLevel2.h; sourceTree = "<group>"; };
+		CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneLevel2.m; sourceTree = "<group>"; };
+		CD0DD8A41A35F5B600192C22 /* itTalents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itTalents.png; sourceTree = "<group>"; };
+		CD0DD8B51A37087800192C22 /* leftRunning.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftRunning.atlas; sourceTree = "<group>"; };
+		CD0DD8B71A37089F00192C22 /* rightRunning.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightRunning.atlas; sourceTree = "<group>"; };
+		CD0DD8BB1A370A3900192C22 /* ground.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ground.atlas; sourceTree = "<group>"; };
+		CD0DD8BD1A3715B400192C22 /* rightJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = rightJump.atlas; sourceTree = "<group>"; };
+		CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulletLevel2.png; sourceTree = "<group>"; };
+		CD202AC01A1F7D74000D7A8F /* CodingQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD202AC41A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD202AC51A1F7D74000D7A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CD202AC71A1F7D74000D7A8F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CD202AC81A1F7D74000D7A8F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CD202ACA1A1F7D74000D7A8F /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		CD202ACB1A1F7D74000D7A8F /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		CD202ACD1A1F7D74000D7A8F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		CD202ACF1A1F7D74000D7A8F /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		CD202AD01A1F7D74000D7A8F /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		CD202AD31A1F7D74000D7A8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD202AD51A1F7D74000D7A8F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CD202ADE1A1F7D74000D7A8F /* CodingQuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodingQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD202AE31A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingQuestTests.m; sourceTree = "<group>"; };
+		CF0A118B1A24D79B00B29664 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = SOURCE_ROOT; };
+		CF0A118C1A24D79B00B29664 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = SOURCE_ROOT; };
+		CF7C7DB81A3879F000749F15 /* leftJump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = leftJump.atlas; sourceTree = "<group>"; };
+		CFA347B31A2C73CD004B671E /* SpriteTextures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteTextures.h; sourceTree = "<group>"; };
+		CFA347B41A2C73CD004B671E /* SpriteTextures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteTextures.m; sourceTree = "<group>"; };
+		CFD498CB1A3078BA00509F75 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = ../Background.h; sourceTree = "<group>"; };
+		CFD498CC1A3078BA00509F75 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = ../Background.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD202ABD1A1F7D74000D7A8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD202ADB1A1F7D74000D7A8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD0DD89A1A35DF1D00192C22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */,
+				CF7C7DB81A3879F000749F15 /* leftJump.atlas */,
+				CD0DD8BD1A3715B400192C22 /* rightJump.atlas */,
+				CD0DD8B51A37087800192C22 /* leftRunning.atlas */,
+				CD0DD8B71A37089F00192C22 /* rightRunning.atlas */,
+				CD0DD8BB1A370A3900192C22 /* ground.atlas */,
+				CD0DD8AC1A35FB6700192C22 /* logos */,
+				CD0DD88D1A35B7D200192C22 /* StartingPage.h */,
+				CD0DD88E1A35B7D200192C22 /* StartingPage.m */,
+				CD202ACD1A1F7D74000D7A8F /* GameScene.sks */,
+				CD202ACA1A1F7D74000D7A8F /* GameScene.h */,
+				CD202ACB1A1F7D74000D7A8F /* GameScene.m */,
+				CD0DD89D1A35E63600192C22 /* GameSceneLevel2.h */,
+				CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */,
+				CD202AD21A1F7D74000D7A8F /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CD0DD89B1A35DF5900192C22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFD498CB1A3078BA00509F75 /* Background.h */,
+				CFD498CC1A3078BA00509F75 /* Background.m */,
+				CFA347B31A2C73CD004B671E /* SpriteTextures.h */,
+				CFA347B41A2C73CD004B671E /* SpriteTextures.m */,
+				CF0A118B1A24D79B00B29664 /* Player.h */,
+				CF0A118C1A24D79B00B29664 /* Player.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CD0DD89C1A35E5E600192C22 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CD202ACF1A1F7D74000D7A8F /* GameViewController.h */,
+				CD202AD01A1F7D74000D7A8F /* GameViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		CD0DD8AC1A35FB6700192C22 /* logos */ = {
+			isa = PBXGroup;
+			children = (
+				CD0DD8901A35CE2900192C22 /* background.jpg */,
+				CD0DD8A41A35F5B600192C22 /* itTalents.png */,
+			);
+			name = logos;
+			sourceTree = "<group>";
+		};
+		CD202AB71A1F7D74000D7A8F = {
+			isa = PBXGroup;
+			children = (
+				CD202AC21A1F7D74000D7A8F /* CodingQuest */,
+				CD202AE11A1F7D74000D7A8F /* CodingQuestTests */,
+				CD202AC11A1F7D74000D7A8F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD202AC11A1F7D74000D7A8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD202AC01A1F7D74000D7A8F /* CodingQuest.app */,
+				CD202ADE1A1F7D74000D7A8F /* CodingQuestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD202AC21A1F7D74000D7A8F /* CodingQuest */ = {
+			isa = PBXGroup;
+			children = (
+				CD0DD89A1A35DF1D00192C22 /* View */,
+				CD0DD89B1A35DF5900192C22 /* Model */,
+				CD0DD89C1A35E5E600192C22 /* Controller */,
+				CD202AC71A1F7D74000D7A8F /* AppDelegate.h */,
+				CD202AC81A1F7D74000D7A8F /* AppDelegate.m */,
+				CD202AD51A1F7D74000D7A8F /* Images.xcassets */,
+				CD202AC31A1F7D74000D7A8F /* Supporting Files */,
+			);
+			path = CodingQuest;
+			sourceTree = "<group>";
+		};
+		CD202AC31A1F7D74000D7A8F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD202AC41A1F7D74000D7A8F /* Info.plist */,
+				CD202AC51A1F7D74000D7A8F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD202AE11A1F7D74000D7A8F /* CodingQuestTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */,
+				CD202AE21A1F7D74000D7A8F /* Supporting Files */,
+			);
+			path = CodingQuestTests;
+			sourceTree = "<group>";
+		};
+		CD202AE21A1F7D74000D7A8F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD202AE31A1F7D74000D7A8F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD202ABF1A1F7D74000D7A8F /* CodingQuest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD202AE81A1F7D74000D7A8F /* Build configuration list for PBXNativeTarget "CodingQuest" */;
+			buildPhases = (
+				CD202ABC1A1F7D74000D7A8F /* Sources */,
+				CD202ABD1A1F7D74000D7A8F /* Frameworks */,
+				CD202ABE1A1F7D74000D7A8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CodingQuest;
+			productName = CodingQuest;
+			productReference = CD202AC01A1F7D74000D7A8F /* CodingQuest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CD202ADD1A1F7D74000D7A8F /* CodingQuestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD202AEB1A1F7D74000D7A8F /* Build configuration list for PBXNativeTarget "CodingQuestTests" */;
+			buildPhases = (
+				CD202ADA1A1F7D74000D7A8F /* Sources */,
+				CD202ADB1A1F7D74000D7A8F /* Frameworks */,
+				CD202ADC1A1F7D74000D7A8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD202AE01A1F7D74000D7A8F /* PBXTargetDependency */,
+			);
+			name = CodingQuestTests;
+			productName = CodingQuestTests;
+			productReference = CD202ADE1A1F7D74000D7A8F /* CodingQuestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD202AB81A1F7D74000D7A8F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "User-06";
+				TargetAttributes = {
+					CD202ABF1A1F7D74000D7A8F = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = L6CAK6M6J3;
+					};
+					CD202ADD1A1F7D74000D7A8F = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = CD202ABF1A1F7D74000D7A8F;
+					};
+				};
+			};
+			buildConfigurationList = CD202ABB1A1F7D74000D7A8F /* Build configuration list for PBXProject "CodingQuest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD202AB71A1F7D74000D7A8F;
+			productRefGroup = CD202AC11A1F7D74000D7A8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD202ABF1A1F7D74000D7A8F /* CodingQuest */,
+				CD202ADD1A1F7D74000D7A8F /* CodingQuestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD202ABE1A1F7D74000D7A8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD0DD8BE1A3715B400192C22 /* rightJump.atlas in Resources */,
+				CD0DD8BC1A370A3900192C22 /* ground.atlas in Resources */,
+				CD0DD8B81A37089F00192C22 /* rightRunning.atlas in Resources */,
+				CD0DD8C01A374CF700192C22 /* bulletLevel2.png in Resources */,
+				CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */,
+				CD202ACE1A1F7D74000D7A8F /* GameScene.sks in Resources */,
+				CD0DD8B61A37087900192C22 /* leftRunning.atlas in Resources */,
+				CD0DD8A51A35F5B600192C22 /* itTalents.png in Resources */,
+				CD0DD8911A35CE2900192C22 /* background.jpg in Resources */,
+				CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */,
+				CF7C7DB91A3879F000749F15 /* leftJump.atlas in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD202ADC1A1F7D74000D7A8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD202ABC1A1F7D74000D7A8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD202AD11A1F7D74000D7A8F /* GameViewController.m in Sources */,
+				CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */,
+				CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */,
+				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
+				CFD498CD1A3078BA00509F75 /* Background.m in Sources */,
+				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,
+				CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */,
+				CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */,
+				CF0A118D1A24D79B00B29664 /* Player.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD202ADA1A1F7D74000D7A8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD202AE51A1F7D74000D7A8F /* CodingQuestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD202AE01A1F7D74000D7A8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD202ABF1A1F7D74000D7A8F /* CodingQuest */;
+			targetProxy = CD202ADF1A1F7D74000D7A8F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CD202AD21A1F7D74000D7A8F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD202AD31A1F7D74000D7A8F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD202AE61A1F7D74000D7A8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikolay Tomitov (4PMSVJ27TD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikolay Tomitov (4PMSVJ27TD)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CD202AE71A1F7D74000D7A8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nikolay Tomitov (4PMSVJ27TD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nikolay Tomitov (4PMSVJ27TD)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD202AE91A1F7D74000D7A8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = CodingQuest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CD202AEA1A1F7D74000D7A8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = CodingQuest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		CD202AEC1A1F7D74000D7A8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CodingQuestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodingQuest.app/CodingQuest";
+			};
+			name = Debug;
+		};
+		CD202AED1A1F7D74000D7A8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CodingQuestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CodingQuest.app/CodingQuest";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD202ABB1A1F7D74000D7A8F /* Build configuration list for PBXProject "CodingQuest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD202AE61A1F7D74000D7A8F /* Debug */,
+				CD202AE71A1F7D74000D7A8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD202AE81A1F7D74000D7A8F /* Build configuration list for PBXNativeTarget "CodingQuest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD202AE91A1F7D74000D7A8F /* Debug */,
+				CD202AEA1A1F7D74000D7A8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD202AEB1A1F7D74000D7A8F /* Build configuration list for PBXNativeTarget "CodingQuestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD202AEC1A1F7D74000D7A8F /* Debug */,
+				CD202AED1A1F7D74000D7A8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD202AB81A1F7D74000D7A8F /* Project object */;
+}
