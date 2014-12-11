@@ -7,6 +7,9 @@
 -(void) createJumpingAnimation;
 -(void) createSkiddingAnimation;
 -(void) createStillAnimation;
+-(void) createMonsterRunningAnimation;
+
+-(NSMutableArray*) leftMovingBug;
 
 -(NSMutableArray*) stillRight;
 -(NSMutableArray*) stillLeft;
@@ -19,6 +22,8 @@
 
 -(NSMutableArray*) jumpingRight;
 -(NSMutableArray*) jumpingLeft;
+
+
 @end
 
 

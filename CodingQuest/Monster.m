@@ -1,23 +1,55 @@
 
 #import "Monster.h"
 #import "GameScene.h"
+#import "SpriteTextures.h"
+
+@interface Monster ()
+
+@property SpriteTextures* spriteTextures;
+
+@end
+
 @implementation Monster
 
--(instancetype)initNewMonsters:(SKScene *)whichScene startingPoint:(CGPoint)location{
++(Monster *)initNewMonster:(SKScene *)whichScene startingPoint :(CGPoint)location{
+ 
+    SKTexture* bugTexture = [SKTexture textureWithImageNamed:@"bug1Moving.png"];
+    SpriteTextures* monsterTexture = [[SpriteTextures alloc]init];
+    Monster* monster = [Monster spriteNodeWithTexture:bugTexture ];
+    [monsterTexture createMonsterRunningAnimation];
     
-    SKTexture* monsterTexture = [SKTexture textureWithImage:@"asd"];
-    Monster* monster = [Monster spriteNodeWithTexture:monsterTexture];
-    
-    monster.position = location;
-    monster.physicsBody.linearDamping = 0.1;
+    monster.spriteTextures = monsterTexture;
+    monster.size = CGSizeMake(70,70);
+    monster.physicsBody.affectedByGravity = NO;
     monster.physicsBody.allowsRotation = NO;
     
     
     [whichScene addChild:monster];
     return monster;
 }
+/*
+-(void)moveLeft{
+  
+    SKAction* walkAnimation = [SKAction animateWithTextures:[_spriteTextures leftMovingBug] timePerFrame:0.2];
+    SKAction* walkForever = [SKAction repeatActionForever:walkAnimation ];
+    [self runAction:walkForever];
+    
+    SKAction* moveLeft = [SKAction moveByX:-50 y:0 duration:1];
+    SKAction* moveForever = [SKAction repeatActionForever:moveLeft ];
+    [self runAction:moveForever];
 
+}
+*/
 -(void)spawnInScene:(SKScene *)whichScene{
     
+    GameScene* gameScene = (GameScene*) whichScene;
+    _spriteTextures = gameScene.spriteTextures;
+    
+    self.position = CGPointMake(whichScene.frame.size.width + 10, whichScene.frame.size.height /3 + whichScene.frame.size.height / 2);
+    
+    
+   // [self moveLeft];
 }
+
+
 @end
