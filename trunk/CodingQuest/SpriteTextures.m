@@ -6,6 +6,11 @@
 @property NSMutableArray* playerRunLeftTextures;
 @property NSMutableArray* playerJumpRightTextures;
 @property NSMutableArray* playerJumpLeftTextures;
+@property NSMutableArray* playerSkiddingLeftTextures;
+@property NSMutableArray* playerSkiddingRightTextures;
+@property NSMutableArray* playerStillFacingRightTextures;
+@property NSMutableArray* playerStillFacingLeftTextures;
+
 @end
 
 @implementation SpriteTextures
@@ -20,12 +25,28 @@
     return self.playerJumpRightTextures;
 }
 
+-(NSMutableArray *)skiddingRight{
+    return self.playerSkiddingRightTextures;
+}
+
+-(NSMutableArray *)stillRight{
+    return self.playerStillFacingRightTextures;
+}
+
 -(NSMutableArray *)runningLeft{
     return self.playerRunLeftTextures;
 }
 
 -(NSMutableArray *)jumpingLeft{
     return self.playerJumpLeftTextures;
+}
+
+-(NSMutableArray *)skiddingLeft{
+    return self.playerSkiddingLeftTextures;
+}
+
+-(NSMutableArray *)stillLeft{
+    return self.playerStillFacingLeftTextures;
 }
 
 -(void)createRunningAnimation{
@@ -42,6 +63,34 @@
         [self.playerRunLeftTextures addObject:runLeft];
     }
     
+}
+
+-(void)createSkiddingAnimation{
+    
+    self.playerSkiddingLeftTextures = [[NSMutableArray alloc]init];
+    SKTexture* skidLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player5LeftJump.png"]];
+    
+    [self.playerSkiddingLeftTextures addObject:skidLeft];
+    
+    self.playerSkiddingRightTextures = [[NSMutableArray alloc] init];
+    SKTexture* skidRight = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"player5RightJump.png"]];
+    
+    [self.playerSkiddingRightTextures addObject:skidRight];
+    
+}
+
+-(void) createStillAnimation{
+    
+    self.playerStillFacingLeftTextures = [[NSMutableArray alloc] init];
+    SKTexture* stillLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"playerStillLeft.png"]];
+    
+    [self.playerStillFacingLeftTextures addObject:stillLeft];
+    
+    self.playerStillFacingRightTextures = [[NSMutableArray alloc] init];
+    SKTexture* stillRight = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"playerStillRight.png"]];
+    
+    [self.playerStillFacingRightTextures addObject:stillRight];
+                            
 }
 
 -(void)createJumpingAnimation{
