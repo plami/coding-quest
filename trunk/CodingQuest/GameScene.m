@@ -48,21 +48,33 @@ CGPoint _velocity;
     
     for(UITouch* touch in touches){
         
+        PlayerStatus status = _player.playerStatus;
         CGPoint location = [touch locationInNode:self];
         
-        if(location.x < self.size.width / 2 && location.y < self.size.height / 2){
+        
+        if(location.y >= (self.frame.size.height / 2)){
             
-            [_player runLeft];
+            if(status != PlayerJumpingLeft && status != PlayerJumpingRight && status != PlayerJumpingUpFacingLeft && status != PlayerJumpingUpFacingRight){
+                [_player jump];
+            }
         }
-        else if(  location.x > self.size.width / 2 && location.y < self.size.height / 2){
-            [_player runRight];
+        else if(location.x <= (self.frame.size.width / 2)){
+            if(status == PlayerRunningRight){
+                [_player skidRight];
+            }
+            else if(status == PlayerFacingLeft || status == PlayerFacingRight){
+                [_player runLeft];
+            }
         }
-        else if([_player runLeft] && self.size.height / 2 > location.y){
-            [_player jump];
+        else{
+            if(status == PlayerRunningLeft){
+                [_player skidLeft];
+            }
+            else if( status == PlayerFacingLeft || PlayerFacingRight){
+                [_player runRight];
+            }
         }
-        else if([_player runRight] && location.y > self.size.height / 2){
-            [_player jump];
-        }
+        
     }
 }
 
