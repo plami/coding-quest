@@ -2,11 +2,9 @@
 
 @interface Background ()
 
-
 @property (nonatomic, strong) SKSpriteNode *background;
 @property (nonatomic, strong) SKSpriteNode *mirrorBackground;
 @property (nonatomic) CGFloat currentSpeed;
-
 
 @end
 
@@ -21,7 +19,7 @@
         self.background = [[SKSpriteNode alloc] initWithImageNamed:background];
         
         // position background
-        self.position = CGPointMake(size.width / 2, size.height / 1.25 );
+        self.position = CGPointMake(size.width/2 , size.height/2 );
         
         // speed
         self.currentSpeed = speed;
@@ -30,12 +28,19 @@
         SKSpriteNode *node = self.background;
         node.position = CGPointMake(0, self.size.height);
         
+        //resize the background to fill the whole screen
+        [node setScale:0.33];
+        
         self.mirrorBackground = [node copy];
         CGFloat clonedPosX = node.position.x;
         CGFloat clonedPosY = node.position.y;
         clonedPosX = -node.size.width;
         
         self.mirrorBackground.position = CGPointMake(clonedPosX, clonedPosY);
+        [self.mirrorBackground setScale:0.33];
+        
+        node.zPosition = -1;
+        self.mirrorBackground.zPosition = -1;
         
         [self addChild:node];
         [self addChild:self.mirrorBackground];
