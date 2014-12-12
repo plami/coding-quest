@@ -25,6 +25,9 @@
 -(NSMutableArray*) jumpingRight;
 -(NSMutableArray*) jumpingLeft;
 
+-(NSMutableArray*) shooting;
+-(void) createShootingAnimation;
+
 
 @end
 

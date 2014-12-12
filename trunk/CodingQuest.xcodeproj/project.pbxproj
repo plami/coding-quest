@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1EB45681A3B1E7800153D92 /* spaceshipBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1EB45671A3B1E7800153D92 /* spaceshipBackground.jpg */; };
+		C1EB456B1A3B1E8500153D92 /* GameSceneLevel3.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EB456A1A3B1E8500153D92 /* GameSceneLevel3.m */; };
+		C1EB456E1A3B38A300153D92 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EB456D1A3B38A300153D92 /* Bullet.m */; };
 		CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD88E1A35B7D200192C22 /* StartingPage.m */; };
 		CD0DD8911A35CE2900192C22 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD8901A35CE2900192C22 /* background.jpg */; };
 		CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */; };
@@ -52,6 +55,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1EB45671A3B1E7800153D92 /* spaceshipBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceshipBackground.jpg; sourceTree = "<group>"; };
+		C1EB45691A3B1E8500153D92 /* GameSceneLevel3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneLevel3.h; sourceTree = "<group>"; };
+		C1EB456A1A3B1E8500153D92 /* GameSceneLevel3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneLevel3.m; sourceTree = "<group>"; };
+		C1EB456C1A3B38A300153D92 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		C1EB456D1A3B38A300153D92 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
 		CD0DD88D1A35B7D200192C22 /* StartingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartingPage.h; sourceTree = "<group>"; };
 		CD0DD88E1A35B7D200192C22 /* StartingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartingPage.m; sourceTree = "<group>"; };
 		CD0DD8901A35CE2900192C22 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
@@ -136,7 +144,10 @@
 				CF9C9FDD1A39E00900D05DA1 /* rightRunning.atlas */,
 				CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */,
 				CD0DD9121A39E43800192C22 /* backgroundLevel2.jpeg */,
+				C1EB45671A3B1E7800153D92 /* spaceshipBackground.jpg */,
 				CD0DD8AC1A35FB6700192C22 /* logos */,
+				C1EB45691A3B1E8500153D92 /* GameSceneLevel3.h */,
+				C1EB456A1A3B1E8500153D92 /* GameSceneLevel3.m */,
 				CD202AD21A1F7D74000D7A8F /* Main.storyboard */,
 			);
 			name = View;
@@ -160,6 +171,8 @@
 				CF9C9FD31A39DFFF00D05DA1 /* Monster.m */,
 				CF9C9FD41A39DFFF00D05DA1 /* Player.h */,
 				CF9C9FD51A39DFFF00D05DA1 /* Player.m */,
+				C1EB456C1A3B38A300153D92 /* Bullet.h */,
+				C1EB456D1A3B38A300153D92 /* Bullet.m */,
 				CFA347B31A2C73CD004B671E /* SpriteTextures.h */,
 				CFA347B41A2C73CD004B671E /* SpriteTextures.m */,
 				CF7C8E5D1A3B2C2C00E596D2 /* Scores.h */,
@@ -327,6 +340,7 @@
 			files = (
 				CF9C9FE11A39E00900D05DA1 /* rightJump.atlas in Resources */,
 				CF9C9FE21A39E00900D05DA1 /* rightRunning.atlas in Resources */,
+				C1EB45681A3B1E7800153D92 /* spaceshipBackground.jpg in Resources */,
 				CD0DD91B1A39E47000192C22 /* secondBugMoving.atlas in Resources */,
 				CF9C9FDF1A39E00900D05DA1 /* leftJump.atlas in Resources */,
 				CD0DD9151A39E45B00192C22 /* thirdBugHit.atlas in Resources */,
@@ -366,6 +380,7 @@
 				CD202AD11A1F7D74000D7A8F /* GameViewController.m in Sources */,
 				CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */,
 				CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */,
+				C1EB456B1A3B1E8500153D92 /* GameSceneLevel3.m in Sources */,
 				CF9C9FD81A39DFFF00D05DA1 /* Player.m in Sources */,
 				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
 				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,
@@ -373,6 +388,7 @@
 				CD0DD9341A3B40B400192C22 /* Bonus.m in Sources */,
 				CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */,
 				CF9C9FD61A39DFFF00D05DA1 /* Background.m in Sources */,
+				C1EB456E1A3B38A300153D92 /* Bullet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

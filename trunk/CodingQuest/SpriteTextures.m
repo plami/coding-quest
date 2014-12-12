@@ -11,7 +11,11 @@
 @property NSMutableArray* playerStillFacingRightTextures;
 @property NSMutableArray* playerStillFacingLeftTextures;
 @property NSMutableArray* leftMovingBug;
+
+@property NSMutableArray* bulletShootRightTexture;
+
 @property NSMutableArray* movingCoins;
+
 
 @end
 
@@ -71,6 +75,9 @@
     return self.playerStillFacingLeftTextures;
 }
 
+
+
+
 -(void)createCoinAnimation{
     
     self.movingCoins = [[NSMutableArray alloc]init];
@@ -82,6 +89,7 @@
         [self.movingCoins addObject:runLeft];
     }
 }
+
 
 
 -(void)createMonsterRunningAnimation{
@@ -155,5 +163,14 @@
         [self.playerJumpLeftTextures addObject:jumpLeft];
     }
     
+}
+
+-(NSMutableArray *)shooting{
+    return self.bulletShootRightTexture;
+}
+-(void)createShootingAnimation{
+    self.bulletShootRightTexture = [[NSMutableArray alloc] init];
+    SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bulletLevel2.png"]];
+    [self.bulletShootRightTexture addObject:shoot];
 }
 @end
