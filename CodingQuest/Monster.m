@@ -1,4 +1,3 @@
-
 #import "Monster.h"
 #import "GameScene.h"
 #import "SpriteTextures.h"
@@ -21,29 +20,27 @@
 
 +(Monster *)initNewMonster:(SKScene *)whichScene startingPoint :(CGPoint)location{
  
-    SKTexture* bugTexture = [SKTexture textureWithImageNamed:@"bug1Moving.png"];
-    SpriteTextures* monsterTexture = [[SpriteTextures alloc]init];
-    Monster* monster = [Monster spriteNodeWithTexture:bugTexture ];
-    [monsterTexture runningLeft];
-    [monsterTexture.runLeftMonster count];
+  
+    SpriteTextures* monsterTexture = [[SpriteTextures alloc] init];
+    
+    [monsterTexture createMonsterRunningAnimation];
+    SKTexture* f1 = [SKTexture textureWithImageNamed:@"bug1Moving.png"];
+    NSLog(@"%ld",[monsterTexture.runLeftMonster count]);
+    Monster* monster = [Monster spriteNodeWithTexture:f1];
+  
     monster.spriteTextures = monsterTexture;
     monster.size = CGSizeMake(kMonsterWidthSize,kMonsterHighSize);
-    monster.physicsBody.affectedByGravity = NO;
-    monster.physicsBody.allowsRotation = NO;
-    
-    
     [whichScene addChild:monster];
     return monster;
-
 }
 
 -(void)moveLeft{
     
-   /* SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures runLeftMonster] timePerFrame:0.1f];
+    SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures runLeftMonster] timePerFrame:0.2];
     
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
-    */
+    
     SKAction* moveLeft = [SKAction moveByX:-kMonsterMovingLeftSpeed y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     [self runAction:moveForever];
@@ -53,9 +50,7 @@
 
 -(void)spawnInScene:(SKScene *)whichScene{
     
-    GameScene* gameScene = (GameScene*) whichScene;
-    _spriteTextures = gameScene.spriteTextures;
-    
+   
     self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, whichScene.frame.size.height  -kMonsterSpawnY);
     
    [self moveLeft];

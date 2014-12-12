@@ -22,7 +22,7 @@
 #define kPlayerSkidRight 50
 #define kPlayerSkidLeft 50
 
-+(Player *)initNewPlayer1:(GameScene *)whichScene1 startingPoint:(CGPoint)location{
++(Player *)initNewPlayer1:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
     
     SpriteTextures* playerTexture = [[SpriteTextures alloc]init];
     [playerTexture createRunningAnimation];
