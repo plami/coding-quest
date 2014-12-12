@@ -146,8 +146,6 @@
 				CD0DD9121A39E43800192C22 /* backgroundLevel2.jpeg */,
 				C1EB45671A3B1E7800153D92 /* spaceshipBackground.jpg */,
 				CD0DD8AC1A35FB6700192C22 /* logos */,
-				C1EB45691A3B1E8500153D92 /* GameSceneLevel3.h */,
-				C1EB456A1A3B1E8500153D92 /* GameSceneLevel3.m */,
 				CD202AD21A1F7D74000D7A8F /* Main.storyboard */,
 			);
 			name = View;
@@ -156,6 +154,8 @@
 		CD0DD89B1A35DF5900192C22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C1EB45691A3B1E8500153D92 /* GameSceneLevel3.h */,
+				C1EB456A1A3B1E8500153D92 /* GameSceneLevel3.m */,
 				CD0DD9321A3B40AA00192C22 /* Bonus.h */,
 				CD0DD9331A3B40B400192C22 /* Bonus.m */,
 				CD0DD88D1A35B7D200192C22 /* StartingPage.h */,
@@ -167,8 +167,6 @@
 				CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */,
 				CF9C9FD01A39DFFF00D05DA1 /* Background.h */,
 				CF9C9FD11A39DFFF00D05DA1 /* Background.m */,
-				CF9C9FD21A39DFFF00D05DA1 /* Monster.h */,
-				CF9C9FD31A39DFFF00D05DA1 /* Monster.m */,
 				CF9C9FD41A39DFFF00D05DA1 /* Player.h */,
 				CF9C9FD51A39DFFF00D05DA1 /* Player.m */,
 				C1EB456C1A3B38A300153D92 /* Bullet.h */,
@@ -177,6 +175,8 @@
 				CFA347B41A2C73CD004B671E /* SpriteTextures.m */,
 				CF7C8E5D1A3B2C2C00E596D2 /* Scores.h */,
 				CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */,
+				CF9C9FD21A39DFFF00D05DA1 /* Monster.h */,
+				CF9C9FD31A39DFFF00D05DA1 /* Monster.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";

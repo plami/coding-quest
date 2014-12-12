@@ -18,16 +18,15 @@
 #define kMonsterSpawnY          100
 
 
-+(Monster *)initNewMonster:(SKScene *)whichScene startingPoint :(CGPoint)location{
+-(Monster *)initNewMonster:(SKScene *)whichScene startingPoint :(CGPoint)location andTypeOfMonster:(MonsterType) type{
  
   
     SpriteTextures* monsterTexture = [[SpriteTextures alloc] init];
     
     [monsterTexture createMonsterRunningAnimation];
     SKTexture* f1 = [SKTexture textureWithImageNamed:@"bug1Moving.png"];
-    NSLog(@"%ld",[monsterTexture.runLeftMonster count]);
     Monster* monster = [Monster spriteNodeWithTexture:f1];
-  
+    
     monster.spriteTextures = monsterTexture;
     monster.size = CGSizeMake(kMonsterWidthSize,kMonsterHighSize);
     [whichScene addChild:monster];
@@ -45,7 +44,6 @@
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     [self runAction:moveForever];
     
-
 }
 
 -(void)spawnInScene:(SKScene *)whichScene{

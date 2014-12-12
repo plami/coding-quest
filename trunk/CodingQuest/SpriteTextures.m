@@ -2,19 +2,23 @@
 
 @interface SpriteTextures ()
 
-@property NSMutableArray* playerRunRightTextures;
+
 @property NSMutableArray* playerRunLeftTextures;
-@property NSMutableArray* playerJumpRightTextures;
+@property NSMutableArray* playerStillFacingLeftTextures;
 @property NSMutableArray* playerJumpLeftTextures;
 @property NSMutableArray* playerSkiddingLeftTextures;
+
+@property NSMutableArray* playerJumpRightTextures;
 @property NSMutableArray* playerSkiddingRightTextures;
 @property NSMutableArray* playerStillFacingRightTextures;
-@property NSMutableArray* playerStillFacingLeftTextures;
+@property NSMutableArray* playerRunRightTextures;
+
 @property NSMutableArray* leftMovingBug;
+@property NSMutableArray* dyingBugTexture;
 
 @property NSMutableArray* bulletShootRightTexture;
-
 @property NSMutableArray* movingCoins;
+
 
 
 @end
@@ -33,6 +37,11 @@
 #define kPlayerRightSkid                @"player5RightJump.png"
 #define kPlayerStillFacingLeft          @"playerStillLeft.png"
 #define kPlayerStillFacingRight         @"playerStillRight.png"
+
+
+-(NSMutableArray *)dyingMonster{
+    return self.dyingBugTexture;
+}
 
 -(NSMutableArray *)movingBonuses{
     return self.movingCoins;
@@ -75,8 +84,15 @@
     return self.playerStillFacingLeftTextures;
 }
 
-
-
+-(void)createMonsterDyingAnimation{
+    
+    self.dyingBugTexture = [[NSMutableArray alloc] init];
+    for(int pic = 1; pic  <= 4; ++pic){
+        SKTexture* die = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bug%ldHit.gif",(long)pic]];
+        
+        [self.dyingBugTexture addObject: die];
+    }
+}
 
 -(void)createCoinAnimation{
     
@@ -89,8 +105,6 @@
         [self.movingCoins addObject:runLeft];
     }
 }
-
-
 
 -(void)createMonsterRunningAnimation{
     
@@ -168,6 +182,7 @@
 -(NSMutableArray *)shooting{
     return self.bulletShootRightTexture;
 }
+
 -(void)createShootingAnimation{
     self.bulletShootRightTexture = [[NSMutableArray alloc] init];
     SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bulletLevel2.png"]];
