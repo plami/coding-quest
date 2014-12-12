@@ -8,10 +8,15 @@
 -(void) createSkiddingAnimation;
 -(void) createStillAnimation;
 -(void) createMonsterRunningAnimation;
--(void)createCoinAnimation;
+-(void) createCoinAnimation;
+-(void) createMonsterDyingAnimation;
+-(void) createGroundMonsterAnimation;
 
 -(NSMutableArray*) runLeftMonster;
+-(NSMutableArray*) dyingMonster;
 -(NSMutableArray*) movingBonuses;
+
+-(NSMutableArray*) runLeftGroundMonster;
 
 -(NSMutableArray*) stillRight;
 -(NSMutableArray*) stillLeft;

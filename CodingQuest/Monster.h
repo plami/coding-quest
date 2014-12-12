@@ -2,7 +2,13 @@
 #import <SpriteKit/SpriteKit.h>
 @interface Monster : SKSpriteNode
 
-+(Monster*) initNewMonster: (SKScene*)whichScene startingPoint:(CGPoint) location;
+typedef enum {
+    flyingMonster, groundMonster
+}MonsterType;
+
+-(Monster*) initNewMonster: (SKScene*)whichScene startingPoint:(CGPoint) location andTypeOfMonster: (MonsterType) type ;
+
+@property MonsterType typeOfMonsters;
 
 -(void) spawnInScene: (SKScene*) whichScene;
 -(void) moveLeft;

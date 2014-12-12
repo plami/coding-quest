@@ -27,8 +27,7 @@
     return bullet3;
 }
 -(void)shoot{
-    
-    
+        
     SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures shooting] timePerFrame:0.1];
     SKAction* bulletMoveForever = [SKAction repeatActionForever:shootAction];
     [self runAction:bulletMoveForever];

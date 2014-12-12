@@ -27,7 +27,6 @@
 
 
 +(Player *)initNewPlayer1:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
-
     
     SpriteTextures* playerTexture = [[SpriteTextures alloc]init];
     [playerTexture createRunningAnimation];
