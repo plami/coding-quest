@@ -22,7 +22,12 @@
 #define kPlayerSkidRight 50
 #define kPlayerSkidLeft 50
 
+
+//putting the player in the Scene for Level 1
+
+
 +(Player *)initNewPlayer1:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
+
     
     SpriteTextures* playerTexture = [[SpriteTextures alloc]init];
     [playerTexture createRunningAnimation];
@@ -60,6 +65,28 @@
     [whichScene2 addChild:player2];
     
     return player2;
+}
+
+//putting the player in the Scene for Level 3
+
++(Player *)initNewPlayer3:(GameSceneLevel3 *)whichScene3 startingPoint:(CGPoint)location{
+    
+    SpriteTextures* playerTexture3 = [[SpriteTextures alloc]init];
+    [playerTexture3 createRunningAnimation];
+    [playerTexture3 createJumpingAnimation];
+    [playerTexture3 createSkiddingAnimation];
+    [playerTexture3 createStillAnimation];
+    [playerTexture3 createShootingAnimation];
+    SKTexture* f3 = [SKTexture textureWithImageNamed:@"playerStillRight.png"];
+    
+    Player *player3 = [Player spriteNodeWithTexture:f3];
+    player3.position = location;
+    player3.spriteTextures = playerTexture3;
+    player3.size = CGSizeMake(kPlayerSizeWidth,kPlayerSizeHigh);
+    player3.physicsBody.affectedByGravity = YES;
+    [whichScene3 addChild:player3];
+    
+    return player3;
 }
 
 
@@ -231,6 +258,7 @@
     }];
     
 }
+
 
 
 @end

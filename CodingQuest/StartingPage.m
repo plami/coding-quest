@@ -1,6 +1,7 @@
 #import "StartingPage.h"
 #import "GameScene.h"
 #import "GameSceneLevel2.h"
+#import "GameSceneLevel3.h"
 
 @implementation StartingPage
 
@@ -99,6 +100,14 @@
         SKTransition *reveal = [SKTransition fadeWithDuration:2];
         
         GameSceneLevel2 *scene = [GameSceneLevel2 sceneWithSize:self.view.bounds.size];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene:scene transition:reveal];
+    }
+    if ([node.name isEqualToString:@"Level 3 button"]) {
+        
+        SKTransition *reveal = [SKTransition fadeWithDuration:2];
+        
+        GameSceneLevel3 *scene = [GameSceneLevel3 sceneWithSize:self.view.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene:scene transition:reveal];
     }
