@@ -10,6 +10,8 @@
 
 @implementation Background
 
+#define kBackgroundsetScale 0.33
+
 -(instancetype)initWithBackground:(NSString *)background size:(CGSize)size speed:(CGFloat)speed{
     
     self = [super init];
@@ -37,7 +39,7 @@
         clonedPosX = -node.size.width;
         
         self.mirrorBackground.position = CGPointMake(clonedPosX, clonedPosY);
-        [self.mirrorBackground setScale:0.33];
+        [self.mirrorBackground setScale:kBackgroundsetScale];
         
         node.zPosition = -1;
         self.mirrorBackground.zPosition = -1;

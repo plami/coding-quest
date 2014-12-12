@@ -12,6 +12,16 @@
 
 //putting the player in the Scene for Level 1
 
+#define kPlayerSizeHigh  70
+#define kPlayerSizeWidth 50
+#define kPlayerRunOnPlaceTimePerFrame 0.1
+#define kPlayerRunOnRightSpeed 50
+#define kPlayerRunOnLeftSpeed 80
+#define kPlayerMoveUpLength 100
+#define kPlayerMoveDownLength 100
+#define kPlayerSkidRight 50
+#define kPlayerSkidLeft 50
+
 +(Player *)initNewPlayer1:(GameScene *)whichScene1 startingPoint:(CGPoint)location{
     
     SpriteTextures* playerTexture = [[SpriteTextures alloc]init];
@@ -24,7 +34,7 @@
     Player *player1 = [Player spriteNodeWithTexture:f1];
     player1.position = location;
     player1.spriteTextures = playerTexture;
-    player1.size = CGSizeMake(50, 70);
+    player1.size = CGSizeMake(kPlayerSizeWidth, kPlayerSizeHigh);
     player1.physicsBody.affectedByGravity = YES;
     [whichScene1 addChild:player1];
     
@@ -45,7 +55,7 @@
     Player *player2 = [Player spriteNodeWithTexture:f2];
     player2.position = location;
     player2.spriteTextures = playerTexture2;
-    player2.size = CGSizeMake(50, 70);
+    player2.size = CGSizeMake(kPlayerSizeWidth,kPlayerSizeHigh);
     player2.physicsBody.affectedByGravity = YES;
     [whichScene2 addChild:player2];
     
@@ -54,7 +64,7 @@
 
 
 -(void)runOnPlace{
-    SKAction* runAction = [SKAction animateWithTextures:[self.spriteTextures runningRight] timePerFrame:0.1];
+    SKAction* runAction = [SKAction animateWithTextures:[self.spriteTextures runningRight] timePerFrame:kPlayerRunOnPlaceTimePerFrame];
     
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
@@ -64,7 +74,7 @@
 
    [self runOnPlace];
     
-    SKAction* moveRight = [SKAction moveByX:50 y:0 duration:1];
+    SKAction* moveRight = [SKAction moveByX:kPlayerRunOnRightSpeed y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveRight];
     
     [self runAction:moveForever];
@@ -80,8 +90,8 @@
     SKAction* skidAnimation = [SKAction animateWithTextures:[_spriteTextures skiddingRight] timePerFrame:1];
     SKAction* skidAwhile = [SKAction repeatAction:skidAnimation count:0.2];
     
-    SKAction* moveLeft = [SKAction moveByX:-50 y:0 duration:1];
-    SKAction* moveAwile = [SKAction repeatAction:moveLeft count:1];
+    SKAction* moveRight = [SKAction moveByX:kPlayerSkidRight y:0 duration:1];
+    SKAction* moveAwile = [SKAction repeatAction:moveRight count:1];
     
     SKAction* stillAnimation = [SKAction animateWithTextures:[_spriteTextures stillRight] timePerFrame:1];
     
@@ -106,8 +116,8 @@
     SKAction* skidAnimation = [SKAction animateWithTextures:[_spriteTextures skiddingLeft] timePerFrame:1];
     SKAction* skidAwhile = [SKAction repeatAction:skidAnimation count:0.2];
     
-    SKAction* moveRight = [SKAction moveByX:50 y:0 duration:1];
-    SKAction* moveAwile = [SKAction repeatAction:moveRight count:1];
+    SKAction* moveLeft = [SKAction moveByX:-kPlayerSkidLeft y:0 duration:1];
+    SKAction* moveAwile = [SKAction repeatAction:moveLeft count:1];
     
     SKAction* stillAnimation = [SKAction animateWithTextures:[_spriteTextures stillLeft] timePerFrame:1];
     
@@ -132,7 +142,7 @@
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
     
-    SKAction* moveLeft = [SKAction moveByX:-80 y:0 duration:1];
+    SKAction* moveLeft = [SKAction moveByX:-kPlayerRunOnLeftSpeed y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     
     [self runAction:moveForever];
@@ -176,9 +186,9 @@
     SKAction* jumpAnimation = [SKAction animateWithTextures:playerJumpTexture timePerFrame:0.2];
     [self runAction:jumpAnimation];
     
-    SKAction *moveUp = [SKAction moveBy:CGVectorMake(0, 100) duration:0.8];
+    SKAction *moveUp = [SKAction moveBy:CGVectorMake(0, kPlayerMoveUpLength) duration:0.8];
     
-    SKAction *moveDown = [SKAction moveBy:CGVectorMake(0, -100) duration:0.6];
+    SKAction *moveDown = [SKAction moveBy:CGVectorMake(0, -kPlayerMoveDownLength) duration:0.6];
     SKAction *seq = [SKAction sequence:@[moveUp, moveDown]];
     
     [self runAction:seq];

@@ -9,7 +9,7 @@
 -(void) createStillAnimation;
 -(void) createMonsterRunningAnimation;
 
--(NSMutableArray*) leftMovingBug;
+-(NSMutableArray*) runLeftMonster;
 
 -(NSMutableArray*) stillRight;
 -(NSMutableArray*) stillLeft;
