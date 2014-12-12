@@ -32,7 +32,8 @@
              [self.scrollingBackground setScale:1.7];
              _player  = [Player initNewPlayer1:self startingPoint:CGPointMake(20, 60) ];
             [_player runOnPlace];
-    }
+             
+            }
     return self;
     
 }
@@ -78,7 +79,16 @@
         
     }
 }
+- (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
+    
+    self.lastSpawnTimeInterval += timeSinceLast;
+    if (self.lastSpawnTimeInterval > 2) {
+            self.lastSpawnTimeInterval = 0;
+        _monster = [Monster initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height / 2)];
 
+            [_monster spawnInScene:self];
+    }
+}
 
 -(void)update:(CFTimeInterval)currentTime {
     
@@ -91,14 +101,14 @@
         [_player runRight];
     }
     
-    self.lastSpawnTimeInterval += currentTime;
-    if (self.lastSpawnTimeInterval > 1) {
-        self.lastSpawnTimeInterval = 0;
-        Monster* newMonster = [Monster initNewMonster:self startingPoint:CGPointMake(self.size.width + 10, self.size.height / 3 + self.size.height / 2)];
-        
-        [newMonster spawnInScene:self];
+    CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
+    self.lastUpdateTimeInterval = currentTime;
+    if (timeSinceLast > 1) { // more than a second since last update
+        timeSinceLast = 1.0 / 60.0;
+        self.lastUpdateTimeInterval = currentTime;
     }
-   
+    
+    [self updateWithTimeSinceLastUpdate:timeSinceLast];
 }
 
 
