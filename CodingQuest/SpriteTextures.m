@@ -11,6 +11,8 @@
 @property NSMutableArray* playerStillFacingRightTextures;
 @property NSMutableArray* playerStillFacingLeftTextures;
 @property NSMutableArray* leftMovingBug;
+@property NSMutableArray* movingCoins;
+
 @end
 
 @implementation SpriteTextures
@@ -27,6 +29,10 @@
 #define kPlayerRightSkid                @"player5RightJump.png"
 #define kPlayerStillFacingLeft          @"playerStillLeft.png"
 #define kPlayerStillFacingRight         @"playerStillRight.png"
+
+-(NSMutableArray *)movingBonuses{
+    return self.movingCoins;
+}
 
 -(NSMutableArray *)runLeftMonster{
     return self.leftMovingBug;
@@ -64,6 +70,19 @@
 -(NSMutableArray *)stillLeft{
     return self.playerStillFacingLeftTextures;
 }
+
+-(void)createCoinAnimation{
+    
+    self.movingCoins = [[NSMutableArray alloc]init];
+    
+    for(int pic = 1; pic <= 5; ++pic){
+        
+        SKTexture* runLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"coin%ld.png",(long) pic]];
+        
+        [self.movingCoins addObject:runLeft];
+    }
+}
+
 
 -(void)createMonsterRunningAnimation{
     

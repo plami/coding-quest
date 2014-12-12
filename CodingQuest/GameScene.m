@@ -1,8 +1,8 @@
-
 #import "GameScene.h"
 #import "Player.h"
 #import "Background.h"
 #import "Monster.h"
+#import "Bonus.h"
 
 
 @interface GameScene ()
@@ -10,6 +10,7 @@
 
 @property Player* player;
 @property Monster* monster;
+@property Bonus* coin;
 @property SKTextureAtlas* runAtlas;
 @property Background* scrollingBackground;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
@@ -87,11 +88,13 @@
     
     self.lastSpawnTimeInterval += timeSinceLast;
     if (self.lastSpawnTimeInterval > 2) {
-            self.lastSpawnTimeInterval = 0;
+        self.lastSpawnTimeInterval = 0;
+        _monster = [Monster initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height / 2)];
         
-            _monster = [Monster initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height / 2)];
+        _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height)];
         
-            [_monster spawnInScene:self];
+        [_monster spawnInScene:self];
+        [_coin addedInScene:self];
     }
 }
 

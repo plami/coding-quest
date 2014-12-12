@@ -19,6 +19,8 @@
 		CD0DD91B1A39E47000192C22 /* secondBugMoving.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD91A1A39E47000192C22 /* secondBugMoving.atlas */; };
 		CD0DD91D1A39E47600192C22 /* firstBugHit.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD91C1A39E47600192C22 /* firstBugHit.atlas */; };
 		CD0DD91F1A39E47C00192C22 /* firstBugMoving.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD91E1A39E47C00192C22 /* firstBugMoving.atlas */; };
+		CD0DD9311A3B409800192C22 /* coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD9301A3B409800192C22 /* coin.atlas */; };
+		CD0DD9341A3B40B400192C22 /* Bonus.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD9331A3B40B400192C22 /* Bonus.m */; };
 		CD202AC61A1F7D74000D7A8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC51A1F7D74000D7A8F /* main.m */; };
 		CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC81A1F7D74000D7A8F /* AppDelegate.m */; };
 		CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202ACB1A1F7D74000D7A8F /* GameScene.m */; };
@@ -64,6 +66,9 @@
 		CD0DD91A1A39E47000192C22 /* secondBugMoving.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = secondBugMoving.atlas; sourceTree = "<group>"; };
 		CD0DD91C1A39E47600192C22 /* firstBugHit.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = firstBugHit.atlas; sourceTree = "<group>"; };
 		CD0DD91E1A39E47C00192C22 /* firstBugMoving.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = firstBugMoving.atlas; sourceTree = "<group>"; };
+		CD0DD9301A3B409800192C22 /* coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = coin.atlas; sourceTree = "<group>"; };
+		CD0DD9321A3B40AA00192C22 /* Bonus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bonus.h; sourceTree = "<group>"; };
+		CD0DD9331A3B40B400192C22 /* Bonus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bonus.m; sourceTree = "<group>"; };
 		CD202AC01A1F7D74000D7A8F /* CodingQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AC41A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AC51A1F7D74000D7A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 		CD0DD89A1A35DF1D00192C22 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CD0DD9301A3B409800192C22 /* coin.atlas */,
 				CD0DD91E1A39E47C00192C22 /* firstBugMoving.atlas */,
 				CD0DD91C1A39E47600192C22 /* firstBugHit.atlas */,
 				CD0DD91A1A39E47000192C22 /* secondBugMoving.atlas */,
@@ -139,6 +145,8 @@
 		CD0DD89B1A35DF5900192C22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CD0DD9321A3B40AA00192C22 /* Bonus.h */,
+				CD0DD9331A3B40B400192C22 /* Bonus.m */,
 				CD0DD88D1A35B7D200192C22 /* StartingPage.h */,
 				CD0DD88E1A35B7D200192C22 /* StartingPage.m */,
 				CD202ACD1A1F7D74000D7A8F /* GameScene.sks */,
@@ -331,6 +339,7 @@
 				CD0DD9191A39E46800192C22 /* secondBugHit.atlas in Resources */,
 				CD0DD8A51A35F5B600192C22 /* itTalents.png in Resources */,
 				CF9C9FDE1A39E00900D05DA1 /* ground.atlas in Resources */,
+				CD0DD9311A3B409800192C22 /* coin.atlas in Resources */,
 				CD0DD8911A35CE2900192C22 /* background.jpg in Resources */,
 				CF9C9FE01A39E00900D05DA1 /* leftRunning.atlas in Resources */,
 				CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */,
@@ -361,6 +370,7 @@
 				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
 				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,
 				CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */,
+				CD0DD9341A3B40B400192C22 /* Bonus.m in Sources */,
 				CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */,
 				CF9C9FD61A39DFFF00D05DA1 /* Background.m in Sources */,
 			);
