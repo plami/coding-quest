@@ -27,6 +27,7 @@
 		CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD21A1F7D74000D7A8F /* Main.storyboard */; };
 		CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD51A1F7D74000D7A8F /* Images.xcassets */; };
 		CD202AE51A1F7D74000D7A8F /* CodingQuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */; };
+		CF7C8E5F1A3B2C2C00E596D2 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */; };
 		CF9C9FD61A39DFFF00D05DA1 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD11A39DFFF00D05DA1 /* Background.m */; };
 		CF9C9FD71A39DFFF00D05DA1 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD31A39DFFF00D05DA1 /* Monster.m */; };
 		CF9C9FD81A39DFFF00D05DA1 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD51A39DFFF00D05DA1 /* Player.m */; };
@@ -78,6 +79,8 @@
 		CD202ADE1A1F7D74000D7A8F /* CodingQuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodingQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AE31A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingQuestTests.m; sourceTree = "<group>"; };
+		CF7C8E5D1A3B2C2C00E596D2 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
+		CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
 		CF9C9FD01A39DFFF00D05DA1 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		CF9C9FD11A39DFFF00D05DA1 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
 		CF9C9FD21A39DFFF00D05DA1 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
@@ -128,13 +131,6 @@
 				CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */,
 				CD0DD9121A39E43800192C22 /* backgroundLevel2.jpeg */,
 				CD0DD8AC1A35FB6700192C22 /* logos */,
-				CD0DD88D1A35B7D200192C22 /* StartingPage.h */,
-				CD0DD88E1A35B7D200192C22 /* StartingPage.m */,
-				CD202ACD1A1F7D74000D7A8F /* GameScene.sks */,
-				CD202ACA1A1F7D74000D7A8F /* GameScene.h */,
-				CD202ACB1A1F7D74000D7A8F /* GameScene.m */,
-				CD0DD89D1A35E63600192C22 /* GameSceneLevel2.h */,
-				CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */,
 				CD202AD21A1F7D74000D7A8F /* Main.storyboard */,
 			);
 			name = View;
@@ -143,6 +139,13 @@
 		CD0DD89B1A35DF5900192C22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CD0DD88D1A35B7D200192C22 /* StartingPage.h */,
+				CD0DD88E1A35B7D200192C22 /* StartingPage.m */,
+				CD202ACD1A1F7D74000D7A8F /* GameScene.sks */,
+				CD202ACA1A1F7D74000D7A8F /* GameScene.h */,
+				CD202ACB1A1F7D74000D7A8F /* GameScene.m */,
+				CD0DD89D1A35E63600192C22 /* GameSceneLevel2.h */,
+				CD0DD89E1A35E63600192C22 /* GameSceneLevel2.m */,
 				CF9C9FD01A39DFFF00D05DA1 /* Background.h */,
 				CF9C9FD11A39DFFF00D05DA1 /* Background.m */,
 				CF9C9FD21A39DFFF00D05DA1 /* Monster.h */,
@@ -151,6 +154,8 @@
 				CF9C9FD51A39DFFF00D05DA1 /* Player.m */,
 				CFA347B31A2C73CD004B671E /* SpriteTextures.h */,
 				CFA347B41A2C73CD004B671E /* SpriteTextures.m */,
+				CF7C8E5D1A3B2C2C00E596D2 /* Scores.h */,
+				CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF9C9FD71A39DFFF00D05DA1 /* Monster.m in Sources */,
+				CF7C8E5F1A3B2C2C00E596D2 /* Scores.m in Sources */,
 				CD202AD11A1F7D74000D7A8F /* GameViewController.m in Sources */,
 				CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */,
 				CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */,

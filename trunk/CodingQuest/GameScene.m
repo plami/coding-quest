@@ -4,7 +4,10 @@
 #import "Background.h"
 #import "Monster.h"
 
+
 @interface GameScene ()
+
+
 @property Player* player;
 @property Monster* monster;
 @property SKTextureAtlas* runAtlas;
@@ -21,8 +24,8 @@
     
     self = [super initWithSize:size];
          if(self){
-      
-             self.backgroundColor = [SKColor whiteColor];
+             
+            self.backgroundColor = [SKColor whiteColor];
              
              NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
              Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
@@ -44,6 +47,7 @@
     /* Setup your scene here */
   
 }
+
 
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -84,8 +88,9 @@
     self.lastSpawnTimeInterval += timeSinceLast;
     if (self.lastSpawnTimeInterval > 2) {
             self.lastSpawnTimeInterval = 0;
-        _monster = [Monster initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height / 2)];
-
+        
+            _monster = [Monster initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height / 2)];
+        
             [_monster spawnInScene:self];
     }
 }
