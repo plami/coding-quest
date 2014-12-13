@@ -36,6 +36,12 @@
 -(NSMutableArray*) shootingLeft;
 -(void) createShootingLeftAnimation;
 
+-(NSMutableArray*) spittingDown;
+-(void) createSpittingDownAnimation;
+
+-(NSMutableArray*) spittingLeft;
+-(void) createSpittingLeftAnimation;
+
 @end
 
 

@@ -19,6 +19,9 @@
 @property NSMutableArray* bulletShootRightTexture;
 @property NSMutableArray* bulletShootLeftTexture;
 
+@property NSMutableArray* acidShootDownTexture;
+@property NSMutableArray* acidShootLeftTexture;
+
 @property NSMutableArray* movingCoins;
 
 
@@ -198,5 +201,23 @@
     self.bulletShootLeftTexture = [[NSMutableArray alloc] init];
     SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bulletLeft.png"]];
     [self.bulletShootLeftTexture addObject:shoot];
+}
+
+-(NSMutableArray *)spittingLeft{
+    return self.acidShootLeftTexture;
+}
+
+-(NSMutableArray *)spittingDown{
+    return self.acidShootDownTexture;
+}
+-(void)createSpittingLeftAnimation{
+    self.acidShootLeftTexture = [[NSMutableArray alloc] init];
+    SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"acidAttackLeft.png"]];
+    [self.acidShootLeftTexture addObject:shoot];
+}
+-(void)createSpittingDownAnimation{
+    self.acidShootDownTexture = [[NSMutableArray alloc] init];
+    SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"acidAttackDown.png"]];
+    [self.acidShootDownTexture addObject:shoot];
 }
 @end

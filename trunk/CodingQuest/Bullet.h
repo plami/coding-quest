@@ -8,7 +8,11 @@
 
 +(Bullet*) initNewBullet3:(SKScene*) whichScene3 startingPoint:(CGPoint)location;
 +(Bullet*) initNewBulletLeft3:(SKScene *)whichScene3 startingPoint:(CGPoint)location;
++(Bullet*) initNewAcidDown:(SKScene *)whichScene3 startingPoint:(CGPoint)location;
++(Bullet*) initNewAcidLeft:(SKScene *)whichScene3 startingPoint:(CGPoint)location;
 -(void) shootRight;
 -(void) shootLeft;
+-(void) spitDown;
+-(void) spitLeft;
 
 @end

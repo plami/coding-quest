@@ -47,6 +47,43 @@
     return bullet3;
 }
 
++(Bullet *)initNewAcidDown:(SKScene *)whichScene3 startingPoint:(CGPoint)location{
+    SpriteTextures* acidTexture = [[SpriteTextures alloc]init];
+    
+    
+    [acidTexture createSpittingLeftAnimation];
+    
+    SKTexture* f3 = [SKTexture textureWithImageNamed:@"acidAttackLeft.png"];
+    
+    
+    Bullet *acid = [Bullet spriteNodeWithTexture:f3];
+    acid.position = location;
+    acid.spriteTextures = acidTexture;
+    acid.size = CGSizeMake(10,20);
+    acid.physicsBody.affectedByGravity = NO;
+    [whichScene3 addChild:acid];
+    
+    return acid;
+}
+
++(Bullet *)initNewAcidLeft:(SKScene *)whichScene3 startingPoint:(CGPoint)location{
+    SpriteTextures* acidTexture = [[SpriteTextures alloc]init];
+    
+    
+    [acidTexture createSpittingDownAnimation];
+    
+    SKTexture* f3 = [SKTexture textureWithImageNamed:@"acidAttackLeft.png"];
+    
+    
+    Bullet *acid = [Bullet spriteNodeWithTexture:f3];
+    acid.position = location;
+    acid.spriteTextures = acidTexture;
+    acid.size = CGSizeMake(10,20);
+    acid.physicsBody.affectedByGravity = NO;
+    [whichScene3 addChild:acid];
+    
+    return acid;
+}
 -(void)shootRight{
     
     
@@ -67,6 +104,28 @@
     [self runAction:bulletMoveForever];
     
     SKAction* moveLeft = [SKAction moveByX:-200 y:0 duration:1];
+    SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
+    
+    [self runAction:moveForever];
+}
+
+-(void)spitDown{
+    SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures spittingDown] timePerFrame:0.1];
+    SKAction* acidMoveForever = [SKAction repeatActionForever:shootAction];
+    [self runAction:acidMoveForever];
+    
+    SKAction* moveLeft = [SKAction moveByX:0 y:-50 duration:1];
+    SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
+    
+    [self runAction:moveForever];
+}
+
+-(void)spitLeft{
+    SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures spittingLeft] timePerFrame:0.1];
+    SKAction* acidMoveForever = [SKAction repeatActionForever:shootAction];
+    [self runAction:acidMoveForever];
+    
+    SKAction* moveLeft = [SKAction moveByX:-50 y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     
     [self runAction:moveForever];
