@@ -80,6 +80,7 @@
 		CD0DD9301A3B409800192C22 /* coin.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = coin.atlas; sourceTree = "<group>"; };
 		CD0DD9321A3B40AA00192C22 /* Bonus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bonus.h; sourceTree = "<group>"; };
 		CD0DD9331A3B40B400192C22 /* Bonus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bonus.m; sourceTree = "<group>"; };
+		CD0DD9441A3C8A1600192C22 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		CD202AC01A1F7D74000D7A8F /* CodingQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AC41A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AC51A1F7D74000D7A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -160,8 +161,7 @@
 		CD0DD89B1A35DF5900192C22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C1EB45691A3B1E8500153D92 /* GameSceneLevel3.h */,
-				C1EB456A1A3B1E8500153D92 /* GameSceneLevel3.m */,
+				CD0DD9441A3C8A1600192C22 /* Constants.h */,
 				CD0DD9321A3B40AA00192C22 /* Bonus.h */,
 				CD0DD9331A3B40B400192C22 /* Bonus.m */,
 				CD0DD88D1A35B7D200192C22 /* StartingPage.h */,
