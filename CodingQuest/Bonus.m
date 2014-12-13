@@ -3,10 +3,15 @@
 @interface Bonus ()
 
 @property SpriteTextures* spriteTextures;
+@property (readwrite)BonusStatus bonusStatus;
+
+#define kCoinMinSize  40
+#define kCoinMaxSize  40
 
 @end
 
 @implementation Bonus
+
 
 +(Bonus *)initNewBonus:(SKScene *)whichScene startingPoint :(CGPoint)location{
     
@@ -16,6 +21,7 @@
     [bonusTexture runningLeft];
     [bonusTexture.movingBonuses count];
     coin.spriteTextures = bonusTexture;
+    
     coin.size = CGSizeMake(whichScene.frame.size.width/15,whichScene.frame.size.height/10);
     
     coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:coin.frame.size.width/2];
@@ -50,7 +56,7 @@
 -(void)addedInScene:(SKScene *)whichScene{
     
     SKSpriteNode* object = [SKSpriteNode spriteNodeWithImageNamed:@"coin1.png"];
-    object.size = CGSizeMake(40,40);
+    object.size = CGSizeMake(kCoinMinSize,kCoinMaxSize);
     object.position = CGPointMake(whichScene.frame.size.width,whichScene.frame.size.height/4);
     [self addChild: object];
     
@@ -59,6 +65,7 @@
         [object removeFromParent];
     }];
 }
+
 
 -(int)getRandomNumberBetween:(int)from to:(int)to {
     

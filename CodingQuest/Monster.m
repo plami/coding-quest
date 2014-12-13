@@ -3,12 +3,17 @@
 #import "SpriteTextures.h"
 #import "GameOverScene.h"
 #import "Constants.h"
+
 @interface Monster ()
 
 @property SpriteTextures* spriteTextures;
+
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property Monster* monster;
+@property (readwrite) MonsterType typeOfMonsters;
+
+
 @end
 
 @implementation Monster
@@ -19,7 +24,6 @@
 
 #define kMonsterSpawnX          20
 #define kMonsterSpawnY          60
-
 
 
 -(Monster *)initNewMonster:(SKScene *)whichScene startingPoint :(CGPoint)location{
@@ -66,12 +70,14 @@
 
 }
 
+
 -(void)die{
     SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures dyingMonster] timePerFrame:0.2];
     
     [self runAction:dieAction];
     
 }
+
 
 -(void)spawnInScene:(SKScene *)whichScene{
    

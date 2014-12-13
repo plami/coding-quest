@@ -9,7 +9,7 @@ typedef enum: int{
     CoinFacingLeft
 }BonusStatus;
 
-@property BonusStatus bonusStatus;
+@property (readonly)BonusStatus bonusStatus;
 
 +(Bonus*) initNewBonus: (SKScene*)whichScene startingPoint:(CGPoint) location;
 

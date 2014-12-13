@@ -14,11 +14,10 @@
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property Bonus* coin;
+
 @end
 
 @implementation GameSceneLevel3
-
-
 
 
 -(instancetype)initWithSize:(CGSize)size{
