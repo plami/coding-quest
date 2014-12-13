@@ -5,6 +5,7 @@
 
 @implementation StartingPage
 
+
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
@@ -79,6 +80,7 @@
     return self;
 }
 
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
@@ -112,4 +114,6 @@
         [self.view presentScene:scene transition:reveal];
     }
 }
+
+
 @end

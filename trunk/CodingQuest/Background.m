@@ -12,6 +12,7 @@
 
 #define kBackgroundsetScale 0.33
 
+
 -(instancetype)initWithBackground:(NSString *)background size:(CGSize)size speed:(CGFloat)speed{
     
     self = [super init];
@@ -51,6 +52,7 @@
     return self;
 }
 
+
 - (void)update:(NSTimeInterval)currentTime
 {
     CGFloat speed = self.currentSpeed;
@@ -68,4 +70,6 @@
     bg.position = CGPointMake(newBgX, newBgY);
     cBg.position = CGPointMake(newCbgX, newCbgY);
 }
+
+
 @end

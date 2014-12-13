@@ -1,7 +1,9 @@
 #import "Bullet.h"
 
 @interface Bullet()
+
 @property SpriteTextures* spriteTextures;
+
 @end
 
 @implementation Bullet

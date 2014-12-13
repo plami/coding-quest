@@ -25,7 +25,6 @@
 @property NSMutableArray* movingCoins;
 
 
-
 @end
 
 @implementation SpriteTextures
@@ -34,6 +33,7 @@
 #define kMonsterRunningAnimationNumber                      4
 #define kPlayerRunningAnimationNumber                       13
 #define kPlayerJumpingAnimation                             7
+#define kCoinAnimation                                      5
 #define kPlayerRunRightFrame            @"player%ldRight.png"
 #define kPlayerRunLeftFrame             @"player%ldLeft.png"
 #define kPlayerLeftJump                 @"player%ldLeftJump.png"
@@ -48,46 +48,57 @@
     return self.dyingBugTexture;
 }
 
+
 -(NSMutableArray *)movingBonuses{
     return self.movingCoins;
 }
+
 
 -(NSMutableArray *)runLeftMonster{
     return self.leftMovingBug;
 }
 
+
 -(NSMutableArray *)runningRight{
     return self.playerRunRightTextures;
 }
+
 
 -(NSMutableArray *)jumpingRight{
     
     return self.playerJumpRightTextures;
 }
 
+
 -(NSMutableArray *)skiddingRight{
     return self.playerSkiddingRightTextures;
 }
+
 
 -(NSMutableArray *)stillRight{
     return self.playerStillFacingRightTextures;
 }
 
+
 -(NSMutableArray *)runningLeft{
     return self.playerRunLeftTextures;
 }
+
 
 -(NSMutableArray *)jumpingLeft{
     return self.playerJumpLeftTextures;
 }
 
+
 -(NSMutableArray *)skiddingLeft{
     return self.playerSkiddingLeftTextures;
 }
 
+
 -(NSMutableArray *)stillLeft{
     return self.playerStillFacingLeftTextures;
 }
+
 
 -(void)createMonsterDyingAnimation{
     
@@ -99,17 +110,19 @@
     }
 }
 
+
 -(void)createCoinAnimation{
     
     self.movingCoins = [[NSMutableArray alloc]init];
     
-    for(int pic = 1; pic <= 5; ++pic){
+    for(int pic = 1; pic <= kCoinAnimation; ++pic){
         
         SKTexture* runLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"coin%ld.png",(long) pic]];
         
         [self.movingCoins addObject:runLeft];
     }
 }
+
 
 -(void)createMonsterRunningAnimation{
     
@@ -122,6 +135,7 @@
         [self.leftMovingBug addObject:runLeft];
     }
 }
+
 
 -(void)createRunningAnimation{
     
@@ -139,6 +153,7 @@
     
 }
 
+
 -(void)createSkiddingAnimation{
     
     self.playerSkiddingLeftTextures = [[NSMutableArray alloc]init];
@@ -153,6 +168,7 @@
     
 }
 
+
 -(void) createStillAnimation{
     
     self.playerStillFacingLeftTextures = [[NSMutableArray alloc] init];
@@ -166,6 +182,7 @@
     [self.playerStillFacingRightTextures addObject:stillRight];
                             
 }
+
 
 -(void)createJumpingAnimation{
     
@@ -184,9 +201,11 @@
     
 }
 
+
 -(NSMutableArray *)shootingRight{
     return self.bulletShootRightTexture;
 }
+
 
 -(void)createShootingRightAnimation{
 
@@ -194,30 +213,42 @@
     SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bulletLevel2.png"]];
     [self.bulletShootRightTexture addObject:shoot];
 }
+
+
 -(NSMutableArray *)shootingLeft{
     return self.bulletShootLeftTexture;
 }
+
+
 -(void)createShootingLeftAnimation{
     self.bulletShootLeftTexture = [[NSMutableArray alloc] init];
     SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bulletLeft.png"]];
     [self.bulletShootLeftTexture addObject:shoot];
 }
 
+
 -(NSMutableArray *)spittingLeft{
     return self.acidShootLeftTexture;
 }
 
+
 -(NSMutableArray *)spittingDown{
     return self.acidShootDownTexture;
 }
+
+
 -(void)createSpittingLeftAnimation{
     self.acidShootLeftTexture = [[NSMutableArray alloc] init];
     SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"acidAttackLeft.png"]];
     [self.acidShootLeftTexture addObject:shoot];
 }
+
+
 -(void)createSpittingDownAnimation{
     self.acidShootDownTexture = [[NSMutableArray alloc] init];
     SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"acidAttackDown.png"]];
     [self.acidShootDownTexture addObject:shoot];
 }
+
+
 @end

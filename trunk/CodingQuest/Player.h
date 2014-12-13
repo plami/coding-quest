@@ -4,10 +4,6 @@
 #import "GameSceneLevel2.h"
 #import "GameSceneLevel3.h"
 
-@interface Player : SKSpriteNode
-
-+(Player*) initNewPlayer:(SKScene*) whichScene1 startingPoint: (CGPoint) location;
-
 typedef enum: int{
     PlayerFacingLeft ,
     PlayerFacingRight,
@@ -21,8 +17,11 @@ typedef enum: int{
     PlayerJumpingUpFacingRight
 }PlayerStatus;
 
+@interface Player : SKSpriteNode
 
-@property PlayerStatus playerStatus;
+@property (readonly)PlayerStatus playerStatus;
+
++(Player*) initNewPlayer:(SKScene*) whichScene1 startingPoint: (CGPoint) location;
 
 -(void) runOnPlaceRight;
 -(void) runRight;

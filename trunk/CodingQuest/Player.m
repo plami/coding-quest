@@ -4,7 +4,7 @@
 
 @property SKTextureAtlas* runAtlas;
 @property SpriteTextures* spriteTextures;
-
+@property (readwrite)PlayerStatus playerStatus;
 
 @end
 
@@ -72,17 +72,6 @@
     
 }
 
-//-(void)runRight{
-//
-//   [self runOnPlace];
-//    
-//    SKAction* moveRight = [SKAction moveByX:kPlayerRunOnRightSpeed y:0 duration:1];
-//    SKAction* moveForever = [SKAction repeatActionForever:moveRight];
-//    
-//    [self runAction:moveForever];
-//    _playerStatus = PlayerRunningRight;
-//    
-//}
 
 -(void)skidRight{
     

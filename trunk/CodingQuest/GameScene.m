@@ -13,20 +13,17 @@
 @property Player* player;
 @property Monster* monster;
 @property Bonus* coin;
+@property Bullet* bullet;
 @property SKTextureAtlas* runAtlas;
 @property Background* scrollingBackground;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
-
-@property Bullet* bullet;
-
 @property NSTimeInterval runningTime;
-
+@property (readwrite)SpriteTextures* spriteTextures;
 
 @end
 
 @implementation GameScene
-
 
 
 -(instancetype)initWithSize:(CGSize)size{
@@ -104,12 +101,12 @@
     
     //react to the contact between coin and player
     if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & coinCategory) != 0) {
-        NSLog(@"coina iz4ezva");
+        NSLog(@"the coin disappears");
         [secondBody.node removeFromParent];
     }
     //react to the contact between bullet and monster
     else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
-        NSLog(@"monstera iz4ezva");
+        NSLog(@"the monster disappears");
         [_monster die];
         [secondBody.node removeFromParent];
     }
