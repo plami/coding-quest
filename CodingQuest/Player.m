@@ -26,7 +26,7 @@
 //putting the player in the Scene for Level 1
 
 
-+(Player *)initNewPlayer1:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
++(Player *)initNewPlayer:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
     
     SpriteTextures* playerTexture = [[SpriteTextures alloc]init];
     [playerTexture createRunningAnimation];
@@ -35,57 +35,15 @@
     [playerTexture createStillAnimation];
     SKTexture* f1 = [SKTexture textureWithImageNamed:@"playerStillRight.png"];
     
-    Player *player1 = [Player spriteNodeWithTexture:f1];
-    player1.position = location;
-    player1.spriteTextures = playerTexture;
-    player1.size = CGSizeMake(kPlayerSizeWidth, kPlayerSizeHigh);
-    player1.physicsBody.affectedByGravity = YES;
-    [whichScene1 addChild:player1];
+    Player *player = [Player spriteNodeWithTexture:f1];
+    player.position = location;
+    player.spriteTextures = playerTexture;
+    player.size = CGSizeMake(kPlayerSizeWidth, kPlayerSizeHigh);
+    player.physicsBody.affectedByGravity = YES;
+    [whichScene1 addChild:player];
+    player.playerStatus = PlayerFacingRight;
     
-    return player1;
-}
-
-//putting the player in the Scene for Level 2
-
-+(Player *)initNewPlayer2:(GameSceneLevel2 *)whichScene2 startingPoint:(CGPoint)location{
-    
-    SpriteTextures* playerTexture2 = [[SpriteTextures alloc]init];
-    [playerTexture2 createRunningAnimation];
-    [playerTexture2 createJumpingAnimation];
-    [playerTexture2 createSkiddingAnimation];
-    [playerTexture2 createStillAnimation];
-    SKTexture* f2 = [SKTexture textureWithImageNamed:@"playerStillRight.png"];
-    
-    Player *player2 = [Player spriteNodeWithTexture:f2];
-    player2.position = location;
-    player2.spriteTextures = playerTexture2;
-    player2.size = CGSizeMake(kPlayerSizeWidth,kPlayerSizeHigh);
-    player2.physicsBody.affectedByGravity = YES;
-    [whichScene2 addChild:player2];
-    
-    return player2;
-}
-
-//putting the player in the Scene for Level 3
-
-+(Player *)initNewPlayer3:(GameSceneLevel3 *)whichScene3 startingPoint:(CGPoint)location{
-    
-    SpriteTextures* playerTexture3 = [[SpriteTextures alloc]init];
-    [playerTexture3 createRunningAnimation];
-    [playerTexture3 createJumpingAnimation];
-    [playerTexture3 createSkiddingAnimation];
-    [playerTexture3 createStillAnimation];
-    [playerTexture3 createShootingAnimation];
-    SKTexture* f3 = [SKTexture textureWithImageNamed:@"playerStillRight.png"];
-    
-    Player *player3 = [Player spriteNodeWithTexture:f3];
-    player3.position = location;
-    player3.spriteTextures = playerTexture3;
-    player3.size = CGSizeMake(kPlayerSizeWidth,kPlayerSizeHigh);
-    player3.physicsBody.affectedByGravity = YES;
-    [whichScene3 addChild:player3];
-    
-    return player3;
+    return player;
 }
 
 
@@ -96,17 +54,35 @@
     [self runAction:runForever];
 }
 
--(void)runRight{
+
+-(void) runRight{
 
    [self runOnPlaceRight];
     
-    SKAction* moveRight = [SKAction moveByX:kPlayerRunOnRightSpeed y:0 duration:1];
+    SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures runningRight] timePerFrame:0.1f];
+    
+    SKAction* runForever = [SKAction repeatActionForever:runAction];
+    [self runAction:runForever];
+    
+    SKAction* moveRight = [SKAction moveByX:kPlayerRunOnLeftSpeed y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveRight];
     
     [self runAction:moveForever];
     _playerStatus = PlayerRunningRight;
     
 }
+
+//-(void)runRight{
+//
+//   [self runOnPlace];
+//    
+//    SKAction* moveRight = [SKAction moveByX:kPlayerRunOnRightSpeed y:0 duration:1];
+//    SKAction* moveForever = [SKAction repeatActionForever:moveRight];
+//    
+//    [self runAction:moveForever];
+//    _playerStatus = PlayerRunningRight;
+//    
+//}
 
 -(void)skidRight{
     
@@ -131,6 +107,7 @@
         
         _playerStatus = PlayerFacingRight;
     }];
+    
     
 }
 

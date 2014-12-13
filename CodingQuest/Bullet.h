@@ -5,6 +5,10 @@
 #import "GameSceneLevel3.h"
 
 @interface Bullet : SKSpriteNode
+
 +(Bullet*) initNewBullet3:(SKScene*) whichScene3 startingPoint:(CGPoint)location;
--(void) shoot;
++(Bullet*) initNewBulletLeft3:(SKScene *)whichScene3 startingPoint:(CGPoint)location;
+-(void) shootRight;
+-(void) shootLeft;
+
 @end

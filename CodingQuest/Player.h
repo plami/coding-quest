@@ -6,9 +6,8 @@
 
 @interface Player : SKSpriteNode
 
-+(Player*) initNewPlayer1:(SKScene*) whichScene1 startingPoint: (CGPoint) location;
-+(Player*) initNewPlayer2:(GameSceneLevel2*) whichScene2 startingPoint:(CGPoint)location;
-+(Player*) initNewPlayer3:(GameSceneLevel3*) whichScene3 startingPoint:(CGPoint)location;
++(Player*) initNewPlayer:(SKScene*) whichScene1 startingPoint: (CGPoint) location;
+
 typedef enum: int{
     PlayerFacingLeft ,
     PlayerFacingRight,
