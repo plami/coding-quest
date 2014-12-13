@@ -11,7 +11,7 @@
 @property SpriteTextures* spriteTextures;
 @end
 @implementation Bullet
-+(Bullet *)initNewBullet3:(GameSceneLevel3 *)whichScene3 startingPoint:(CGPoint)location{
++(Bullet *)initNewBullet3:(SKScene *)whichScene3 startingPoint:(CGPoint)location{
     SpriteTextures* bulletTexture3 = [[SpriteTextures alloc]init];
     
     [bulletTexture3 createShootingAnimation];

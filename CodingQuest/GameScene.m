@@ -3,7 +3,7 @@
 #import "Background.h"
 #import "Monster.h"
 #import "Bonus.h"
-
+#import "GameOverScene.h"
 
 @interface GameScene ()
 
@@ -15,6 +15,8 @@
 @property Background* scrollingBackground;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+@property NSTimeInterval runningTime;
+
 @end
 
 @implementation GameScene
@@ -35,8 +37,11 @@
              [self addChild: self.scrollingBackground];
              [self.scrollingBackground setScale:1.7];
              _player  = [Player initNewPlayer1:self startingPoint:CGPointMake(20, 60) ];
-            [_player runOnPlace];
              
+            [_player runOnPlaceRight];
+             
+             
+             self.physicsWorld.gravity = CGVectorMake(0, -8.f);
             }
     return self;
     
@@ -68,6 +73,7 @@
         else if(location.x <= (self.frame.size.width / 2)){
             if(status == PlayerRunningRight){
                 [_player skidRight];
+                [_player runOnPlaceRight];
             }
             else if(status == PlayerFacingLeft || status == PlayerFacingRight){
                 [_player runLeft];
@@ -76,6 +82,7 @@
         else{
             if(status == PlayerRunningLeft){
                 [_player skidLeft];
+                [_player runOnPlaceLeft];
             }
             else if( status == PlayerFacingLeft || PlayerFacingRight){
                 [_player runRight];
@@ -87,16 +94,24 @@
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     
     self.lastSpawnTimeInterval += timeSinceLast;
-    if (self.lastSpawnTimeInterval > 2) {
+    self.runningTime +=timeSinceLast;
+    if (self.lastSpawnTimeInterval > 2.5) {
         self.lastSpawnTimeInterval = 0;
-        _monster = [Monster initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height / 2)];
-        
-        _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height)];
+        _monster = [[Monster alloc]initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100, self.frame.size.height / 2)];
+          _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height)];
         
         [_monster spawnInScene:self];
         [_coin addedInScene:self];
+        
+        if(self.runningTime > 10){
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            [self.view presentScene:gameOverScene transition: reveal];
+        }
+
     }
-}
+   
+    }
 
 -(void)update:(CFTimeInterval)currentTime {
     
@@ -115,8 +130,10 @@
         timeSinceLast = 1.0 / 60.0;
         self.lastUpdateTimeInterval = currentTime;
     }
-    
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
+    
+    
+
 }
 
 

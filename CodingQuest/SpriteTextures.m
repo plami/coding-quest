@@ -88,7 +88,7 @@
     
     self.dyingBugTexture = [[NSMutableArray alloc] init];
     for(int pic = 1; pic  <= 4; ++pic){
-        SKTexture* die = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bug%ldHit.gif",(long)pic]];
+        SKTexture* die = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"groundBug%ldHit.gif",(long)pic]];
         
         [self.dyingBugTexture addObject: die];
     }
@@ -112,7 +112,7 @@
     
     for(int pic = 1; pic <= kMonsterRunningAnimationNumber; ++pic){
         
-        SKTexture* runLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bug%ldMoving.png",(long) pic]];
+        SKTexture* runLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"groundBug%ldMoving.png",(long) pic]];
         
         [self.leftMovingBug addObject:runLeft];
     }

@@ -89,7 +89,7 @@
 }
 
 
--(void)runOnPlace{
+-(void)runOnPlaceRight{
     SKAction* runAction = [SKAction animateWithTextures:[self.spriteTextures runningRight] timePerFrame:kPlayerRunOnPlaceTimePerFrame];
     
     SKAction* runForever = [SKAction repeatActionForever:runAction];
@@ -98,7 +98,7 @@
 
 -(void)runRight{
 
-   [self runOnPlace];
+   [self runOnPlaceRight];
     
     SKAction* moveRight = [SKAction moveByX:kPlayerRunOnRightSpeed y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveRight];
@@ -156,17 +156,23 @@
     [self runAction:group completion:^{
         
         _playerStatus = PlayerFacingLeft;
+        
     }];
 
     
 }
 
--(void) runLeft{
-    
+-(void)runOnPlaceLeft{
     SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures runningLeft] timePerFrame:0.1f];
     
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
+    
+}
+
+-(void) runLeft{
+    
+    [self runOnPlaceLeft];
     
     SKAction* moveLeft = [SKAction moveByX:-kPlayerRunOnLeftSpeed y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];

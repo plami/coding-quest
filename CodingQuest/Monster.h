@@ -6,7 +6,7 @@ typedef enum {
     flyingMonster, groundMonster
 }MonsterType;
 
--(Monster*) initNewMonster: (SKScene*)whichScene startingPoint:(CGPoint) location andTypeOfMonster: (MonsterType) type ;
+-(Monster*) initNewMonster: (SKScene*)whichScene startingPoint:(CGPoint) location;
 
 @property MonsterType typeOfMonsters;
 
@@ -14,6 +14,6 @@ typedef enum {
 -(void) moveLeft;
 -(void) shoot;
 -(void) die;
--(void) addMonster;
+-(void) addMonsterAtScene: (SKScene*) scene forTime: (CFTimeInterval) timeSinceLastMonster;
 
 @end

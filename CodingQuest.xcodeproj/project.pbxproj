@@ -42,6 +42,7 @@
 		CF9C9FE11A39E00900D05DA1 /* rightJump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CF9C9FDC1A39E00900D05DA1 /* rightJump.atlas */; };
 		CF9C9FE21A39E00900D05DA1 /* rightRunning.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CF9C9FDD1A39E00900D05DA1 /* rightRunning.atlas */; };
 		CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA347B41A2C73CD004B671E /* SpriteTextures.m */; };
+		CFA93B501A3C530D00AC9A8C /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA93B4F1A3C530D00AC9A8C /* GameOverScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		CF9C9FDD1A39E00900D05DA1 /* rightRunning.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = rightRunning.atlas; path = Images/rightRunning.atlas; sourceTree = "<group>"; };
 		CFA347B31A2C73CD004B671E /* SpriteTextures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteTextures.h; sourceTree = "<group>"; };
 		CFA347B41A2C73CD004B671E /* SpriteTextures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteTextures.m; sourceTree = "<group>"; };
+		CFA93B4E1A3C530D00AC9A8C /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		CFA93B4F1A3C530D00AC9A8C /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 				CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */,
 				CF9C9FD21A39DFFF00D05DA1 /* Monster.h */,
 				CF9C9FD31A39DFFF00D05DA1 /* Monster.m */,
+				CFA93B4E1A3C530D00AC9A8C /* GameOverScene.h */,
+				CFA93B4F1A3C530D00AC9A8C /* GameOverScene.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
 				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,
 				CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */,
+				CFA93B501A3C530D00AC9A8C /* GameOverScene.m in Sources */,
 				CD0DD9341A3B40B400192C22 /* Bonus.m in Sources */,
 				CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */,
 				CF9C9FD61A39DFFF00D05DA1 /* Background.m in Sources */,
