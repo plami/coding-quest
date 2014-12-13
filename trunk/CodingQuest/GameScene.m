@@ -18,6 +18,11 @@
 @property Background* scrollingBackground;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+
+@property NSMutableArray* monsterArray;
+
+
+
 @property NSTimeInterval runningTime;
 @property (readwrite)SpriteTextures* spriteTextures;
 
@@ -30,7 +35,7 @@
     
     self = [super initWithSize:size];
          if(self){
-             
+            self.monsterArray = [[NSMutableArray alloc]init];
             self.backgroundColor = [SKColor whiteColor];
              
              NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
@@ -66,7 +71,7 @@
              SKLabelNode *myShootLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
              
              myShootLabel.text = ShootButton;
-             myShootLabel.fontSize = 20;
+             myShootLabel.fontSize = 30;
              myShootLabel.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
              myShootLabel.position = CGPointMake(self.frame.size.width- 100, 20);
              myShootLabel.name = @"shoot";
@@ -74,6 +79,7 @@
 
             [self addChild:myShootLabel];
 
+             if(myShootLabel )
              [_player runOnPlaceRight];
         }
 
@@ -107,17 +113,23 @@
     //react to the contact between bullet and monster
     else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         NSLog(@"the monster disappears");
-        [_monster die];
-        [secondBody.node removeFromParent];
+ 
+        [[self.monsterArray firstObject] die];
+        if([self.monsterArray count] > 0){
+            [self.monsterArray removeObjectAtIndex:0];
+            //[secondBody.node removeFromParent];
+        }
     }
 }
 
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
+
     for(UITouch* touch in touches){
     
         PlayerStatus status = _player.playerStatus;
+
         UITouch *touch = [touches anyObject];
         CGPoint location = [touch locationInNode:self];
         SKNode *node = [self nodeAtPoint:location];
@@ -150,33 +162,33 @@
             }
         }
         
-        else{
-        
-        if(location.y >= (self.frame.size.height / 2)){
+       /* else {
             
-            if(status != PlayerJumpingLeft && status != PlayerJumpingRight && status != PlayerJumpingUpFacingLeft && status != PlayerJumpingUpFacingRight){
-                [_player jump];
+            if(location.y >= (self.frame.size.height / 2)){
+            
+                if(status != PlayerJumpingLeft && status != PlayerJumpingRight && status != PlayerJumpingUpFacingLeft && status != PlayerJumpingUpFacingRight){
+                    [_player jump];
+                }
             }
-        }
-        else if(location.x <= (self.frame.size.width / 2)){
-            if(status == PlayerRunningRight){
-                [_player skidRight];
-                [_player runOnPlaceRight];
+            else if(location.x <= (self.frame.size.width / 2)){
+                if(status == PlayerRunningRight){
+                    [_player skidRight];
+                    [_player runOnPlaceRight];
+                }
+                else if(status == PlayerFacingLeft || status == PlayerFacingRight){
+                    [_player runLeft];
+                }
             }
-            else if(status == PlayerFacingLeft || status == PlayerFacingRight){
-                [_player runLeft];
+            else{
+                if(status == PlayerRunningLeft){
+                    [_player skidLeft];
+                    [_player runOnPlaceLeft];
+                }
+                else if( status == PlayerFacingLeft || PlayerFacingRight){
+                    [_player runRight];
+                }
             }
-        }
-        else{
-            if(status == PlayerRunningLeft){
-                [_player skidLeft];
-                [_player runOnPlaceLeft];
-            }
-            else if( status == PlayerFacingLeft || PlayerFacingRight){
-                [_player runRight];
-            }
-        }
-        }
+        }*/
     }
     
 }
@@ -187,23 +199,28 @@
     if (self.lastSpawnTimeInterval > 2.5) {
         self.lastSpawnTimeInterval = 0;
         
-        
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
         
         _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
         
+        _bullet = [Bullet initNewAcidLeft:self startingPoint:CGPointMake(self.frame.size.width,70)];
+        [_bullet spitLeft];
+        
         [_coin moveLeft];
         _monster = [[Monster alloc]initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100, self.frame.size.height / 2)];
         [_monster spawnInScene:self];
-        
-        if(self.runningTime > 10){
+        [self.monsterArray addObject:_monster];
+        if(self.runningTime > 15){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             [self.view presentScene:gameOverScene transition: reveal];
         }
 
     }
-    }
+}
+
+    
+
 
 
 -(void)update:(CFTimeInterval)currentTime {

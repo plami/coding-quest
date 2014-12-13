@@ -15,10 +15,16 @@ typedef enum {
 
 -(void) moveLeft;
 
+-(void) shootAtSceen: (SKScene*) scene;
+
+
 -(void) shoot;
+
 
 -(void) die;
 
+
 -(void) addMonsterAtScene: (SKScene*) scene forTime: (CFTimeInterval) timeSinceLastMonster;
+
 
 @end

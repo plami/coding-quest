@@ -100,11 +100,26 @@
 }
 
 
+-(NSMutableArray *)shootingRight{
+    return self.bulletShootRightTexture;
+}
+
+-(NSMutableArray *)spittingLeft{
+    return self.acidShootLeftTexture;
+}
+
+-(NSMutableArray *)spittingDown{
+    return self.acidShootDownTexture;
+}
+-(NSMutableArray *)shootingLeft{
+    return self.bulletShootLeftTexture;
+}
+
 -(void)createMonsterDyingAnimation{
     
     self.dyingBugTexture = [[NSMutableArray alloc] init];
-    for(int pic = 1; pic  <= 4; ++pic){
-        SKTexture* die = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"groundBug%ldHit.gif",(long)pic]];
+    for(int pic = 1; pic  <= 2; ++pic){
+        SKTexture* die = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"groundBug%ldHit.png",(long)pic]];
         
         [self.dyingBugTexture addObject: die];
     }
@@ -202,10 +217,6 @@
 }
 
 
--(NSMutableArray *)shootingRight{
-    return self.bulletShootRightTexture;
-}
-
 
 -(void)createShootingRightAnimation{
 
@@ -215,10 +226,6 @@
 }
 
 
--(NSMutableArray *)shootingLeft{
-    return self.bulletShootLeftTexture;
-}
-
 
 -(void)createShootingLeftAnimation{
     self.bulletShootLeftTexture = [[NSMutableArray alloc] init];
@@ -226,15 +233,6 @@
     [self.bulletShootLeftTexture addObject:shoot];
 }
 
-
--(NSMutableArray *)spittingLeft{
-    return self.acidShootLeftTexture;
-}
-
-
--(NSMutableArray *)spittingDown{
-    return self.acidShootDownTexture;
-}
 
 
 -(void)createSpittingLeftAnimation{

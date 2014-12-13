@@ -15,11 +15,11 @@
 
 +(Bonus *)initNewBonus:(SKScene *)whichScene startingPoint :(CGPoint)location{
     
-    SKTexture* coinTexture = [SKTexture textureWithImageNamed:@"coin1.png"];
     SpriteTextures* bonusTexture = [[SpriteTextures alloc]init];
+    [bonusTexture createCoinAnimation];
+    SKTexture* coinTexture = [SKTexture textureWithImageNamed:@"coin1.png"];
     Bonus* coin = [Bonus spriteNodeWithTexture:coinTexture ];
-    [bonusTexture runningLeft];
-    [bonusTexture.movingBonuses count];
+    
     coin.spriteTextures = bonusTexture;
     
     coin.size = CGSizeMake(whichScene.frame.size.width/15,whichScene.frame.size.height/10);
@@ -47,6 +47,10 @@
 
 -(void) moveLeft{
 
+    SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures movingBonuses] timePerFrame:0.2];
+    SKAction* runForever = [SKAction repeatActionForever:runAction];
+    [self runAction:runForever];
+    
     SKAction* moveLeft = [SKAction moveByX:-50 y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     [self runAction:moveForever];

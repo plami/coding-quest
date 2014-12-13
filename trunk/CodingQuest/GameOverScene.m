@@ -1,6 +1,6 @@
 #import "GameOverScene.h"
 #import "GameScene.h"
-
+#import "StartingPage.h"
 @implementation GameOverScene
 
 
@@ -29,11 +29,20 @@
         retryButton.fontColor = [SKColor blackColor];
         retryButton.position = CGPointMake(self.size.width/2, 50);
         retryButton.name = @"retry";
-        [retryButton setScale:.5];
+        [retryButton setScale:.6];
         
         [self addChild:retryButton];
         
+        NSString* menuMessage;
+        menuMessage = @"Back to menu";
+        SKLabelNode* backButton = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        backButton.text = menuMessage;
+        backButton.fontColor = [SKColor blackColor];
+        backButton.position = CGPointMake(self.size.width / 2, 100);
+        backButton.name = @"back";
+        [backButton setScale:.6];
         
+        [self addChild:backButton];
     }
     return self;
 }
@@ -52,6 +61,16 @@
         scene.scaleMode = SKSceneScaleModeFill;
         
         [self.view presentScene:scene transition:reveal];
+        
+    }
+    else if([node.name isEqualToString:@"back"]){
+        
+        SKTransition* flip = [SKTransition flipHorizontalWithDuration:0.5];
+        StartingPage* page = [StartingPage sceneWithSize:CGSizeMake(self.size.width * 2, self.size.height * 2)];
+        
+        page.scaleMode = SKSceneScaleModeFill;
+        
+        [self.view presentScene:page transition:flip ];
         
     }
 }

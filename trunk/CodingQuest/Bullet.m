@@ -80,7 +80,7 @@
     SpriteTextures* acidTexture = [[SpriteTextures alloc]init];
     
     
-    [acidTexture createSpittingLeftAnimation];
+    [acidTexture createSpittingDownAnimation];
     
     SKTexture* f3 = [SKTexture textureWithImageNamed:@"acidAttackLeft.png"];
     
@@ -99,7 +99,7 @@
     SpriteTextures* acidTexture = [[SpriteTextures alloc]init];
     
     
-    [acidTexture createSpittingDownAnimation];
+    [acidTexture createSpittingLeftAnimation];
     
     SKTexture* f3 = [SKTexture textureWithImageNamed:@"acidAttackLeft.png"];
     
@@ -156,7 +156,7 @@
     SKAction* acidMoveForever = [SKAction repeatActionForever:shootAction];
     [self runAction:acidMoveForever];
     
-    SKAction* moveLeft = [SKAction moveByX:-50 y:0 duration:1];
+    SKAction* moveLeft = [SKAction moveByX:-200 y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     
     [self runAction:moveForever];
