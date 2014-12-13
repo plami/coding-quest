@@ -10,20 +10,28 @@
 
 +(Bonus *)initNewBonus:(SKScene *)whichScene startingPoint :(CGPoint)location{
     
-    
-    SpriteTextures* bonusTexture = [[SpriteTextures alloc]init];
-    [bonusTexture createCoinAnimation ];
-
     SKTexture* coinTexture = [SKTexture textureWithImageNamed:@"coin1.png"];
-    Bonus* coin = [Bonus spriteNodeWithTexture:coinTexture];
-    
+    SpriteTextures* bonusTexture = [[SpriteTextures alloc]init];
+    Bonus* coin = [Bonus spriteNodeWithTexture:coinTexture ];
+    [bonusTexture runningLeft];
+    [bonusTexture.movingBonuses count];
     coin.spriteTextures = bonusTexture;
-    
     coin.size = CGSizeMake(whichScene.frame.size.width/15,whichScene.frame.size.height/10);
     
-    coin.physicsBody.affectedByGravity = NO;
+    coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:coin.frame.size.width/2];
+    coin.physicsBody.friction = 0.0f;
+    coin.physicsBody.restitution = 1.0f;
+    coin.physicsBody.linearDamping = 0.0f;
     coin.physicsBody.allowsRotation = NO;
+    coin.position = location;
+    coin.physicsBody.dynamic = YES;
+    coin.name = @"coin";
     
+    NSLog(@"%f , %f",coin.position.x, coin.position.y);
+    
+    coin.physicsBody.categoryBitMask = 2;
+    coin.physicsBody.contactTestBitMask = 1;
+    coin.physicsBody.collisionBitMask = 0;
     
     [whichScene addChild:coin];
     
@@ -32,29 +40,20 @@
 
 
 -(void) moveLeft{
-    
 
-    SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures movingBonuses] timePerFrame:0.2];
-    SKAction* runForever = [SKAction repeatActionForever:runAction];
-    [self runAction:runForever];
-    
-   /* SKAction* moveLeft = [SKAction moveByX:-50 y:0 duration:2];
+    SKAction* moveLeft = [SKAction moveByX:-50 y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
-    [self runAction:moveForever];*/
+    [self runAction:moveForever];
 
 }
 
 -(void)addedInScene:(SKScene *)whichScene{
     
-    GameScene* gameScene = (GameScene*) whichScene;
-    _spriteTextures = gameScene.spriteTextures;
-    
     SKSpriteNode* object = [SKSpriteNode spriteNodeWithImageNamed:@"coin1.png"];
     object.size = CGSizeMake(40,40);
-    object.position = CGPointMake(whichScene.frame.size.width /2
-                                  ,whichScene.frame.size.height/2);
+    object.position = CGPointMake(whichScene.frame.size.width,whichScene.frame.size.height/4);
     [self addChild: object];
-
+    
     SKAction* move = [SKAction moveToX:-50 duration: 1];
     [object runAction: move completion:^{
         [object removeFromParent];
