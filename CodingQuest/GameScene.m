@@ -74,15 +74,15 @@
              myShootLabel.position = CGPointMake(self.frame.size.width- 100, 20);
              myShootLabel.name = @"shoot";
              
-             [self addChild:myShootLabel];
-             
+
+            [self addChild:myShootLabel];
+
              [_player runOnPlaceRight];
         }
 
     return self;
-    
 }
-
+    
 
 -(void)didBeginContact:(SKPhysicsContact*)contact {
     
@@ -102,9 +102,15 @@
     //    NSLog(@"firstBodyCategory %@, secondBodyCategory %@",firstBody.node.name, secondBody.node.name);
     
     
-    // 3 react to the contact between coin and player
+    //react to the contact between coin and player
     if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & coinCategory) != 0) {
         NSLog(@"coina iz4ezva");
+        [secondBody.node removeFromParent];
+    }
+    //react to the contact between bullet and monster
+    else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
+        NSLog(@"monstera iz4ezva");
+        [_monster die];
         [secondBody.node removeFromParent];
     }
 }
@@ -113,7 +119,6 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     for(UITouch* touch in touches){
-    
     
         PlayerStatus status = _player.playerStatus;
         UITouch *touch = [touches anyObject];
@@ -126,6 +131,21 @@
                 _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
                 
                 [_bullet shootRight];
+                
+                //adding collision logic between bullet and monster
+                _bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_bullet.frame.size];
+                _bullet.physicsBody.restitution = 0.1f;
+                _bullet.physicsBody.friction = 0.4f;
+                
+                // make physicsBody static
+                _bullet.physicsBody.dynamic = YES;
+                _bullet.name = @"bullet";
+                
+                _bullet.physicsBody.categoryBitMask = bulletCategory;
+                _bullet.physicsBody.contactTestBitMask = monsterCategory;
+                _bullet.physicsBody.collisionBitMask = 0;
+            
+                
             }
             if (status == PlayerFacingLeft || status == PlayerRunningLeft || status == PlayerSkiddingLeft ){
                 _bullet = [Bullet initNewBulletLeft3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
@@ -169,14 +189,14 @@
     self.runningTime +=timeSinceLast;
     if (self.lastSpawnTimeInterval > 2.5) {
         self.lastSpawnTimeInterval = 0;
-        _monster = [[Monster alloc]initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100, self.frame.size.height / 2)];
+        
         
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
         
         _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
         
         [_coin moveLeft];
-        
+        _monster = [[Monster alloc]initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100, self.frame.size.height / 2)];
         [_monster spawnInScene:self];
         
         if(self.runningTime > 10){
@@ -186,8 +206,8 @@
         }
 
     }
-   
     }
+
 
 -(void)update:(CFTimeInterval)currentTime {
     
@@ -207,9 +227,6 @@
         self.lastUpdateTimeInterval = currentTime;
     }
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
-    
-    
-
 }
 
 

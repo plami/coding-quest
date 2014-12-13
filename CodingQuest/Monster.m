@@ -2,6 +2,7 @@
 #import "GameScene.h"
 #import "SpriteTextures.h"
 #import "GameOverScene.h"
+#import "Constants.h"
 @interface Monster ()
 
 @property SpriteTextures* spriteTextures;
@@ -32,9 +33,25 @@
     monster.position = CGPointMake(whichScene.frame.size.width, whichScene.frame.size.height / 2);
     monster.spriteTextures = monsterTexture;
     monster.size = CGSizeMake(kMonsterWidthSize,kMonsterHighSize);
+    
+    monster.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:monster.frame.size.width/2];
+    monster.physicsBody.friction = 0.0f;
+    monster.physicsBody.restitution = 1.0f;
+    monster.physicsBody.linearDamping = 0.0f;
+    monster.physicsBody.allowsRotation = NO;
+    monster.position = location;
+    monster.physicsBody.dynamic = YES;
+    monster.name = @"monster";
+    
+    monster.physicsBody.categoryBitMask = monsterCategory;
+    monster.physicsBody.contactTestBitMask = bulletCategory;
+    monster.physicsBody.collisionBitMask = 0;
+    
     [whichScene addChild:monster];
+    
     return monster;
 }
+
 
 -(void)moveLeft{
     
@@ -49,9 +66,14 @@
 
 }
 
+-(void)die{
+    SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures dyingMonster] timePerFrame:0.2];
+    
+    [self runAction:dieAction];
+    
+}
 
 -(void)spawnInScene:(SKScene *)whichScene{
-    
    
     self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, kMonsterSpawnY);
     

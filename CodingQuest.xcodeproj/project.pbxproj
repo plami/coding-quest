@@ -27,6 +27,7 @@
 		CD0DD91F1A39E47C00192C22 /* firstBugMoving.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD91E1A39E47C00192C22 /* firstBugMoving.atlas */; };
 		CD0DD9311A3B409800192C22 /* coin.atlas in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD9301A3B409800192C22 /* coin.atlas */; };
 		CD0DD9341A3B40B400192C22 /* Bonus.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD9331A3B40B400192C22 /* Bonus.m */; };
+		CD0DD9461A3CB1C000192C22 /* fireButton.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CD0DD9451A3CB1C000192C22 /* fireButton.jpeg */; };
 		CD202AC61A1F7D74000D7A8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC51A1F7D74000D7A8F /* main.m */; };
 		CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AC81A1F7D74000D7A8F /* AppDelegate.m */; };
 		CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202ACB1A1F7D74000D7A8F /* GameScene.m */; };
@@ -85,6 +86,7 @@
 		CD0DD9321A3B40AA00192C22 /* Bonus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bonus.h; sourceTree = "<group>"; };
 		CD0DD9331A3B40B400192C22 /* Bonus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bonus.m; sourceTree = "<group>"; };
 		CD0DD9441A3C8A1600192C22 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		CD0DD9451A3CB1C000192C22 /* fireButton.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fireButton.jpeg; sourceTree = "<group>"; };
 		CD202AC01A1F7D74000D7A8F /* CodingQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AC41A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AC51A1F7D74000D7A8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				CF9C9FDC1A39E00900D05DA1 /* rightJump.atlas */,
 				CF9C9FDD1A39E00900D05DA1 /* rightRunning.atlas */,
 				CD0DD8BF1A374CF600192C22 /* bulletLevel2.png */,
+				CD0DD9451A3CB1C000192C22 /* fireButton.jpeg */,
 				C1EB456F1A3C6C5F00153D92 /* bulletLeft.png */,
 				C1EB45751A3C998D00153D92 /* acidAttackLeft.png */,
 				C1EB45771A3C999300153D92 /* acidAttackDown.png */,
@@ -377,6 +380,7 @@
 				CF9C9FE01A39E00900D05DA1 /* leftRunning.atlas in Resources */,
 				CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */,
 				CD0DD91F1A39E47C00192C22 /* firstBugMoving.atlas in Resources */,
+				CD0DD9461A3CB1C000192C22 /* fireButton.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
