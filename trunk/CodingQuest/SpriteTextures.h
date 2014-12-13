@@ -30,9 +30,11 @@
 -(NSMutableArray*) jumpingRight;
 -(NSMutableArray*) jumpingLeft;
 
--(NSMutableArray*) shooting;
--(void) createShootingAnimation;
+-(NSMutableArray*) shootingRight;
+-(void) createShootingRightAnimation;
 
+-(NSMutableArray*) shootingLeft;
+-(void) createShootingLeftAnimation;
 
 @end
 

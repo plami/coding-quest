@@ -3,7 +3,11 @@
 #import "Background.h"
 #import "Monster.h"
 #import "Bonus.h"
+
+#import "Bullet.h"
+
 #import "GameOverScene.h"
+
 
 @interface GameScene ()
 
@@ -15,7 +19,11 @@
 @property Background* scrollingBackground;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+
+@property Bullet* bullet;
+
 @property NSTimeInterval runningTime;
+
 
 @end
 
@@ -36,13 +44,32 @@
              self.scrollingBackground = scrollingBackground;
              [self addChild: self.scrollingBackground];
              [self.scrollingBackground setScale:1.7];
-             _player  = [Player initNewPlayer1:self startingPoint:CGPointMake(20, 60) ];
+             _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
              
+
+             NSString *ShootButton;
+             ShootButton = @"Shoot";
+             
+             SKLabelNode *myShootLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
+             
+             myShootLabel.text = ShootButton;
+             myShootLabel.fontSize = 20;
+             myShootLabel.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
+             myShootLabel.position = CGPointMake(self.frame.size.width- 100, 20);
+             myShootLabel.name = @"shoot";
+             
+             [self addChild:myShootLabel];
+             
+        }
+    
+    
+
             [_player runOnPlaceRight];
              
              
              self.physicsWorld.gravity = CGVectorMake(0, -8.f);
-            }
+    
+
     return self;
     
 }
@@ -58,11 +85,29 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    for(UITouch* touch in touches){
-        
-        PlayerStatus status = _player.playerStatus;
+//    for(UITouch* touch in touches){
+    
+    
+    
+    
+        UITouch *touch = [touches anyObject];
         CGPoint location = [touch locationInNode:self];
+        SKNode *node = [self nodeAtPoint:location];
+        PlayerStatus status = _player.playerStatus;
         
+        if ([node.name isEqualToString:@"shoot"]) {
+            if (status == PlayerFacingRight || status == PlayerRunningRight || status == PlayerSkiddingRight){
+                _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
+                
+                [_bullet shootRight];
+            }
+            if (status == PlayerFacingLeft || status == PlayerRunningLeft || status == PlayerSkiddingLeft ){
+                _bullet = [Bullet initNewBulletLeft3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
+                [_bullet shootLeft];
+            }
+        }
+        
+        else{
         
         if(location.y >= (self.frame.size.height / 2)){
             
@@ -90,6 +135,7 @@
         }
         
     }
+    
 }
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     

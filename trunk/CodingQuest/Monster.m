@@ -15,8 +15,10 @@
 #define kMonsterHighSize        70
 #define kMonsterWidthSize       70
 #define kMonsterMovingLeftSpeed 80
+
 #define kMonsterSpawnX          20
 #define kMonsterSpawnY          60
+
 
 
 -(Monster *)initNewMonster:(SKScene *)whichScene startingPoint :(CGPoint)location{

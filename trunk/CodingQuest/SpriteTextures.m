@@ -17,6 +17,8 @@
 @property NSMutableArray* dyingBugTexture;
 
 @property NSMutableArray* bulletShootRightTexture;
+@property NSMutableArray* bulletShootLeftTexture;
+
 @property NSMutableArray* movingCoins;
 
 
@@ -179,13 +181,22 @@
     
 }
 
--(NSMutableArray *)shooting{
+-(NSMutableArray *)shootingRight{
     return self.bulletShootRightTexture;
 }
 
--(void)createShootingAnimation{
+-(void)createShootingRightAnimation{
+
     self.bulletShootRightTexture = [[NSMutableArray alloc] init];
     SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bulletLevel2.png"]];
     [self.bulletShootRightTexture addObject:shoot];
+}
+-(NSMutableArray *)shootingLeft{
+    return self.bulletShootLeftTexture;
+}
+-(void)createShootingLeftAnimation{
+    self.bulletShootLeftTexture = [[NSMutableArray alloc] init];
+    SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bulletLeft.png"]];
+    [self.bulletShootLeftTexture addObject:shoot];
 }
 @end

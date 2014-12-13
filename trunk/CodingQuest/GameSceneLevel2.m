@@ -28,8 +28,10 @@ CGPoint _velocity;
         self.scrollingBackground = scrollingBackground;
         [self addChild: self.scrollingBackground];
         [self.scrollingBackground setScale:1.7];
-        _player = [Player initNewPlayer1:self startingPoint:CGPointMake(20,40)];
-        [_player runOnPlace];
+
+        _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 40) ];
+
+        [_player runOnPlaceRight];
         
     }
     return self;
