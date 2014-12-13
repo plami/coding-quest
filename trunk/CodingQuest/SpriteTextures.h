@@ -10,7 +10,7 @@
 -(void) createMonsterRunningAnimation;
 -(void) createCoinAnimation;
 -(void) createMonsterDyingAnimation;
--(void) createGroundMonsterAnimation;
+//-(void) createGroundMonsterAnimation;
 
 -(NSMutableArray*) runLeftMonster;
 -(NSMutableArray*) dyingMonster;

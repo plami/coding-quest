@@ -30,7 +30,7 @@
         
 //       initiate player
         _player = [Player initNewPlayer3:self startingPoint:CGPointMake(20, 40)];
-        [_player runOnPlace];
+        [_player runOnPlaceRight];
         
         //shoot button
         NSString *ShootButton;
@@ -60,6 +60,7 @@
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"shoot"]) {
+        
         
         _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
         [_bullet shoot];

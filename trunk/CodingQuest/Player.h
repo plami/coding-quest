@@ -25,13 +25,13 @@ typedef enum: int{
 
 @property PlayerStatus playerStatus;
 
--(void) runOnPlace;
+-(void) runOnPlaceRight;
 -(void) runRight;
 -(void) runLeft;
 
 -(void) jump;
 -(void) skidRight;
 -(void) skidLeft;
-
+-(void) runOnPlaceLeft;
 
 @end
