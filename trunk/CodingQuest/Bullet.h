@@ -3,6 +3,7 @@
 #import "GameScene.h"
 #import "GameSceneLevel2.h"
 #import "GameSceneLevel3.h"
+#import "Constants.h"
 
 @interface Bullet : SKSpriteNode
 

@@ -29,8 +29,8 @@
     
     NSLog(@"%f , %f",coin.position.x, coin.position.y);
     
-    coin.physicsBody.categoryBitMask = 2;
-    coin.physicsBody.contactTestBitMask = 1;
+    coin.physicsBody.categoryBitMask = coinCategory;
+    coin.physicsBody.contactTestBitMask = playerCategory;
     coin.physicsBody.collisionBitMask = 0;
     
     [whichScene addChild:coin];

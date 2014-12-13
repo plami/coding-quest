@@ -1,6 +1,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "SpriteTextures.h"
 #import "GameScene.h"
+#import "Constants.h"
 
 @interface Bonus : SKSpriteNode
 
