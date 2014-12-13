@@ -2,6 +2,9 @@
 #import "GameScene.h"
 #import "SpriteTextures.h"
 #import "GameOverScene.h"
+
+#import "Bullet.h"
+
 #import "Constants.h"
 
 @interface Monster ()
@@ -32,6 +35,8 @@
     SpriteTextures* monsterTexture = [[SpriteTextures alloc] init];
     
     [monsterTexture createMonsterRunningAnimation];
+    [monsterTexture createSpittingLeftAnimation];
+    [monsterTexture createMonsterDyingAnimation];
     SKTexture* f1 = [SKTexture textureWithImageNamed:@"groundBug1Moving.png"];
     Monster* monster = [Monster spriteNodeWithTexture:f1];
     monster.position = CGPointMake(whichScene.frame.size.width, whichScene.frame.size.height / 2);
@@ -72,7 +77,7 @@
 
 
 -(void)die{
-    SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures dyingMonster] timePerFrame:0.2];
+    SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures dyingMonster] timePerFrame:0.5];
     
     [self runAction:dieAction];
     
@@ -80,11 +85,25 @@
 
 
 -(void)spawnInScene:(SKScene *)whichScene{
-   
     self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, kMonsterSpawnY);
-    
    [self moveLeft];
 }
 
+-(void)shootAtSceen:(SKScene *)scene{
+    Bullet *leftAcit = [Bullet initNewAcidLeft:scene startingPoint:self.position];
+    
+    [leftAcit shootLeft];
+}
+/*
+-(void)shootLeft{
+    SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures spittingLeft] timePerFrame:0.1];
+    SKAction* bulletMoveForever = [SKAction repeatActionForever:shootAction];
+    [self runAction:bulletMoveForever];
+    
+    SKAction* moveLeft = [SKAction moveByX:-200 y:0 duration:1];
+    SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
+    
+    [self runAction:moveForever];
+}*/
 
 @end

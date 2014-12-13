@@ -36,6 +36,7 @@
 		CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD21A1F7D74000D7A8F /* Main.storyboard */; };
 		CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD51A1F7D74000D7A8F /* Images.xcassets */; };
 		CD202AE51A1F7D74000D7A8F /* CodingQuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */; };
+		CF4CA3631A3CA4720037F4EA /* FlyMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CA3621A3CA4720037F4EA /* FlyMonster.m */; };
 		CF7C8E5F1A3B2C2C00E596D2 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */; };
 		CF9C9FD61A39DFFF00D05DA1 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD11A39DFFF00D05DA1 /* Background.m */; };
 		CF9C9FD71A39DFFF00D05DA1 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD31A39DFFF00D05DA1 /* Monster.m */; };
@@ -102,6 +103,8 @@
 		CD202ADE1A1F7D74000D7A8F /* CodingQuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodingQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AE31A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingQuestTests.m; sourceTree = "<group>"; };
+		CF4CA3611A3CA4720037F4EA /* FlyMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyMonster.h; sourceTree = "<group>"; };
+		CF4CA3621A3CA4720037F4EA /* FlyMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyMonster.m; sourceTree = "<group>"; };
 		CF7C8E5D1A3B2C2C00E596D2 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
 		CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
 		CF9C9FD01A39DFFF00D05DA1 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 				CF9C9FD31A39DFFF00D05DA1 /* Monster.m */,
 				CFA93B4E1A3C530D00AC9A8C /* GameOverScene.h */,
 				CFA93B4F1A3C530D00AC9A8C /* GameOverScene.m */,
+				CF4CA3611A3CA4720037F4EA /* FlyMonster.h */,
+				CF4CA3621A3CA4720037F4EA /* FlyMonster.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
 				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,
 				CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */,
+				CF4CA3631A3CA4720037F4EA /* FlyMonster.m in Sources */,
 				CFA93B501A3C530D00AC9A8C /* GameOverScene.m in Sources */,
 				CD0DD9341A3B40B400192C22 /* Bonus.m in Sources */,
 				CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */,
