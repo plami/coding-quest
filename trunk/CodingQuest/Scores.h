@@ -3,9 +3,15 @@
 
 @interface Scores : NSObject
 
--(void) createScoreNode: (SKScene*) scene;
++(id)sharedScore;
+
+
+
+-(instancetype)initWithScore: (NSInteger) score ;
+
+-(SKLabelNode*) createScoreNode;
 
 -(void) updateScore: (SKScene*) scene newScore: (int) playerScore hiScore: (int) highScore;
 
-
+@property NSInteger score ;
 @end

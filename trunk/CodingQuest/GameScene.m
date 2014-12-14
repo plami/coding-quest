@@ -9,7 +9,7 @@
 
 @interface GameScene ()
 
-
+@property Scores* score;
 @property Player* player;
 @property Monster* monster;
 @property Bonus* coin;
@@ -18,7 +18,7 @@
 @property Background* scrollingBackground;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
-
+@property NSInteger counter;
 @property NSMutableArray* monsterArray;
 
 
@@ -38,6 +38,9 @@
             self.monsterArray = [[NSMutableArray alloc]init];
             self.backgroundColor = [SKColor whiteColor];
              
+           //  self.score = [[Scores alloc]initWithScore:0];
+             
+            //[self addChild: [self.score createScoreNode]];
              NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
              Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
              
@@ -50,6 +53,10 @@
              
              //sets the gravity of the game world to zero
              self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+             
+             
+             
+             self.counter = 0;
              
              _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
              
@@ -64,11 +71,9 @@
              _player.physicsBody.categoryBitMask = playerCategory;
              _player.physicsBody.contactTestBitMask = coinCategory;
              _player.physicsBody.collisionBitMask = 0;
-             
+             [_player runOnPlaceRight];
              [self addChild:[self fireButton]];
         }
-    
-    
 
     return self;
 }
@@ -100,12 +105,15 @@
     //react to the contact between bullet and monster
     else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         NSLog(@"the monster disappears");
- 
+      //  self.score.score += 10;
+        self.counter++;
+        NSLog(@"%ld",(long)self.score.score);
         [[self.monsterArray firstObject] die];
         if([self.monsterArray count] > 0){
             [self.monsterArray removeObjectAtIndex:0];
-            //[secondBody.node removeFromParent];
+            [firstBody.node removeFromParent];
         }
+        [secondBody.node removeFromParent];
     }
 }
 
@@ -163,7 +171,7 @@
         }
         
         
-       /* else {
+        else {
             
             if(location.y >= (self.frame.size.height / 2)){
             
@@ -171,7 +179,7 @@
                     [_player jump];
                 }
             }
-            else if(location.x <= (self.frame.size.width / 2)){
+            else if(location.x <= _player.position.x){
                 if(status == PlayerRunningRight){
                     [_player skidRight];
                     [_player runOnPlaceRight];
@@ -189,10 +197,14 @@
                     [_player runRight];
                 }
             }
-        }*/
+        }
     }
     
 }
+
+
+
+
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     
     self.lastSpawnTimeInterval += timeSinceLast;
@@ -205,29 +217,27 @@
         _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
         
         _bullet = [Bullet initNewAcidLeft:self startingPoint:CGPointMake(self.frame.size.width,70)];
-        [_bullet spitLeft];
         
         [_coin moveLeft];
-        _monster = [[Monster alloc]initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 100, self.frame.size.height / 2)];
+        _monster = [[Monster alloc]initNewMonster:self startingPoint:CGPointMake(0,0)];
         [_monster spawnInScene:self];
+        [_monster shoot:self];
         [self.monsterArray addObject:_monster];
-        if(self.runningTime > 15){
+        
+        if(self.counter >=2){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             [self.view presentScene:gameOverScene transition: reveal];
         }
-
+        
     }
-}
-
     
-
-
+   }
 
 -(void)update:(CFTimeInterval)currentTime {
     
     [self.scrollingBackground update:currentTime];
-
+    
     if(_player.position.x > self.size.width - 10){
         [_player runLeft];
     }
