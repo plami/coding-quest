@@ -10,8 +10,6 @@
 
 @implementation Player
 
-//putting the player in the Scene for Level 1
-#define kPlayerLives     3
 #define kPlayerSizeHigh  70
 #define kPlayerSizeWidth 50
 #define kPlayerRunOnPlaceTimePerFrame 0.1
@@ -21,9 +19,6 @@
 #define kPlayerMoveDownLength 100
 #define kPlayerSkidRight 50
 #define kPlayerSkidLeft 50
-
-
-//putting the player in the Scene for Level 1
 
 
 +(Player *)initNewPlayer:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
@@ -42,7 +37,7 @@
     player.physicsBody.affectedByGravity = YES;
     [whichScene1 addChild:player];
     player.playerStatus = PlayerFacingRight;
-    player.playerLives = kPlayerLives;
+  
     return player;
 }
 

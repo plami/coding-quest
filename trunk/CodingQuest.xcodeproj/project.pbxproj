@@ -179,6 +179,8 @@
 		CD0DD89B1A35DF5900192C22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CF52ADC11A3D94CB009B1943 /* Button.h */,
+				CF52ADC21A3D94CB009B1943 /* Button.m */,
 				CD0DD9441A3C8A1600192C22 /* Constants.h */,
 				CD0DD9321A3B40AA00192C22 /* Bonus.h */,
 				CD0DD9331A3B40B400192C22 /* Bonus.m */,
@@ -257,8 +259,6 @@
 				CD202AC81A1F7D74000D7A8F /* AppDelegate.m */,
 				CD202AD51A1F7D74000D7A8F /* Images.xcassets */,
 				CD202AC31A1F7D74000D7A8F /* Supporting Files */,
-				CF52ADC11A3D94CB009B1943 /* Button.h */,
-				CF52ADC21A3D94CB009B1943 /* Button.m */,
 			);
 			path = CodingQuest;
 			sourceTree = "<group>";
