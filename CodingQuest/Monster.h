@@ -9,7 +9,7 @@ typedef enum {
 
 @property (readonly) MonsterType typeOfMonsters;
 
--(Monster*) initNewMonster: (SKScene*)whichScene startingPoint:(CGPoint) location;
+-(Monster*) initNewMonster: (SKScene*)whichScene;
 
 -(void) spawnInScene: (SKScene*) whichScene;
 

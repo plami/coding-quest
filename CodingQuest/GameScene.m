@@ -12,6 +12,7 @@
 @property Player* player;
 @property Monster* monster;
 @property Bonus* coin;
+@property Bonus* coin2;
 @property Bullet* bullet;
 @property SKTextureAtlas* runAtlas;
 @property Background* scrollingBackground;
@@ -285,6 +286,14 @@
     
 }
 
+-(NSInteger) random{
+    int minX = _player.size.height / 2;
+    int maxY = self.frame.size.height - _player.size.height / 2;
+    int rangeY = maxY - minX;
+    int actualY = (arc4random() % rangeY) + minX;
+    
+    return actualY;
+}
 
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     
@@ -294,18 +303,19 @@
         self.lastSpawnTimeInterval = 0;
         
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
-        
         _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
         
         _bullet = [Bullet initNewAcidLeft:self startingPoint:CGPointMake(self.frame.size.width,70)];
-        
         [_coin moveLeft];
-        _monster = [[Monster alloc]initNewMonster:self startingPoint:CGPointMake(0,0)];
+        NSInteger spawnAtX = [self random];
+        _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
+        [_coin2 spawnInSceneVerticaly];
+        _monster = [[Monster alloc]initNewMonster:self];
         [_monster spawnInScene:self];
         [_monster shoot:self];
         [self.monsterArray addObject:_monster];
         
-        if(self.counter >=2){
+        if(self.counter >= 2){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             [self.view presentScene:gameOverScene transition: reveal];
