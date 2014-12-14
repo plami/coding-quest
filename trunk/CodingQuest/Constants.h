@@ -8,4 +8,41 @@ static const uint32_t monsterBulletCategory = 0X1 << 4;  // 00000000000000000000
 
 @protocol Constants <NSObject>
 
+#define kScoreName @"scoreDisplay"
+#define kHealthName @"healthDisplay"
+#define kLivesName @"livesDisplay"
+
+#define kBackgroundsetScale 0.33
+
+#define kPlayerSizeHigh  70
+#define kPlayerSizeWidth 50
+#define kPlayerRunOnPlaceTimePerFrame 0.1
+#define kPlayerRunOnRightSpeed 50
+#define kPlayerRunOnLeftSpeed 80
+#define kPlayerMoveUpLength 100
+#define kPlayerMoveDownLength 100
+#define kPlayerSkidRight 50
+#define kPlayerSkidLeft 50
+#define kPlayerLives 3
+
+#define kMonsterRunningAnimationNumber                      4
+#define kPlayerRunningAnimationNumber                       13
+#define kPlayerJumpingAnimation                             7
+#define kCoinAnimation                                      5
+#define kPlayerRunRightFrame            @"player%ldRight.png"
+#define kPlayerRunLeftFrame             @"player%ldLeft.png"
+#define kPlayerLeftJump                 @"player%ldLeftJump.png"
+#define kPlayerRightJump                @"player%ldRightJump.png"
+#define kPlayerLeftSkid                 @"player5LeftJump.png"
+#define kPlayerRightSkid                @"player5RightJump.png"
+#define kPlayerStillFacingLeft          @"playerStillLeft.png"
+#define kPlayerStillFacingRight         @"playerStillRight.png"
+
+#define kMonsterHighSize        70
+#define kMonsterWidthSize       70
+#define kMonsterMovingLeftSpeed 80
+#define kMonsterSpawnX          20
+#define kMonsterSpawnY          60
+
+
 @end

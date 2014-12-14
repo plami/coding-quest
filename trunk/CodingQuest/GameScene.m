@@ -6,6 +6,7 @@
 #import "Bullet.h"
 #import "Constants.h"
 #import "GameOverScene.h"
+#import "Constants.h"
 
 @interface GameScene ()
 
@@ -26,12 +27,9 @@
 
 @property NSUInteger score;
 @property CGFloat playerHealth;
-
+@property Player* lives;
 
 @end
-
-#define kScoreName @"scoreDisplay"
-#define kHealthName @"healthDisplay"
 
 @implementation GameScene
 
@@ -52,6 +50,7 @@
              self.scrollingBackground = scrollingBackground;
              [self addChild: self.scrollingBackground];
              [self.scrollingBackground setScale:1.7];
+             
              
              //the scene is set as delegate in physicsWorld
              self.physicsWorld.contactDelegate = self;
@@ -121,6 +120,17 @@
     
     healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - 20, self.size.height - (20 + healthLabel.frame.size.height/2));
     [self addChild:healthLabel];
+    
+    SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
+    
+    livesLabel.name = kLivesName;
+    livesLabel.fontSize = 15;
+    
+    livesLabel.fontColor = [SKColor greenColor];
+    livesLabel.text = [NSString stringWithFormat:@"Lives: %@%%", self.lives];
+    
+    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
+    [self addChild:livesLabel];
 }
 
 
@@ -165,7 +175,7 @@
     //react to the contact between bullet and monster
     else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         NSLog(@"the monster disappears");
-      //  self.score.score += 10;
+        
         self.counter++;
         [[self.monsterArray firstObject] die];
         if([self.monsterArray count] > 0){
@@ -182,17 +192,18 @@
         SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
         [self.view presentScene:gameOverScene transition: reveal];
         
-        //        NSLog(@"the lives are reduced");
-        //        self.lives--;
+        [_player playerWasHit];
+         NSLog(@"the lives are reduced");
+        
     }
     
     //react to the contact between player and monsterBullet
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
         
-        [self adjustPlayerHealth:-0.334f];
+        [self adjustPlayerHealth:-0.20f];
         [secondBody.node removeFromParent];
         if(self.playerHealth <= 0.0f){
-            
+
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             [self.view presentScene:gameOverScene transition: reveal];
@@ -283,7 +294,6 @@
             }
         }
     }
-    
 }
 
 -(NSInteger) random{

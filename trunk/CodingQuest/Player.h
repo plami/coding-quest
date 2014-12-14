@@ -26,10 +26,10 @@ typedef enum: int{
 -(void) runOnPlaceRight;
 -(void) runRight: (CGPoint) location;
 -(void) runLeft;
-
 -(void) jump;
 -(void) skidRight;
 -(void) skidLeft;
 -(void) runOnPlaceLeft;
+-(void)playerWasHit;
 
 @end

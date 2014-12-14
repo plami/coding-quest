@@ -1,4 +1,5 @@
 #import "Background.h"
+#import "Constants.h"
 
 @interface Background ()
 
@@ -9,9 +10,6 @@
 @end
 
 @implementation Background
-
-#define kBackgroundsetScale 0.33
-
 
 -(instancetype)initWithBackground:(NSString *)background size:(CGSize)size speed:(CGFloat)speed{
     

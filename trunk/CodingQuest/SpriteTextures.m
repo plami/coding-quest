@@ -1,4 +1,5 @@
 #import "SpriteTextures.h"
+#import "Constants.h"
 
 @interface SpriteTextures ()
 
@@ -28,20 +29,6 @@
 @end
 
 @implementation SpriteTextures
-
-
-#define kMonsterRunningAnimationNumber                      4
-#define kPlayerRunningAnimationNumber                       13
-#define kPlayerJumpingAnimation                             7
-#define kCoinAnimation                                      5
-#define kPlayerRunRightFrame            @"player%ldRight.png"
-#define kPlayerRunLeftFrame             @"player%ldLeft.png"
-#define kPlayerLeftJump                 @"player%ldLeftJump.png"
-#define kPlayerRightJump                @"player%ldRightJump.png"
-#define kPlayerLeftSkid                 @"player5LeftJump.png"
-#define kPlayerRightSkid                @"player5RightJump.png"
-#define kPlayerStillFacingLeft          @"playerStillLeft.png"
-#define kPlayerStillFacingRight         @"playerStillRight.png"
 
 
 -(NSMutableArray *)dyingMonster{
