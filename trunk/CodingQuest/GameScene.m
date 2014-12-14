@@ -190,7 +190,7 @@
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
         
         [self adjustPlayerHealth:-0.334f];
-        
+        [secondBody.node removeFromParent];
         if(self.playerHealth <= 0.0f){
             
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
@@ -278,7 +278,7 @@
                     [_player runOnPlaceLeft];
                 }
                 else if( status == PlayerFacingLeft || PlayerFacingRight){
-                    [_player runRight];
+                    [_player runRight: location];
                 }
             }
         }
@@ -299,7 +299,7 @@
     
     self.lastSpawnTimeInterval += timeSinceLast;
     self.runningTime +=timeSinceLast;
-    if (self.lastSpawnTimeInterval > 2.5) {
+    if (self.lastSpawnTimeInterval > 5) {
         self.lastSpawnTimeInterval = 0;
         
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
@@ -332,7 +332,8 @@
         [_player runLeft];
     }
     if(_player.position.x < 10){
-        [_player runRight];
+        [_player removeAllActions];
+        [_player runOnPlaceRight];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;

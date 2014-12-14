@@ -71,7 +71,7 @@ CGPoint _velocity;
                 [_player skidLeft];
             }
             else if( status == PlayerFacingLeft || PlayerFacingRight){
-                [_player runRight];
+                [_player runRight: location];
             }
         }
     }
@@ -85,7 +85,7 @@ CGPoint _velocity;
         [_player runLeft];
     }
     if(_player.position.x < 10){
-        [_player runRight];
+       // [_player runRight];
     }
 }
 
