@@ -9,7 +9,6 @@
 
 @interface GameScene ()
 
-@property Scores* score;
 @property Player* player;
 @property Monster* monster;
 @property Bonus* coin;
@@ -21,12 +20,17 @@
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
 
-
-
 @property NSTimeInterval runningTime;
 @property (readwrite)SpriteTextures* spriteTextures;
 
+@property NSUInteger score;
+@property CGFloat playerHealth;
+
+
 @end
+
+#define kScoreName @"scoreDisplay"
+#define kHealthName @"healthDisplay"
 
 @implementation GameScene
 
@@ -54,8 +58,6 @@
              //sets the gravity of the game world to zero
              self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
              
-             
-             
              self.counter = 0;
              
              _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
@@ -68,16 +70,74 @@
              _player.physicsBody.dynamic = YES;
              _player.name = @"player";
              
+             //collision between player and coin
              _player.physicsBody.categoryBitMask = playerCategory;
              _player.physicsBody.contactTestBitMask = coinCategory;
              _player.physicsBody.collisionBitMask = 0;
+             
+             //collision between player and monster
+             _player.physicsBody.categoryBitMask = playerCategory;
+             _player.physicsBody.contactTestBitMask = monsterCategory;
+             _player.physicsBody.collisionBitMask = 0;
+             
+             //collision between monsterBullet and player
+             _player.physicsBody.categoryBitMask = playerCategory;
+             _player.physicsBody.contactTestBitMask = monsterBulletCategory;
+             _player.physicsBody.collisionBitMask = 0;
+             
+             _playerHealth = 1.0f;
+             
              [_player runOnPlaceRight];
              [self addChild:[self fireButton]];
-        }
+             
+             [self setupDisplay];
+         }
 
     return self;
 }
+
+
+-(void)setupDisplay {
     
+    SKLabelNode* scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
+    
+    scoreLabel.name = kScoreName;
+    scoreLabel.fontSize = 15;
+    
+    scoreLabel.fontColor = [SKColor greenColor];
+    scoreLabel.text = [NSString stringWithFormat:@"Score: %04u", 0];
+    
+    scoreLabel.position = CGPointMake(20 + scoreLabel.frame.size.width/2, self.size.height - (20 + scoreLabel.frame.size.height/2));
+    [self addChild:scoreLabel];
+    
+    SKLabelNode* healthLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
+    
+    healthLabel.name = kHealthName;
+    healthLabel.fontSize = 15;
+    
+    healthLabel.fontColor = [SKColor redColor];
+    healthLabel.text = [NSString stringWithFormat:@"Health: %.1f%%", self.playerHealth * 100.0f];
+    
+    healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - 20, self.size.height - (20 + healthLabel.frame.size.height/2));
+    [self addChild:healthLabel];
+}
+
+
+-(void)adjustPlayerHealth:(CGFloat)healthAdjustment {
+    //1
+    self.playerHealth = MAX(self.playerHealth + healthAdjustment, 0);
+    
+    SKLabelNode* health = (SKLabelNode*)[self childNodeWithName:kHealthName];
+    health.text = [NSString stringWithFormat:@"Health: %.1f%%", self.playerHealth * 100];
+}
+
+
+-(void)adjustScoreBy:(NSUInteger)points {
+    self.score += points;
+    SKLabelNode* score = (SKLabelNode*)[self childNodeWithName:kScoreName];
+    score.text = [NSString stringWithFormat:@"Score: %04u", self.score];
+}
+
 
 -(void)didBeginContact:(SKPhysicsContact*)contact {
     
@@ -94,26 +154,48 @@
         secondBody = contact.bodyA;
     }
     
-    //    NSLog(@"firstBodyCategory %@, secondBodyCategory %@",firstBody.node.name, secondBody.node.name);
-    
-    
     //react to the contact between coin and player
     if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & coinCategory) != 0) {
         NSLog(@"the coin disappears");
         [secondBody.node removeFromParent];
+        [self adjustScoreBy:100];
     }
+    
     //react to the contact between bullet and monster
     else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         NSLog(@"the monster disappears");
       //  self.score.score += 10;
         self.counter++;
-        NSLog(@"%ld",(long)self.score.score);
         [[self.monsterArray firstObject] die];
         if([self.monsterArray count] > 0){
             [self.monsterArray removeObjectAtIndex:0];
             [firstBody.node removeFromParent];
         }
         [secondBody.node removeFromParent];
+    }
+    
+    //react to the contact between monster and player
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
+        [secondBody.node removeFromParent];
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        [self.view presentScene:gameOverScene transition: reveal];
+        
+        //        NSLog(@"the lives are reduced");
+        //        self.lives--;
+    }
+    
+    //react to the contact between player and monsterBullet
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
+        
+        [self adjustPlayerHealth:-0.334f];
+        
+        if(self.playerHealth <= 0.0f){
+            
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            [self.view presentScene:gameOverScene transition: reveal];
+        }
     }
 }
 
