@@ -3,6 +3,7 @@
 @interface Bonus ()
 
 @property SpriteTextures* spriteTextures;
+
 @property (readwrite)BonusStatus bonusStatus;
 
 #define kCoinMinSize  40
@@ -46,7 +47,7 @@
 
 
 -(void) moveLeft{
-
+    
     SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures movingBonuses] timePerFrame:0.2];
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
@@ -56,20 +57,36 @@
     [self runAction:moveForever];
 
 }
-
+/*
 -(void)addedInScene:(SKScene *)whichScene{
     
     SKSpriteNode* object = [SKSpriteNode spriteNodeWithImageNamed:@"coin1.png"];
     object.size = CGSizeMake(kCoinMinSize,kCoinMaxSize);
     object.position = CGPointMake(whichScene.frame.size.width,whichScene.frame.size.height/4);
-    [self addChild: object];
+    
     
     SKAction* move = [SKAction moveToX:-50 duration: 1];
     [object runAction: move completion:^{
         [object removeFromParent];
     }];
 }
+*/
 
+-(void)spawnInSceneVerticaly{
+    NSLog(@"spawned!");
+    
+    
+    
+    SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures movingBonuses] timePerFrame:0.2];
+    SKAction* runForever = [SKAction repeatActionForever:runAction];
+    [self runAction:runForever];
+    
+    SKAction* moveLeft = [SKAction moveByX:0 y:-50 duration:1];
+    SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
+    [self runAction:moveForever];
+
+    
+}
 
 -(int)getRandomNumberBetween:(int)from to:(int)to {
     

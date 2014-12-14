@@ -29,7 +29,7 @@
 #define kMonsterSpawnY          60
 
 
--(Monster *)initNewMonster:(SKScene *)whichScene startingPoint :(CGPoint)location{
+-(Monster *)initNewMonster:(SKScene *)whichScene{
  
   
     SpriteTextures* monsterTexture = [[SpriteTextures alloc] init];
@@ -40,7 +40,6 @@
     
     SKTexture* f1 = [SKTexture textureWithImageNamed:@"groundBug1Moving.png"];
     Monster* monster = [Monster spriteNodeWithTexture:f1];
-    //monster.position = CGPointMake(whichScene.frame.size.width - 200, whichScene.frame.size.height / 2);
     monster.spriteTextures = monsterTexture;
     monster.size = CGSizeMake(kMonsterWidthSize,kMonsterHighSize);
     
@@ -49,7 +48,6 @@
     monster.physicsBody.restitution = 1.0f;
     monster.physicsBody.linearDamping = 0.0f;
     monster.physicsBody.allowsRotation = NO;
-    //monster.position = location;
     monster.physicsBody.dynamic = YES;
     monster.name = @"monster";
     
@@ -91,7 +89,7 @@
 
 
 -(void)spawnInScene:(SKScene *)whichScene{
-    self.position = CGPointMake(200 + kMonsterSpawnX, kMonsterSpawnY);
+    self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, kMonsterSpawnY);
    [self moveLeft];
 }
 
