@@ -50,7 +50,7 @@
 }
 
 
--(void) runRight{
+-(void) runRight: (CGPoint) location{
 
    [self runOnPlaceRight];
     _playerStatus = PlayerRunningRight;
@@ -59,10 +59,11 @@
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
     
-    SKAction* moveRight = [SKAction moveByX:kPlayerRunOnLeftSpeed y:0 duration:1];
-    SKAction* moveForever = [SKAction repeatActionForever:moveRight];
+    SKAction* moveRight = [SKAction moveByX:location.x y:0 duration:1];
+   // SKAction* moveForever = [SKAction repeatActionForever:moveRight];
     
-    [self runAction:moveForever];
+    [self runAction:moveRight];
+  //  [self runAction:moveForever];
     _playerStatus = PlayerRunningRight;
     
 }
@@ -198,7 +199,7 @@
         }
         else if(nextPlayerStatus == PlayerRunningRight){
             [self removeAllActions];
-            [self runRight];
+            //[self runRight:];
         }
         else if(nextPlayerStatus == PlayerFacingLeft){
             NSArray* playerStillTextures = _spriteTextures.stillLeft;
