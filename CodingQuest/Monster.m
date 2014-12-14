@@ -53,8 +53,14 @@
     monster.physicsBody.dynamic = YES;
     monster.name = @"monster";
     
+    //collision between monster and bullet
     monster.physicsBody.categoryBitMask = monsterCategory;
     monster.physicsBody.contactTestBitMask = bulletCategory;
+    monster.physicsBody.collisionBitMask = 0;
+    
+    //collision between player and monster
+    monster.physicsBody.categoryBitMask = monsterCategory;
+    monster.physicsBody.contactTestBitMask = playerCategory;
     monster.physicsBody.collisionBitMask = 0;
     
     [whichScene addChild:monster];
