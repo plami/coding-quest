@@ -199,6 +199,7 @@
     }
 }
 
+
 -(SKSpriteNode* ) fireButton{
     
     SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
@@ -211,6 +212,7 @@
     
     return fire;
 }
+
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
@@ -252,7 +254,6 @@
             }
         }
         
-        
         else {
             
             if(location.y >= (self.frame.size.height / 2)){
@@ -285,8 +286,6 @@
 }
 
 
-
-
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     
     self.lastSpawnTimeInterval += timeSinceLast;
@@ -313,7 +312,6 @@
         }
         
     }
-    
    }
 
 -(void)update:(CFTimeInterval)currentTime {

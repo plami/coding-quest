@@ -8,25 +8,33 @@
     if (self = [super initWithSize:size]) {
         
         // 1
-        self.backgroundColor = [SKColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        //adding background
+        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
+        bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [self addChild:bgImage];
+        
+        //adding logos
+        SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"itTalents.png"];
+        logo.position = CGPointMake(830, 580);
+        [self addChild:logo];
         
         // 2
         NSString * message;
-        message = @"Game Over :[";
+        message = @"Game Over";
         // 3
-        SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         label.text = message;
         label.fontSize = 40;
-        label.fontColor = [SKColor blackColor];
+        label.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         label.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:label];
         
         
         NSString * retrymessage;
         retrymessage = @"Replay Game";
-        SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         retryButton.text = retrymessage;
-        retryButton.fontColor = [SKColor blackColor];
+        retryButton.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         retryButton.position = CGPointMake(self.size.width/2, 50);
         retryButton.name = @"retry";
         [retryButton setScale:.6];
@@ -35,9 +43,9 @@
         
         NSString* menuMessage;
         menuMessage = @"Back to menu";
-        SKLabelNode* backButton = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        SKLabelNode* backButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         backButton.text = menuMessage;
-        backButton.fontColor = [SKColor blackColor];
+        backButton.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         backButton.position = CGPointMake(self.size.width / 2, 100);
         backButton.name = @"back";
         [backButton setScale:.6];

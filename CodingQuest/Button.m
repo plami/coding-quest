@@ -1,11 +1,14 @@
 #import "Button.h"
 #import "Bullet.h"
 #import "Player.h"
+
 @interface Button ()
+
 @property Bullet* bullet;
 @property Player* player;
 
 @property NSString* image;
+
 @end
 
 @implementation Button
@@ -59,18 +62,6 @@
     }
     
 }
-/*
- -(SKSpriteNode* ) fireButton{
- 
- SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"mainCircle.jpeg"];
- self.position = CGPointMake(200, 200);
- fire.name = @"fireButton";
- fire.zPosition = 1.0;
- fire.size =CGSizeMake(50, 50);
- return fire;
- 
- }
- */
 
 
 @end
