@@ -37,9 +37,10 @@
     [monsterTexture createMonsterRunningAnimation];
     [monsterTexture createSpittingLeftAnimation];
     [monsterTexture createMonsterDyingAnimation];
+    
     SKTexture* f1 = [SKTexture textureWithImageNamed:@"groundBug1Moving.png"];
     Monster* monster = [Monster spriteNodeWithTexture:f1];
-    monster.position = CGPointMake(whichScene.frame.size.width, whichScene.frame.size.height / 2);
+    //monster.position = CGPointMake(whichScene.frame.size.width - 200, whichScene.frame.size.height / 2);
     monster.spriteTextures = monsterTexture;
     monster.size = CGSizeMake(kMonsterWidthSize,kMonsterHighSize);
     
@@ -48,7 +49,7 @@
     monster.physicsBody.restitution = 1.0f;
     monster.physicsBody.linearDamping = 0.0f;
     monster.physicsBody.allowsRotation = NO;
-    monster.position = location;
+    //monster.position = location;
     monster.physicsBody.dynamic = YES;
     monster.name = @"monster";
     
@@ -78,32 +79,21 @@
 
 -(void)die{
     SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures dyingMonster] timePerFrame:0.5];
-    
     [self runAction:dieAction];
     
 }
 
 
 -(void)spawnInScene:(SKScene *)whichScene{
-    self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, kMonsterSpawnY);
+    self.position = CGPointMake(200 + kMonsterSpawnX, kMonsterSpawnY);
    [self moveLeft];
 }
 
--(void)shootAtSceen:(SKScene *)scene{
+-(void)shoot:(SKScene*) scene{
     Bullet *leftAcit = [Bullet initNewAcidLeft:scene startingPoint:self.position];
-    
+    leftAcit.size = CGSizeMake(10, 20);
     [leftAcit shootLeft];
 }
-/*
--(void)shootLeft{
-    SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures spittingLeft] timePerFrame:0.1];
-    SKAction* bulletMoveForever = [SKAction repeatActionForever:shootAction];
-    [self runAction:bulletMoveForever];
-    
-    SKAction* moveLeft = [SKAction moveByX:-200 y:0 duration:1];
-    SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
-    
-    [self runAction:moveForever];
-}*/
+
 
 @end

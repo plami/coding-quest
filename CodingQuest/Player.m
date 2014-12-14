@@ -5,13 +5,13 @@
 @property SKTextureAtlas* runAtlas;
 @property SpriteTextures* spriteTextures;
 @property (readwrite)PlayerStatus playerStatus;
-
+@property NSInteger playerLives;
 @end
 
 @implementation Player
 
 //putting the player in the Scene for Level 1
-
+#define kPlayerLives     3
 #define kPlayerSizeHigh  70
 #define kPlayerSizeWidth 50
 #define kPlayerRunOnPlaceTimePerFrame 0.1
@@ -42,7 +42,7 @@
     player.physicsBody.affectedByGravity = YES;
     [whichScene1 addChild:player];
     player.playerStatus = PlayerFacingRight;
-    
+    player.playerLives = kPlayerLives;
     return player;
 }
 
@@ -58,7 +58,7 @@
 -(void) runRight{
 
    [self runOnPlaceRight];
-    
+    _playerStatus = PlayerRunningRight;
     SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures runningRight] timePerFrame:0.1f];
     
     SKAction* runForever = [SKAction repeatActionForever:runAction];
@@ -139,7 +139,7 @@
 -(void) runLeft{
     
     [self runOnPlaceLeft];
-    
+    _playerStatus = PlayerRunningLeft;
     SKAction* moveLeft = [SKAction moveByX:-kPlayerRunOnLeftSpeed y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     
