@@ -25,7 +25,6 @@ BOOL isInited;
 }
 
 
-
 - (instancetype)initWithScore:(NSInteger)score
 {
     self = [super init];

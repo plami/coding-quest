@@ -1,25 +1,18 @@
 #import "Player.h"
 #import "SpriteTextures.h"
+#import "GameOverScene.h"
+#import "Constants.h"
+
 @interface Player ()
 
 @property SKTextureAtlas* runAtlas;
 @property SpriteTextures* spriteTextures;
 @property (readwrite)PlayerStatus playerStatus;
 @property NSInteger playerLives;
+
 @end
 
 @implementation Player
-
-#define kPlayerSizeHigh  70
-#define kPlayerSizeWidth 50
-#define kPlayerRunOnPlaceTimePerFrame 0.1
-#define kPlayerRunOnRightSpeed 50
-#define kPlayerRunOnLeftSpeed 80
-#define kPlayerMoveUpLength 100
-#define kPlayerMoveDownLength 100
-#define kPlayerSkidRight 50
-#define kPlayerSkidLeft 50
-
 
 +(Player *)initNewPlayer:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
     
@@ -37,6 +30,7 @@
     player.physicsBody.affectedByGravity = YES;
     [whichScene1 addChild:player];
     player.playerStatus = PlayerFacingRight;
+    player.playerLives = kPlayerLives;
   
     return player;
 }
@@ -49,6 +43,10 @@
     [self runAction:runForever];
 }
 
+
+-(void)playerWasHit{
+    self.playerLives--;
+}
 
 -(void) runRight: (CGPoint) location{
 

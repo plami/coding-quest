@@ -80,7 +80,7 @@
         [_player runLeft];
     }
     if(_player.position.x < 10){
-        [_player runRight];
+//        [_player runRight];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
@@ -136,7 +136,7 @@
             [_player skidLeft];
         }
         else if( status == PlayerFacingLeft || PlayerFacingRight){
-            [_player runRight];
+//            [_player runRight];
         }
     }
     }
