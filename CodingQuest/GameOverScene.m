@@ -7,11 +7,7 @@
 -(instancetype) initWithSize:(CGSize)size{
     if (self = [super initWithSize:size]) {
         
-        // 1
-        //adding background
-        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
-        bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
-        [self addChild:bgImage];
+        self.backgroundColor = [SKColor colorWithRed:0.3 green:0.9 blue:1.0 alpha:1.0];
         
         //adding logos
         SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"itTalents.png"];
