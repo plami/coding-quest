@@ -37,6 +37,8 @@
 		CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD51A1F7D74000D7A8F /* Images.xcassets */; };
 		CD202AE51A1F7D74000D7A8F /* CodingQuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */; };
 		CF4CA3631A3CA4720037F4EA /* FlyMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CA3621A3CA4720037F4EA /* FlyMonster.m */; };
+		CF52ADC31A3D94CB009B1943 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52ADC21A3D94CB009B1943 /* Button.m */; };
+		CF52ADC61A3D9732009B1943 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = CF52ADC51A3D9732009B1943 /* button.png */; };
 		CF7C8E5F1A3B2C2C00E596D2 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */; };
 		CF9C9FD61A39DFFF00D05DA1 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD11A39DFFF00D05DA1 /* Background.m */; };
 		CF9C9FD71A39DFFF00D05DA1 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD31A39DFFF00D05DA1 /* Monster.m */; };
@@ -105,6 +107,9 @@
 		CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingQuestTests.m; sourceTree = "<group>"; };
 		CF4CA3611A3CA4720037F4EA /* FlyMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyMonster.h; sourceTree = "<group>"; };
 		CF4CA3621A3CA4720037F4EA /* FlyMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyMonster.m; sourceTree = "<group>"; };
+		CF52ADC11A3D94CB009B1943 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		CF52ADC21A3D94CB009B1943 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
+		CF52ADC51A3D9732009B1943 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		CF7C8E5D1A3B2C2C00E596D2 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
 		CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
 		CF9C9FD01A39DFFF00D05DA1 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
@@ -145,6 +150,7 @@
 		CD0DD89A1A35DF1D00192C22 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CF52ADC51A3D9732009B1943 /* button.png */,
 				CD0DD9301A3B409800192C22 /* coin.atlas */,
 				CD0DD91E1A39E47C00192C22 /* firstBugMoving.atlas */,
 				CD0DD91C1A39E47600192C22 /* firstBugHit.atlas */,
@@ -251,6 +257,8 @@
 				CD202AC81A1F7D74000D7A8F /* AppDelegate.m */,
 				CD202AD51A1F7D74000D7A8F /* Images.xcassets */,
 				CD202AC31A1F7D74000D7A8F /* Supporting Files */,
+				CF52ADC11A3D94CB009B1943 /* Button.h */,
+				CF52ADC21A3D94CB009B1943 /* Button.m */,
 			);
 			path = CodingQuest;
 			sourceTree = "<group>";
@@ -383,6 +391,7 @@
 				CD0DD9311A3B409800192C22 /* coin.atlas in Resources */,
 				CD0DD8911A35CE2900192C22 /* background.jpg in Resources */,
 				CF9C9FE01A39E00900D05DA1 /* leftRunning.atlas in Resources */,
+				CF52ADC61A3D9732009B1943 /* button.png in Resources */,
 				CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */,
 				CD0DD91F1A39E47C00192C22 /* firstBugMoving.atlas in Resources */,
 				CD0DD9461A3CB1C000192C22 /* fireButton.jpeg in Resources */,
@@ -409,6 +418,7 @@
 				CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */,
 				CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */,
 				C1EB456B1A3B1E8500153D92 /* GameSceneLevel3.m in Sources */,
+				CF52ADC31A3D94CB009B1943 /* Button.m in Sources */,
 				CF9C9FD81A39DFFF00D05DA1 /* Player.m in Sources */,
 				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
 				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,

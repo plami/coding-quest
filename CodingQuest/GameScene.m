@@ -65,23 +65,10 @@
              _player.physicsBody.contactTestBitMask = coinCategory;
              _player.physicsBody.collisionBitMask = 0;
              
-             NSString *ShootButton;
-             ShootButton = @"Shoot";
-             
-             SKLabelNode *myShootLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
-             
-             myShootLabel.text = ShootButton;
-             myShootLabel.fontSize = 30;
-             myShootLabel.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-             myShootLabel.position = CGPointMake(self.frame.size.width- 100, 20);
-             myShootLabel.name = @"shoot";
-             
-
-            [self addChild:myShootLabel];
-
-             if(myShootLabel )
-             [_player runOnPlaceRight];
+             [self addChild:[self fireButton]];
         }
+    
+    
 
     return self;
 }
@@ -122,6 +109,18 @@
     }
 }
 
+-(SKSpriteNode* ) fireButton{
+    
+    SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
+    fire.position = CGPointMake(self.frame.size.width- 100, 20);
+    
+    fire.name = @"fireButton";
+    fire.zPosition = 1.0;
+    fire.size = CGSizeMake(50, 50);
+    return fire;
+    
+    return fire;
+}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
@@ -135,7 +134,8 @@
         SKNode *node = [self nodeAtPoint:location];
 
         
-        if ([node.name isEqualToString:@"shoot"]) {
+        if([node.name isEqualToString:@"fireButton"]){
+            
             if (status == PlayerFacingRight || status == PlayerRunningRight || status == PlayerSkiddingRight){
                 _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
                 
@@ -153,7 +153,7 @@
                 _bullet.physicsBody.categoryBitMask = bulletCategory;
                 _bullet.physicsBody.contactTestBitMask = monsterCategory;
                 _bullet.physicsBody.collisionBitMask = 0;
-            
+                
                 
             }
             if (status == PlayerFacingLeft || status == PlayerRunningLeft || status == PlayerSkiddingLeft ){
@@ -161,6 +161,7 @@
                 [_bullet shootLeft];
             }
         }
+        
         
        /* else {
             
