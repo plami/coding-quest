@@ -236,7 +236,6 @@
         UITouch *touch = [touches anyObject];
         CGPoint location = [touch locationInNode:self];
         SKNode *node = [self nodeAtPoint:location];
-
         
         if([node.name isEqualToString:@"fireButton"]){
             
