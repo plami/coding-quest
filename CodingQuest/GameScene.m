@@ -34,6 +34,8 @@
 @implementation GameScene
 
 
+#pragma mark Init Method
+
 -(instancetype)initWithSize:(CGSize)size{
     
     self = [super initWithSize:size];
@@ -97,6 +99,8 @@
 }
 
 
+#pragma mark Setting up the Display of the main scene
+
 -(void)setupDisplay {
     
     SKLabelNode* scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
@@ -149,6 +153,22 @@
     score.text = [NSString stringWithFormat:@"Score: %04u", self.score];
 }
 
+
+-(SKSpriteNode* ) fireButton{
+    
+    SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
+    fire.position = CGPointMake(self.frame.size.width- 100, 20);
+    
+    fire.name = @"fireButton";
+    fire.zPosition = 1.0;
+    fire.size = CGSizeMake(50, 50);
+    return fire;
+    
+    return fire;
+}
+
+
+#pragma mark Setup Physics
 
 -(void)didBeginContact:(SKPhysicsContact*)contact {
     
@@ -209,20 +229,6 @@
             [self.view presentScene:gameOverScene transition: reveal];
         }
     }
-}
-
-
--(SKSpriteNode* ) fireButton{
-    
-    SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
-    fire.position = CGPointMake(self.frame.size.width- 100, 20);
-    
-    fire.name = @"fireButton";
-    fire.zPosition = 1.0;
-    fire.size = CGSizeMake(50, 50);
-    return fire;
-    
-    return fire;
 }
 
 

@@ -9,6 +9,8 @@
 @implementation Bullet
 
 
+#pragma mark Init Methods of the bullets
+
 +(Bullet *)initNewBullet3:(SKScene *)whichScene3 startingPoint:(CGPoint)location{
     
     SpriteTextures* bulletTexture3 = [[SpriteTextures alloc]init];
@@ -40,6 +42,7 @@
     
     return bullet3;
 }
+
 
 +(Bullet *)initNewBulletLeft3:(SKScene *)whichScene3 startingPoint:(CGPoint)location{
     
@@ -130,6 +133,8 @@
 }
 
 
+#pragma mark - Actions for shooting of the Player
+
 -(void)shootRight{
     
     SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures shootingRight] timePerFrame:0.1];
@@ -156,6 +161,8 @@
 }
 
 
+#pragma mark - Actions for shooting of the Enemy
+
 -(void)spitDown{
     SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures spittingDown] timePerFrame:0.1];
     SKAction* acidMoveForever = [SKAction repeatActionForever:shootAction];
@@ -167,6 +174,7 @@
     [self runAction:moveForever];
 }
 
+
 -(void)spitLeft{
     SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures spittingLeft] timePerFrame:0.1];
     SKAction* acidMoveForever = [SKAction repeatActionForever:shootAction];
@@ -177,5 +185,6 @@
     
     [self runAction:moveForever];
 }
+
 
 @end

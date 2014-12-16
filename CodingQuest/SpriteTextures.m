@@ -102,6 +102,9 @@
     return self.bulletShootLeftTexture;
 }
 
+
+#pragma mark Animation for moving, dying and shooting of the Monster
+
 -(void)createMonsterDyingAnimation{
     
     self.dyingBugTexture = [[NSMutableArray alloc] init];
@@ -109,19 +112,6 @@
         SKTexture* die = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"groundBug%ldHit.png",(long)pic]];
         
         [self.dyingBugTexture addObject: die];
-    }
-}
-
-
--(void)createCoinAnimation{
-    
-    self.movingCoins = [[NSMutableArray alloc]init];
-    
-    for(int pic = 1; pic <= kCoinAnimation; ++pic){
-        
-        SKTexture* runLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"coin%ld.png",(long) pic]];
-        
-        [self.movingCoins addObject:runLeft];
     }
 }
 
@@ -138,6 +128,37 @@
     }
 }
 
+
+-(void)createSpittingLeftAnimation{
+    self.acidShootLeftTexture = [[NSMutableArray alloc] init];
+    SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"acidAttackLeft.png"]];
+    [self.acidShootLeftTexture addObject:shoot];
+}
+
+
+-(void)createSpittingDownAnimation{
+    self.acidShootDownTexture = [[NSMutableArray alloc] init];
+    SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"acidAttackDown.png"]];
+    [self.acidShootDownTexture addObject:shoot];
+}
+
+
+#pragma mark Animation for Bonus
+
+-(void)createCoinAnimation{
+    
+    self.movingCoins = [[NSMutableArray alloc]init];
+    
+    for(int pic = 1; pic <= kCoinAnimation; ++pic){
+        
+        SKTexture* runLeft = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"coin%ld.png",(long) pic]];
+        
+        [self.movingCoins addObject:runLeft];
+    }
+}
+
+
+#pragma mark Animation for moving, jumping and shooting of the Player
 
 -(void)createRunningAnimation{
     
@@ -204,7 +225,6 @@
 }
 
 
-
 -(void)createShootingRightAnimation{
 
     self.bulletShootRightTexture = [[NSMutableArray alloc] init];
@@ -218,21 +238,6 @@
     self.bulletShootLeftTexture = [[NSMutableArray alloc] init];
     SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bulletLeft.png"]];
     [self.bulletShootLeftTexture addObject:shoot];
-}
-
-
-
--(void)createSpittingLeftAnimation{
-    self.acidShootLeftTexture = [[NSMutableArray alloc] init];
-    SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"acidAttackLeft.png"]];
-    [self.acidShootLeftTexture addObject:shoot];
-}
-
-
--(void)createSpittingDownAnimation{
-    self.acidShootDownTexture = [[NSMutableArray alloc] init];
-    SKTexture* shoot = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"acidAttackDown.png"]];
-    [self.acidShootDownTexture addObject:shoot];
 }
 
 

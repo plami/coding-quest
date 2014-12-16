@@ -16,4 +16,6 @@ typedef enum: int{
 -(void)addedInScene:(SKScene *)whichScene;
 -(void) moveLeft;
 -(void) spawnInSceneVerticaly;
+
+
 @end

@@ -3,16 +3,14 @@
 @interface Bonus ()
 
 @property SpriteTextures* spriteTextures;
-
 @property (readwrite)BonusStatus bonusStatus;
-
-#define kCoinMinSize  40
-#define kCoinMaxSize  40
 
 @end
 
 @implementation Bonus
 
+
+#pragma mark Init Method
 
 +(Bonus *)initNewBonus:(SKScene *)whichScene startingPoint :(CGPoint)location{
     
@@ -46,6 +44,8 @@
 }
 
 
+#pragma mark - Animation and Actions for Bonus
+
 -(void) moveLeft{
     
     SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures movingBonuses] timePerFrame:0.2];
@@ -55,27 +55,11 @@
     SKAction* moveLeft = [SKAction moveByX:-50 y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     [self runAction:moveForever];
+}
 
-}
-/*
--(void)addedInScene:(SKScene *)whichScene{
-    
-    SKSpriteNode* object = [SKSpriteNode spriteNodeWithImageNamed:@"coin1.png"];
-    object.size = CGSizeMake(kCoinMinSize,kCoinMaxSize);
-    object.position = CGPointMake(whichScene.frame.size.width,whichScene.frame.size.height/4);
-    
-    
-    SKAction* move = [SKAction moveToX:-50 duration: 1];
-    [object runAction: move completion:^{
-        [object removeFromParent];
-    }];
-}
-*/
 
 -(void)spawnInSceneVerticaly{
     NSLog(@"spawned!");
-    
-    
     
     SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures movingBonuses] timePerFrame:0.2];
     SKAction* runForever = [SKAction repeatActionForever:runAction];

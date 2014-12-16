@@ -6,6 +6,8 @@
 @implementation StartingPage
 
 
+#pragma mark Init Method
+
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         
@@ -80,6 +82,7 @@
     return self;
 }
 
+#pragma mark Display for transition between the levels
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */

@@ -14,6 +14,9 @@
 
 @implementation Player
 
+
+#pragma mark Init Method
+
 +(Player *)initNewPlayer:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
     
     SpriteTextures* playerTexture = [[SpriteTextures alloc]init];
@@ -35,6 +38,12 @@
     return player;
 }
 
+-(void)playerWasHit{
+    self.playerLives--;
+}
+
+
+#pragma mark - Animation and Actions for Player
 
 -(void)runOnPlaceRight{
     SKAction* runAction = [SKAction animateWithTextures:[self.spriteTextures runningRight] timePerFrame:kPlayerRunOnPlaceTimePerFrame];
@@ -43,10 +52,6 @@
     [self runAction:runForever];
 }
 
-
--(void)playerWasHit{
-    self.playerLives--;
-}
 
 -(void) runRight: (CGPoint) location{
 
@@ -118,17 +123,16 @@
         _playerStatus = PlayerFacingLeft;
         
     }];
-
-    
 }
+
 
 -(void)runOnPlaceLeft{
     SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures runningLeft] timePerFrame:0.1f];
     
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
-    
 }
+
 
 -(void) runLeft{
     
@@ -223,5 +227,6 @@
     }];
     
 }
+
 
 @end

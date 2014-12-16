@@ -9,6 +9,7 @@
 
 @implementation GameViewController
 
+
 - (void)viewWillLayoutSubviews
 {
    [super viewWillLayoutSubviews];
@@ -28,10 +29,12 @@
     [skView presentScene:scene];
 }
 
+
 - (BOOL)shouldAutorotate
 {
     return YES;
 }
+
 
 - (NSUInteger)supportedInterfaceOrientations
 {
@@ -42,14 +45,17 @@
     }
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
 
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+
 
 @end

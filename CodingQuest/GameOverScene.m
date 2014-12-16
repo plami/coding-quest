@@ -5,6 +5,8 @@
 @implementation GameOverScene
 
 
+#pragma mark Init Method
+
 -(instancetype) initWithSize:(CGSize)size{
     if (self = [super initWithSize:size]) {
         
@@ -46,6 +48,8 @@
     return self;
 }
 
+
+#pragma mark Setting the Display of Game Over Scene
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
