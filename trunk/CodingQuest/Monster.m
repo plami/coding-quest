@@ -94,7 +94,7 @@
 -(void)shoot:(SKScene*) scene{
     Bullet *leftAcit = [Bullet initNewAcidLeft:scene startingPoint:self.position];
     leftAcit.size = CGSizeMake(10, 20);
-    [leftAcit shootLeft];
+    [leftAcit spitLeft];
 }
 
 

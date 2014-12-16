@@ -17,6 +17,7 @@
 @property NSMutableArray* leftMovingBug;
 @property NSMutableArray* dyingBugTexture;
 
+
 @property NSMutableArray* bulletShootRightTexture;
 @property NSMutableArray* bulletShootLeftTexture;
 

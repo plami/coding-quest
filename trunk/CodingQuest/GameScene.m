@@ -22,7 +22,6 @@
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
 @property NSTimeInterval runningTime;
-@property NSUInteger score;
 @property CGFloat playerHealth;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
@@ -89,7 +88,7 @@
              
              [_player runOnPlaceRight];
              [self addChild:[self fireButton]];
-             
+
              [self setupDisplay];
          }
 
@@ -129,7 +128,7 @@
     livesLabel.fontSize = 15;
     
     livesLabel.fontColor = [SKColor greenColor];
-    livesLabel.text = [NSString stringWithFormat:@"Lives: %@%%", self.lives];
+    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
     
     livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
     [self addChild:livesLabel];
@@ -195,6 +194,7 @@
         NSLog(@"the monster disappears");
         
         self.counter++;
+        [self adjustScoreBy:100];
         [[self.monsterArray firstObject] die];
         if([self.monsterArray count] > 0){
             [self.monsterArray removeObjectAtIndex:0];
@@ -207,10 +207,9 @@
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         [secondBody.node removeFromParent];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-        SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        GameOverScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
         [self.view presentScene:gameOverScene transition: reveal];
-        
-        [_player playerWasHit];
+               [_player playerWasHit];
          NSLog(@"the lives are reduced");
         
     }
@@ -221,9 +220,11 @@
         [self adjustPlayerHealth:-0.20f];
         [secondBody.node removeFromParent];
         if(self.playerHealth <= 0.0f){
-
+        
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            gameOverScene.finalScore = self.score;
+
             [self.view presentScene:gameOverScene transition: reveal];
         }
     }
@@ -271,30 +272,29 @@
         
         else {
             
-            if(location.y >= (self.frame.size.height / 2)){
-            
-                if(status != PlayerJumpingLeft && status != PlayerJumpingRight && status != PlayerJumpingUpFacingLeft && status != PlayerJumpingUpFacingRight){
+            if (location.y >= (self.frame.size.height / 2 )) {
+                // user touched upper half of the screen (zero = bottom of screen)
+                if (status != PlayerJumpingLeft && status != PlayerJumpingRight && status != PlayerJumpingUpFacingLeft && status != PlayerJumpingUpFacingRight) {
                     [_player jump];
                 }
-            }
-            else if(location.x <= _player.position.x){
-                if(status == PlayerRunningRight){
+            } else if (location.x <= ( self.frame.size.width / 2 )) {
+                // user touched left side of screen
+                if (status == PlayerRunningRight) {
                     [_player skidRight];
                     [_player runOnPlaceRight];
-                }
-                else if(status == PlayerFacingLeft || status == PlayerFacingRight){
+                } else if (status == PlayerFacingLeft || status == PlayerFacingRight) {
                     [_player runLeft];
                 }
-            }
-            else{
-                if(status == PlayerRunningLeft){
+            } else {
+                // user touched right side of screen
+                if (status == PlayerRunningLeft) {
                     [_player skidLeft];
                     [_player runOnPlaceLeft];
-                }
-                else if( status == PlayerFacingLeft || PlayerFacingRight){
-                    [_player runRight: location];
+                } else if (status == PlayerFacingLeft || status == PlayerFacingRight) {
+                    [_player runRight];
                 }
             }
+
         }
     }
 }
@@ -312,7 +312,7 @@
     
     self.lastSpawnTimeInterval += timeSinceLast;
     self.runningTime +=timeSinceLast;
-    if (self.lastSpawnTimeInterval > 5) {
+    if (self.lastSpawnTimeInterval > 10) {
         self.lastSpawnTimeInterval = 0;
         
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
@@ -330,7 +330,11 @@
         
         if(self.counter >= 2){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            gameOverScene.finalScore = self.score;
+            NSLog(@"final score: %ld",(long)gameOverScene.finalScore);
+            
+            [gameOverScene updated];
             [self.view presentScene:gameOverScene transition: reveal];
         }
         
@@ -342,11 +346,12 @@
     [self.scrollingBackground update:currentTime];
     
     if(_player.position.x > self.size.width - 10){
-        [_player runLeft];
+        [_player removeAllActions];
+        [_player runOnPlaceRight];
     }
     if(_player.position.x < 10){
         [_player removeAllActions];
-        [_player runOnPlaceRight];
+        [_player runOnPlaceLeft];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;

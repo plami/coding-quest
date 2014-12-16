@@ -2,15 +2,23 @@
 #import "GameScene.h"
 #import "StartingPage.h"
 
+@interface GameOverScene ()
+
+@property NSString* endScore;
+@property SKLabelNode* scoreLabel;
+@end
+
 @implementation GameOverScene
 
-
 #pragma mark Init Method
+
 
 -(instancetype) initWithSize:(CGSize)size{
     if (self = [super initWithSize:size]) {
         
         self.backgroundColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.7];
+        GameScene* thisScene = [[GameScene alloc]init];
+        self.finalScore = thisScene.score;
         
         NSString * message;
         message = @"Game Over";
@@ -43,11 +51,24 @@
         backButton.name = @"back";
         [backButton setScale:.6];
         
-        [self addChild:backButton];
+        [self addChild:backButton]; 
+        
     }
     return self;
 }
 
+-(void) updated{
+    NSLog(@"finnal score: %ld ",(long)self.finalScore);
+    //self.endScore = [NSString stringWithFormat:@"Final score: %ld",(long)self.finalScore];
+    self.endScore = [NSString stringWithFormat:@"Final score: %ld", (long)self.finalScore];
+    self.scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
+    NSLog(@"%ld",(long) self.finalScore);
+    self.scoreLabel.text = self.endScore;
+    self.scoreLabel.position = CGPointMake(70, 300);
+    [self.scoreLabel setScale: .6];
+    
+    [self addChild:self.scoreLabel];
+}
 
 #pragma mark Setting the Display of Game Over Scene
 
@@ -56,7 +77,7 @@
     UITouch* touch= [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode* node = [self nodeAtPoint:location];
-    
+   
     if([node.name isEqualToString:@"retry"]){
     
         SKTransition* reveal = [SKTransition flipHorizontalWithDuration:0.5];

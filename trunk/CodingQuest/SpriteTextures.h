@@ -16,7 +16,17 @@
 -(void) createCoinAnimation;
 
 -(void) createMonsterDyingAnimation;
-//-(void) createGroundMonsterAnimation;
+
+-(void) createFlyingAnimation;
+
+-(void) createShootingRightAnimation;
+
+-(void) createShootingLeftAnimation;
+
+-(void) createSpittingDownAnimation;
+
+-(void) createSpittingLeftAnimation;
+
 
 -(NSMutableArray*) runLeftMonster;
 
@@ -50,13 +60,6 @@
 
 -(NSMutableArray*) spittingLeft;
 
--(void) createShootingRightAnimation;
-
--(void) createShootingLeftAnimation;
-
--(void) createSpittingDownAnimation;
-
--(void) createSpittingLeftAnimation;
 
 @end
 

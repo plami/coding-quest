@@ -24,12 +24,13 @@ typedef enum: int{
 +(Player*) initNewPlayer:(SKScene*) whichScene1 startingPoint: (CGPoint) location;
 
 -(void) runOnPlaceRight;
--(void) runRight: (CGPoint) location;
+-(void) runRight;
 -(void) runLeft;
 -(void) jump;
 -(void) skidRight;
 -(void) skidLeft;
 -(void) runOnPlaceLeft;
 -(void)playerWasHit;
+-(NSInteger) livesRemaining;
 
 @end

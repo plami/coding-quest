@@ -25,7 +25,7 @@ BOOL isInited;
 }
 
 
-- (instancetype)initWithScore:(NSInteger)score
+- (instancetype)initWithScore:(NSInteger)score andScene: (SKScene*) scene;
 {
     self = [super init];
     if(isInited){
@@ -35,6 +35,7 @@ BOOL isInited;
     if (self) {
         self.score = score;
         isInited = YES;
+        [scene addChild:[self createScoreNode]];
     }
     return self;
 }
@@ -52,5 +53,10 @@ BOOL isInited;
     
     return scoreLabel;
 }
- 
+
+
+-(void)updateScore:(SKScene *)scene newScore:(int)playerScore hiScore:(int)highScore{
+    self.score +=playerScore;
+}
+
 @end

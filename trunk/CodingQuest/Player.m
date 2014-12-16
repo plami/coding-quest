@@ -9,11 +9,10 @@
 @property SpriteTextures* spriteTextures;
 @property (readwrite)PlayerStatus playerStatus;
 @property NSInteger playerLives;
-
+@property CGPoint* currentLocation;
 @end
 
 @implementation Player
-
 
 #pragma mark Init Method
 
@@ -38,12 +37,18 @@
     return player;
 }
 
+
+-(NSInteger)livesRemaining{
+    
+    return self.playerLives;
+}
+
 -(void)playerWasHit{
     self.playerLives--;
 }
 
-
 #pragma mark - Animation and Actions for Player
+
 
 -(void)runOnPlaceRight{
     SKAction* runAction = [SKAction animateWithTextures:[self.spriteTextures runningRight] timePerFrame:kPlayerRunOnPlaceTimePerFrame];
@@ -53,7 +58,7 @@
 }
 
 
--(void) runRight: (CGPoint) location{
+-(void) runRight{
 
    [self runOnPlaceRight];
     _playerStatus = PlayerRunningRight;
@@ -62,11 +67,11 @@
     SKAction* runForever = [SKAction repeatActionForever:runAction];
     [self runAction:runForever];
     
-    SKAction* moveRight = [SKAction moveByX:location.x y:0 duration:1];
-   // SKAction* moveForever = [SKAction repeatActionForever:moveRight];
+    SKAction* moveRight = [SKAction moveByX: kPlayerRunOnRightSpeed y:0 duration:1];
+    SKAction* moveForever = [SKAction repeatActionForever:moveRight];
     
     [self runAction:moveRight];
-  //  [self runAction:moveForever];
+    [self runAction:moveForever];
     _playerStatus = PlayerRunningRight;
     
 }
@@ -138,7 +143,7 @@
     
     [self runOnPlaceLeft];
     _playerStatus = PlayerRunningLeft;
-    SKAction* moveLeft = [SKAction moveByX:-kPlayerRunOnLeftSpeed y:0 duration:1];
+    SKAction* moveLeft = [SKAction moveByX:-kPlayerRunOnLeftSpeed y:0 duration:2];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     
     [self runAction:moveForever];
@@ -201,7 +206,7 @@
         }
         else if(nextPlayerStatus == PlayerRunningRight){
             [self removeAllActions];
-            //[self runRight:];
+            [self runRight];
         }
         else if(nextPlayerStatus == PlayerFacingLeft){
             NSArray* playerStillTextures = _spriteTextures.stillLeft;

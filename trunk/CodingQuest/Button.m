@@ -24,6 +24,9 @@
         self.name = @"fireButton";
         self.zPosition = 1.0;
         self.size = CGSizeMake(50, 50);
+       
+        [scene addChild: [self fireButton]];
+        
     }
     return self;
 }

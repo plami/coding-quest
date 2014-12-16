@@ -7,7 +7,7 @@
 
 
 
--(instancetype)initWithScore: (NSInteger) score ;
+-(instancetype)initWithScore: (NSInteger) score andScene: (SKScene*) scene;
 
 -(SKLabelNode*) createScoreNode;
 
