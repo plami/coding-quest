@@ -150,7 +150,7 @@
 
 -(void)shootLeft{
     
-    SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures spittingLeft] timePerFrame:0.1];
+    SKAction* shootAction = [SKAction animateWithTextures:[_spriteTextures shootingLeft] timePerFrame:0.1];
     SKAction* bulletMoveForever = [SKAction repeatActionForever:shootAction];
     [self runAction:bulletMoveForever];
     

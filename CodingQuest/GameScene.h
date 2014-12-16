@@ -5,5 +5,6 @@
 @interface GameScene : SKScene<SKPhysicsContactDelegate>
 
 @property (readonly)SpriteTextures* spriteTextures;
+@property NSUInteger score;
 
 @end

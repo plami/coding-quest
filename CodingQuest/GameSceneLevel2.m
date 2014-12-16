@@ -70,7 +70,7 @@
                 [_player skidLeft];
             }
             else if( status == PlayerFacingLeft || PlayerFacingRight){
-                [_player runRight: location];
+                [_player runRight];
             }
         }
     }
