@@ -34,6 +34,7 @@
         myLabelLevelOne.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         myLabelLevelOne.position = CGPointMake(200, 500);
         myLabelLevelOne.name = @"Level 1 button";
+        myLabelLevelOne.zPosition = 1;
         
         [self addChild:myLabelLevelOne];
         
@@ -48,6 +49,7 @@
         myLabelLevelTwo.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         myLabelLevelTwo.position = CGPointMake(200, 350);
         myLabelLevelTwo.name = @"Level 2 button";
+        myLabelLevelTwo.zPosition = 1;
         
         [self addChild:myLabelLevelTwo];
         
@@ -62,6 +64,7 @@
         myLabelLevelThree.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         myLabelLevelThree.position = CGPointMake(200, 200);
         myLabelLevelThree.name = @"Level 3 button";
+        myLabelLevelThree.zPosition = 1;
         
         [self addChild:myLabelLevelThree];
         
@@ -76,6 +79,7 @@
         myLabelHighScore.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         myLabelHighScore.position = CGPointMake(700, 70);
         myLabelHighScore.name = @"High Score button";
+        myLabelHighScore.zPosition = 1;
         
         [self addChild:myLabelHighScore];
     }

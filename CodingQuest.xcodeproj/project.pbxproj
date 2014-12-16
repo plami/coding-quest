@@ -35,6 +35,7 @@
 		CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD21A1F7D74000D7A8F /* Main.storyboard */; };
 		CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD51A1F7D74000D7A8F /* Images.xcassets */; };
 		CD202AE51A1F7D74000D7A8F /* CodingQuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */; };
+		CDA9D2551A40449800183126 /* YouWonPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA9D2541A40449800183126 /* YouWonPage.m */; };
 		CF4CA3631A3CA4720037F4EA /* FlyMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CA3621A3CA4720037F4EA /* FlyMonster.m */; };
 		CF52ADC31A3D94CB009B1943 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52ADC21A3D94CB009B1943 /* Button.m */; };
 		CF52ADC61A3D9732009B1943 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = CF52ADC51A3D9732009B1943 /* button.png */; };
@@ -103,6 +104,8 @@
 		CD202ADE1A1F7D74000D7A8F /* CodingQuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodingQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD202AE31A1F7D74000D7A8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingQuestTests.m; sourceTree = "<group>"; };
+		CDA9D2531A40449800183126 /* YouWonPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWonPage.h; sourceTree = "<group>"; };
+		CDA9D2541A40449800183126 /* YouWonPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWonPage.m; sourceTree = "<group>"; };
 		CF4CA3611A3CA4720037F4EA /* FlyMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyMonster.h; sourceTree = "<group>"; };
 		CF4CA3621A3CA4720037F4EA /* FlyMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyMonster.m; sourceTree = "<group>"; };
 		CF52ADC11A3D94CB009B1943 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				CFA93B4F1A3C530D00AC9A8C /* GameOverScene.m */,
 				CF4CA3611A3CA4720037F4EA /* FlyMonster.h */,
 				CF4CA3621A3CA4720037F4EA /* FlyMonster.m */,
+				CDA9D2531A40449800183126 /* YouWonPage.h */,
+				CDA9D2541A40449800183126 /* YouWonPage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 				CD202AD11A1F7D74000D7A8F /* GameViewController.m in Sources */,
 				CD202AC91A1F7D74000D7A8F /* AppDelegate.m in Sources */,
 				CD0DD88F1A35B7D200192C22 /* StartingPage.m in Sources */,
+				CDA9D2551A40449800183126 /* YouWonPage.m in Sources */,
 				C1EB456B1A3B1E8500153D92 /* GameSceneLevel3.m in Sources */,
 				CF52ADC31A3D94CB009B1943 /* Button.m in Sources */,
 				CF9C9FD81A39DFFF00D05DA1 /* Player.m in Sources */,
