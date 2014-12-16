@@ -7,11 +7,13 @@
 #import "Constants.h"
 #import "GameOverScene.h"
 #import "Constants.h"
+#import "FlyMonster.h"
 
 @interface GameScene ()
 
 @property Player* player;
 @property Monster* monster;
+@property FlyMonster* flyMonster;
 @property Bonus* coin;
 @property Bonus* coin2;
 @property Bullet* bullet;
@@ -312,7 +314,7 @@
     
     self.lastSpawnTimeInterval += timeSinceLast;
     self.runningTime +=timeSinceLast;
-    if (self.lastSpawnTimeInterval > 10) {
+    if (self.lastSpawnTimeInterval > 2) {
         self.lastSpawnTimeInterval = 0;
         
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
@@ -326,6 +328,8 @@
         _monster = [[Monster alloc]initNewMonster:self];
         [_monster spawnInScene:self];
         [_monster shoot:self];
+        
+        
         [self.monsterArray addObject:_monster];
         
         if(self.counter >= 2){
@@ -337,9 +341,11 @@
             [gameOverScene updated];
             [self.view presentScene:gameOverScene transition: reveal];
         }
-        
+        for(int index  = 0 ; index < self.monsterArray.count; index++){
+            [self.monsterArray[index] shoot:self];
+        }
     }
-   }
+}
 
 -(void)update:(CFTimeInterval)currentTime {
     

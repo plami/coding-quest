@@ -3,27 +3,33 @@
 
 @interface SpriteTextures ()
 
-
+#pragma mark left moving player
 @property NSMutableArray* playerRunLeftTextures;
 @property NSMutableArray* playerStillFacingLeftTextures;
 @property NSMutableArray* playerJumpLeftTextures;
 @property NSMutableArray* playerSkiddingLeftTextures;
 
+#pragma mark right moving player
 @property NSMutableArray* playerJumpRightTextures;
 @property NSMutableArray* playerSkiddingRightTextures;
 @property NSMutableArray* playerStillFacingRightTextures;
 @property NSMutableArray* playerRunRightTextures;
 
+
+#pragma mark ground bug
 @property NSMutableArray* leftMovingBug;
 @property NSMutableArray* dyingBugTexture;
+@property NSMutableArray* acidShootLeftTexture;
 
-
+#pragma mark player shooting
 @property NSMutableArray* bulletShootRightTexture;
 @property NSMutableArray* bulletShootLeftTexture;
 
+#pragma mark flying bug
 @property NSMutableArray* acidShootDownTexture;
-@property NSMutableArray* acidShootLeftTexture;
+@property NSMutableArray* leftFlyingBugTexture;
 
+#pragma mark coins
 @property NSMutableArray* movingCoins;
 
 
@@ -31,6 +37,10 @@
 
 @implementation SpriteTextures
 
+-(NSMutableArray *)flyLeftMonster{
+    
+    return self.leftFlyingBugTexture;
+}
 
 -(NSMutableArray *)dyingMonster{
     return self.dyingBugTexture;
@@ -116,6 +126,17 @@
     }
 }
 
+-(void)createFlyingAnimation{
+    
+    self.leftFlyingBugTexture = [[NSMutableArray alloc]init];
+    
+    for(NSInteger pic = 1; pic <= 4; ++pic){
+        
+        SKTexture* fly = [SKTexture textureWithImageNamed:[NSString stringWithFormat:@"bug%ldMoving.png",(long)pic]];
+        
+        [self.leftFlyingBugTexture addObject:fly];
+    }
+}
 
 -(void)createMonsterRunningAnimation{
     

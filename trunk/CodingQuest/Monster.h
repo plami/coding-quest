@@ -12,11 +12,8 @@ typedef enum {
 -(Monster*) initNewMonster: (SKScene*)whichScene;
 
 -(void) spawnInScene: (SKScene*) whichScene;
-
 -(void) moveLeft;
-
 -(void) shoot: (SKScene*) scene;
-
 -(void) die;
 
 

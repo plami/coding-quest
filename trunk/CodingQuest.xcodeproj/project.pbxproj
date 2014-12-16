@@ -39,6 +39,7 @@
 		CF4CA3631A3CA4720037F4EA /* FlyMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CA3621A3CA4720037F4EA /* FlyMonster.m */; };
 		CF52ADC31A3D94CB009B1943 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52ADC21A3D94CB009B1943 /* Button.m */; };
 		CF52ADC61A3D9732009B1943 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = CF52ADC51A3D9732009B1943 /* button.png */; };
+		CF68FD7F1A404E4900AEE5EC /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF68FD7E1A404E4900AEE5EC /* SpriteKit.framework */; };
 		CF7C8E5F1A3B2C2C00E596D2 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */; };
 		CF9C9FD61A39DFFF00D05DA1 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD11A39DFFF00D05DA1 /* Background.m */; };
 		CF9C9FD71A39DFFF00D05DA1 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C9FD31A39DFFF00D05DA1 /* Monster.m */; };
@@ -111,6 +112,7 @@
 		CF52ADC11A3D94CB009B1943 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		CF52ADC21A3D94CB009B1943 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 		CF52ADC51A3D9732009B1943 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		CF68FD7E1A404E4900AEE5EC /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		CF7C8E5D1A3B2C2C00E596D2 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
 		CF7C8E5E1A3B2C2C00E596D2 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
 		CF9C9FD01A39DFFF00D05DA1 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF68FD7F1A404E4900AEE5EC /* SpriteKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +239,7 @@
 		CD202AB71A1F7D74000D7A8F = {
 			isa = PBXGroup;
 			children = (
+				CF68FD7E1A404E4900AEE5EC /* SpriteKit.framework */,
 				CD202AC21A1F7D74000D7A8F /* CodingQuest */,
 				CD202AE11A1F7D74000D7A8F /* CodingQuestTests */,
 				CD202AC11A1F7D74000D7A8F /* Products */,
