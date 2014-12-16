@@ -5,15 +5,14 @@
 @interface GameSceneLevel2 ()
 
 @property Player* player;
-@property SKTextureAtlas* runAtlas;
 @property Background* scrollingBackground;
+@property SKTextureAtlas* runAtlas;
+
 
 @end
 
 @implementation GameSceneLevel2
-NSTimeInterval _lastUpdateTime;
-NSTimeInterval _dt;
-CGPoint _velocity;
+
 
 -(instancetype)initWithSize:(CGSize)size{
     

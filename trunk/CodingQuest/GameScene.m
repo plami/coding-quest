@@ -16,18 +16,16 @@
 @property Bonus* coin2;
 @property Bullet* bullet;
 @property SKTextureAtlas* runAtlas;
+@property (readwrite)SpriteTextures* spriteTextures;
 @property Background* scrollingBackground;
-@property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
-@property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
+@property Player* lives;
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
-
 @property NSTimeInterval runningTime;
-@property (readwrite)SpriteTextures* spriteTextures;
-
 @property NSUInteger score;
 @property CGFloat playerHealth;
-@property Player* lives;
+@property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
+@property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 
 @end
 
