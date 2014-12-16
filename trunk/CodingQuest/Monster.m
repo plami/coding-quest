@@ -23,6 +23,8 @@
 @implementation Monster
 
 
+#pragma mark Init Method
+
 -(Monster *)initNewMonster:(SKScene *)whichScene{
  
   
@@ -61,6 +63,8 @@
 }
 
 
+#pragma mark - Animation and Actions for Monster
+
 -(void)moveLeft{
     
     SKAction* runAction = [SKAction animateWithTextures:[_spriteTextures runLeftMonster] timePerFrame:0.2];
@@ -78,7 +82,6 @@
 -(void)die{
     SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures dyingMonster] timePerFrame:0.5];
     [self runAction:dieAction];
-    
 }
 
 
@@ -86,6 +89,7 @@
     self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, kMonsterSpawnY);
    [self moveLeft];
 }
+
 
 -(void)shoot:(SKScene*) scene{
     Bullet *leftAcit = [Bullet initNewAcidLeft:scene startingPoint:self.position];

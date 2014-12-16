@@ -11,6 +11,9 @@
 
 @implementation Background
 
+
+#pragma mark Init Method
+
 -(instancetype)initWithBackground:(NSString *)background size:(CGSize)size speed:(CGFloat)speed{
     
     self = [super init];

@@ -14,6 +14,9 @@ static const uint32_t monsterBulletCategory = 0X1 << 4;  // 00000000000000000000
 
 #define kBackgroundsetScale 0.33
 
+#define kCoinMinSize  40
+#define kCoinMaxSize  40
+
 #define kPlayerSizeHigh  70
 #define kPlayerSizeWidth 50
 #define kPlayerRunOnPlaceTimePerFrame 0.1

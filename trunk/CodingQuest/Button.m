@@ -13,6 +13,9 @@
 
 @implementation Button
 
+
+#pragma mark Init Method
+
 -(instancetype)initWithImageNamed:(NSString *)name andScene: (SKScene*) scene{
     self = [super init];
     
@@ -21,13 +24,12 @@
         self.name = @"fireButton";
         self.zPosition = 1.0;
         self.size = CGSizeMake(50, 50);
-        
-        // [scene addChild: [self fireButton]];
-        
     }
     return self;
 }
 
+
+#pragma mark Setting the Fire Button
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event andScene: (SKScene*) scene{
     
