@@ -136,7 +136,7 @@
 
 
 -(void)adjustPlayerHealth:(CGFloat)healthAdjustment {
-    //1
+
     self.playerHealth = MAX(self.playerHealth + healthAdjustment, 0);
     
     SKLabelNode* health = (SKLabelNode*)[self childNodeWithName:kHealthName];
@@ -165,7 +165,7 @@
 }
 
 
-#pragma mark Setup Physics
+#pragma mark Setup Collisions
 
 -(void)didBeginContact:(SKPhysicsContact*)contact {
     

@@ -15,8 +15,17 @@
 
 -(instancetype) initWithSize:(CGSize)size{
     if (self = [super initWithSize:size]) {
+
+        //adding background
+        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
+        bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
+        [self addChild:bgImage];
         
-        self.backgroundColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.7];
+        //adding logos
+        SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"itTalents.png"];
+        logo.position = CGPointMake(830, 580);
+        [self addChild:logo];
+        
         GameScene* thisScene = [[GameScene alloc]init];
         self.finalScore = thisScene.score;
         
@@ -26,7 +35,7 @@
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         label.text = message;
         label.fontSize = 60;
-        label.fontColor = [SKColor blackColor];
+        label.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         label.position = CGPointMake(self.size.width/2, self.size.height/2 + 50);
         [self addChild:label];
         
@@ -35,7 +44,7 @@
         retrymessage = @"Replay Game";
         SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         retryButton.text = retrymessage;
-        retryButton.fontColor = [SKColor blackColor];
+        retryButton.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         retryButton.position = CGPointMake(self.size.width/2, 70);
         retryButton.name = @"retry";
         [retryButton setScale:.6];
@@ -46,7 +55,7 @@
         menuMessage = @"Back to menu";
         SKLabelNode* backButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         backButton.text = menuMessage;
-        backButton.fontColor = [SKColor blackColor];
+        backButton.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         backButton.position = CGPointMake(self.size.width / 2, 120);
         backButton.name = @"back";
         [backButton setScale:.6];
