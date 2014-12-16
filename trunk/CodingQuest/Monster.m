@@ -15,7 +15,7 @@
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property Monster* monster;
-@property (readwrite) MonsterType typeOfMonsters;
+
 
 
 @end

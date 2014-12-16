@@ -36,7 +36,12 @@
   
     return player;
 }
-
+-(void) stopMoving{
+   
+    SKAction* stopAction = [SKAction moveByX:0 y:0 duration:100];
+    [self runAction:stopAction];
+    
+}
 
 -(NSInteger)livesRemaining{
     

@@ -8,7 +8,7 @@
 #import "GameOverScene.h"
 #import "Constants.h"
 #import "FlyMonster.h"
-
+#import "YouWonPage.h"
 @interface GameScene ()
 
 @property Player* player;
@@ -21,6 +21,7 @@
 @property (readwrite)SpriteTextures* spriteTextures;
 @property Background* scrollingBackground;
 @property Player* lives;
+
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
 @property NSTimeInterval runningTime;
@@ -311,12 +312,26 @@
 }
 
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
-    
-    self.lastSpawnTimeInterval += timeSinceLast;
+     self.lastSpawnTimeInterval += timeSinceLast;
     self.runningTime +=timeSinceLast;
-    if (self.lastSpawnTimeInterval > 2) {
+    
+    
+    if (self.lastSpawnTimeInterval > 5) {
         self.lastSpawnTimeInterval = 0;
         
+        if(self.runningTime > 30){
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            YouWonPage* winning = [[YouWonPage alloc] initWithSize:self.size];
+            [self.view presentScene:winning transition:reveal];
+            
+            /*  GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+             gameOverScene.finalScore = self.score;
+             NSLog(@"final score: %ld",(long)gameOverScene.finalScore);
+             
+             [gameOverScene updated];
+             [self.view presentScene:gameOverScene transition: reveal];*/
+        }
+
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
         _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
         
@@ -325,39 +340,29 @@
         NSInteger spawnAtX = [self random];
         _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
         [_coin2 spawnInSceneVerticaly];
-        _monster = [[Monster alloc]initNewMonster:self];
-        [_monster spawnInScene:self];
-        [_monster shoot:self];
         
-        
+       _monster = [[Monster alloc]initNewMonster:self];
+       [_monster spawnInScene:self];
+       [_monster shoot:self];
         [self.monsterArray addObject:_monster];
         
-        if(self.counter >= 2){
-            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
-            gameOverScene.finalScore = self.score;
-            NSLog(@"final score: %ld",(long)gameOverScene.finalScore);
-            
-            [gameOverScene updated];
-            [self.view presentScene:gameOverScene transition: reveal];
-        }
+        //shooting all monsters
         for(int index  = 0 ; index < self.monsterArray.count; index++){
             [self.monsterArray[index] shoot:self];
         }
     }
-}
+    
+  }
 
 -(void)update:(CFTimeInterval)currentTime {
     
     [self.scrollingBackground update:currentTime];
     
     if(_player.position.x > self.size.width - 10){
-        [_player removeAllActions];
-        [_player runOnPlaceRight];
+        [_player stopMoving];
     }
-    if(_player.position.x < 10){
-        [_player removeAllActions];
-        [_player runOnPlaceLeft];
+    if(_player.position.x < 100){
+        [_player stopMoving];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;

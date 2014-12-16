@@ -13,17 +13,24 @@
 @end
 @implementation FlyMonster
 
--(Monster *)initNewMonster:(SKScene *)whichScene startingPoint:(CGPoint)location{
+-(FlyMonster *)initNewMonster:(SKScene *)whichScene{
+
     
     SpriteTextures* monsterTexture = [[SpriteTextures alloc] init];
     
     [monsterTexture createFlyingAnimation];
-    SKTexture* f1 = [SKTexture textureWithImageNamed:@"bug1.Moving.png"];
+    SKTexture* f1 = [SKTexture textureWithImageNamed:@"bug1Moving.png"];
     FlyMonster* fly = [FlyMonster spriteNodeWithTexture:f1];
+    fly.spriteTextures = monsterTexture;
+    fly.size = CGSizeMake(70, 70);
+    
     
     [whichScene addChild:fly];
     return fly;
+
 }
+
+
 /*
 -(void)die{
     SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures ] timePerFrame:0.5];
@@ -33,7 +40,8 @@
 */
 -(void)spawnInScene:(SKScene *)whichScene{
     
-    self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, whichScene.frame.size.height + kMonsterSpawnY);
+    self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, whichScene.frame.size.height /2
+                                + kMonsterSpawnY);
     
     [self moveLeft];
 }
@@ -49,6 +57,7 @@
     
     [self runAction:moveForever];
 }
+
 
 -(void)shoot:(SKScene *)scene{
     
