@@ -3,4 +3,7 @@
 
 @interface FlyMonster : Monster
 
+-(FlyMonster*) initNewMonster: (SKScene*)whichScene;
+
+
 @end
