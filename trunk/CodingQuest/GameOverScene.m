@@ -32,8 +32,8 @@
         logo.position = CGPointMake(830, 580);
         [self addChild:logo];
         
-        GameScene* thisScene = [[GameScene alloc]init];
-        self.finalScore = thisScene.score;
+       /* GameScene* thisScene = [[GameScene alloc]init];
+        self.finalScore = thisScene.score;*/
         
         NSString * message;
         message = @"Game Over";

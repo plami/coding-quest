@@ -23,6 +23,7 @@ typedef enum: int{
 @property (readonly)NSInteger playerLives;
 
 +(Player*) initNewPlayer:(SKScene*) whichScene1 startingPoint: (CGPoint) location;
++(id) sharedPlayer;
 
 -(NSInteger) randomPlace: (SKScene*) scene;
 -(void) runOnPlaceRight;

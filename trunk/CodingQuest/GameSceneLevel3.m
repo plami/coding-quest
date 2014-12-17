@@ -24,7 +24,7 @@
 @property Background* scrollingBackground;
 @property Player* lives;
 @property Button* thisButton;
-@property (readwrite)NSUInteger score;
+
 
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
@@ -294,6 +294,7 @@
         if(self.runningTime > 10){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             YouWonPage* winning = [[YouWonPage alloc] initWithSize:self.size];
+            winning.result = self.score;
             [self.view presentScene:winning transition:reveal];
         }
         

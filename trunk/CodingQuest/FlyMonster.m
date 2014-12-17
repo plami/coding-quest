@@ -40,8 +40,7 @@
 
 -(void)spawnInScene:(SKScene *)whichScene{
     
-    self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, whichScene.frame.size.height /2
-                                + kMonsterSpawnY);
+    self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, whichScene.frame.size.height /2 + kMonsterSpawnY);
     
     [self moveLeft];
 }
