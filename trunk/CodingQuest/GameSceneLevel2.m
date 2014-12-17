@@ -33,6 +33,8 @@
 @property SKAction* getBonusSound;
 @property SKAction* playerBeingHitSound;
 @property SKAction* playerShootSound;
+@property SKAction* monsterDieSound;
+@property AVAudioPlayer* backgroundMusicPlayer;
 @end
 
 @implementation GameSceneLevel2
@@ -47,8 +49,9 @@
         self.monsterArray = [[NSMutableArray alloc]init];
         self.backgroundColor = [SKColor whiteColor];
         
+        [self playBackgroundMusic:@"backgroundSound2.mp3"];
         NSString* imageName = [NSString stringWithFormat:@"backgroundLevel2.jpeg"];
-        Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1 andMusic:@"backgroundSound2.mp3"];
+        Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
         
         self.scrollingBackground = scrollingBackground;
         [self addChild: self.scrollingBackground];
@@ -172,7 +175,8 @@
     //react to the contact between bullet and monster
     else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         NSLog(@"the monster disappears");
-        
+        _monsterDieSound = [SKAction playSoundFileNamed:@"monsterDeath.mp3" waitForCompletion:NO];
+        [self runAction:self.monsterDieSound];
         self.counter++;
         [self adjustScoreBy:100];
         [[self.monsterArray firstObject] die];
@@ -186,6 +190,7 @@
     //react to the contact between monster and player
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         [secondBody.node removeFromParent];
+        [self.backgroundMusicPlayer stop];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         GameOverScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
         [self.view presentScene:gameOverScene transition: reveal];
@@ -203,7 +208,7 @@
         [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
         if(self.playerHealth <= 0.0f){
-            
+            [self.backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
@@ -221,7 +226,7 @@
         [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
         if(self.playerHealth <= 0.0f){
-            
+            [self.backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
@@ -297,6 +302,7 @@
         self.lastSpawnTimeInterval = 0;
         
         if(self.runningTime > 30){
+            [self.backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene2* winning = [[TransitionScene2 alloc] initWithSize:self.size];
             [self.view presentScene:winning transition:reveal];
@@ -346,6 +352,19 @@
     }
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
 }
+
+- (void)playBackgroundMusic:(NSString *)filename
+{
+    NSError *error;
+    NSURL *backgroundMusicURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+    _backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    _backgroundMusicPlayer.numberOfLoops = -1;
+    _backgroundMusicPlayer.volume = 0.8;
+    _backgroundMusicPlayer.delegate = self;
+    [_backgroundMusicPlayer prepareToPlay];
+    [_backgroundMusicPlayer play];
+}
+
 
 
 @end
