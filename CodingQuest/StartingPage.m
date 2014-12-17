@@ -23,65 +23,36 @@
         logo.position = CGPointMake(830, 580);
         [self addChild:logo];
         
-        //button for Level 1
-        NSString *LevelOneButton;
-        LevelOneButton = @"Level 1";
+        //button for the title
+        NSString *GameTitle;
+        GameTitle = @"CODING QUEST";
         
-        SKLabelNode *myLabelLevelOne = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
+        SKLabelNode *myLabelTitle = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         
-        myLabelLevelOne.text = LevelOneButton;
-        myLabelLevelOne.fontSize = 80;
-        myLabelLevelOne.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelLevelOne.position = CGPointMake(200, 500);
-        myLabelLevelOne.name = @"Level 1 button";
-        myLabelLevelOne.zPosition = 1;
+        myLabelTitle.text = GameTitle;
+        myLabelTitle.fontSize = 120;
+        myLabelTitle.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
+        myLabelTitle.position = CGPointMake(500, 400);
+        myLabelTitle.name = @"Level 1 button";
+        myLabelTitle.zPosition = 1;
         
-        [self addChild:myLabelLevelOne];
+        [self addChild:myLabelTitle];
         
-        //button for Level 2
-        NSString *LevelTwoButton;
-        LevelTwoButton = @"Level 2";
+        //Play button
+        NSString *PlayButton;
+        PlayButton = @"Play";
         
-        SKLabelNode *myLabelLevelTwo = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
+        SKLabelNode *myLabelPlay = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         
-        myLabelLevelTwo.text = LevelTwoButton;
-        myLabelLevelTwo.fontSize = 80;
-        myLabelLevelTwo.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelLevelTwo.position = CGPointMake(200, 350);
-        myLabelLevelTwo.name = @"Level 2 button";
-        myLabelLevelTwo.zPosition = 1;
+        myLabelPlay.text = PlayButton;
+        myLabelPlay.fontSize = 80;
+        myLabelPlay.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
+        myLabelPlay.position = CGPointMake(500, 200);
+        myLabelPlay.name = @"Play button";
+        myLabelPlay.zPosition = 1;
         
-        [self addChild:myLabelLevelTwo];
-        
-        //button for Level 3
-        NSString *LevelThreeButton;
-        LevelThreeButton = @"Level 3";
-        
-        SKLabelNode *myLabelLevelThree = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
-        
-        myLabelLevelThree.text = LevelThreeButton;
-        myLabelLevelThree.fontSize = 80;
-        myLabelLevelThree.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelLevelThree.position = CGPointMake(200, 200);
-        myLabelLevelThree.name = @"Level 3 button";
-        myLabelLevelThree.zPosition = 1;
-        
-        [self addChild:myLabelLevelThree];
-        
-        //button for HighScore
-        NSString *HighScoreButton;
-        HighScoreButton = @"HIGH SCORE";
-        
-        SKLabelNode *myLabelHighScore = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
-        
-        myLabelHighScore.text = HighScoreButton;
-        myLabelHighScore.fontSize = 70;
-        myLabelHighScore.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelHighScore.position = CGPointMake(700, 70);
-        myLabelHighScore.name = @"High Score button";
-        myLabelHighScore.zPosition = 1;
-        
-        [self addChild:myLabelHighScore];
+        [self addChild:myLabelPlay];
+
     }
     return self;
 }
@@ -96,28 +67,11 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     
-    if ([node.name isEqualToString:@"Level 1 button"]) {
+    if ([node.name isEqualToString:@"Play button"]) {
         
         SKTransition *reveal = [SKTransition fadeWithDuration:2];
         
         GameScene *scene = [GameScene sceneWithSize:self.view.bounds.size];
-        scene.scaleMode = SKSceneScaleModeAspectFill;
-        [self.view presentScene:scene transition:reveal];
-    }
-    
-    if ([node.name isEqualToString:@"Level 2 button"]) {
-        
-        SKTransition *reveal = [SKTransition fadeWithDuration:2];
-        
-        GameSceneLevel2 *scene = [GameSceneLevel2 sceneWithSize:self.view.bounds.size];
-        scene.scaleMode = SKSceneScaleModeAspectFill;
-        [self.view presentScene:scene transition:reveal];
-    }
-    if ([node.name isEqualToString:@"Level 3 button"]) {
-        
-        SKTransition *reveal = [SKTransition fadeWithDuration:2];
-        
-        GameSceneLevel3 *scene = [GameSceneLevel3 sceneWithSize:self.view.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene:scene transition:reveal];
     }
