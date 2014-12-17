@@ -9,6 +9,7 @@
 #import "Constants.h"
 #import "FlyMonster.h"
 #import "YouWonPage.h"
+
 @interface GameScene ()
 
 @property Player* player;
@@ -220,7 +221,7 @@
     //react to the contact between player and monsterBullet
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
         
-        [self adjustPlayerHealth:-0.20f];
+        [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
         if(self.playerHealth <= 0.0f){
         
@@ -316,12 +317,12 @@
     self.runningTime +=timeSinceLast;
     
     
-    if (self.lastSpawnTimeInterval > 5) {
+    if (self.lastSpawnTimeInterval > 20) {
         self.lastSpawnTimeInterval = 0;
         
         if(self.runningTime > 30){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            YouWonPage* winning = [[YouWonPage alloc] initWithSize:self.size];
+            GameSceneLevel2* winning = [[GameSceneLevel2 alloc] initWithSize:self.size];
             [self.view presentScene:winning transition:reveal];
             
             /*  GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];

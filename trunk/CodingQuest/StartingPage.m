@@ -32,7 +32,7 @@
         myLabelTitle.text = GameTitle;
         myLabelTitle.fontSize = 120;
         myLabelTitle.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelTitle.position = CGPointMake(500, 400);
+        myLabelTitle.position = CGPointMake(500, 350);
         myLabelTitle.name = @"Level 1 button";
         myLabelTitle.zPosition = 1;
         

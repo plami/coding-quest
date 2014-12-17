@@ -1,86 +1,367 @@
-#import "GameSceneLevel3.h"
+#import "GameScene.h"
 #import "Player.h"
 #import "Background.h"
-#import "Bullet.h"
 #import "Monster.h"
 #import "Bonus.h"
+#import "Bullet.h"
+#import "Constants.h"
+#import "GameOverScene.h"
+#import "Constants.h"
+#import "FlyMonster.h"
+#import "YouWonPage.h"
 
 @interface GameSceneLevel3 ()
+
 @property Player* player;
-@property SKTextureAtlas* runAtlas;
-@property Background* scrollingBackground;
-@property Bullet* bullet;
 @property Monster* monster;
+@property FlyMonster* flyMonster;
+@property Bonus* coin;
+@property Bonus* coin2;
+@property Bullet* bullet;
+@property SKTextureAtlas* runAtlas;
+@property (readwrite)SpriteTextures* spriteTextures;
+@property Background* scrollingBackground;
+@property Player* lives;
+@property (readwrite)NSUInteger score;
+
+@property NSInteger counter;
+@property NSMutableArray* monsterArray;
+@property NSTimeInterval runningTime;
+@property CGFloat playerHealth;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
-@property Bonus* coin;
 
 @end
 
 @implementation GameSceneLevel3
 
 
+#pragma mark Init Method
+
 -(instancetype)initWithSize:(CGSize)size{
+    
     self = [super initWithSize:size];
     if(self){
-        
-        //background set
-        
+        self.monsterArray = [[NSMutableArray alloc]init];
         self.backgroundColor = [SKColor whiteColor];
+        
         NSString* imageName = [NSString stringWithFormat:@"spaceshipBackground.jpg"];
-        Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:2];
+        Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
+        
         self.scrollingBackground = scrollingBackground;
         [self addChild: self.scrollingBackground];
-        [self.scrollingBackground setScale:2.1];
+        [self.scrollingBackground setScale:1.7];
         
-//       initiate player
         
-        _player = [Player initNewPlayer:self startingPoint: CGPointMake(20, 40)];
+        //the scene is set as delegate in physicsWorld
+        self.physicsWorld.contactDelegate = self;
+        
+        //sets the gravity of the game world to zero
+        self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+        
+        self.counter = 0;
+        
+        _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
+        
+        _player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_player.frame.size];
+        _player.physicsBody.restitution = 0.1f;
+        _player.physicsBody.friction = 0.4f;
+        
+        // make physicsBody static
+        _player.physicsBody.dynamic = YES;
+        _player.name = @"player";
+        
+        //collision between player and coin
+        _player.physicsBody.categoryBitMask = playerCategory;
+        _player.physicsBody.contactTestBitMask = coinCategory;
+        _player.physicsBody.collisionBitMask = 0;
+        
+        //collision between player and monster
+        _player.physicsBody.categoryBitMask = playerCategory;
+        _player.physicsBody.contactTestBitMask = monsterCategory;
+        _player.physicsBody.collisionBitMask = 0;
+        
+        //collision between monsterBullet and player
+        _player.physicsBody.categoryBitMask = playerCategory;
+        _player.physicsBody.contactTestBitMask = monsterBulletCategory;
+        _player.physicsBody.collisionBitMask = 0;
+        
+        _playerHealth = 1.0f;
+        
         [_player runOnPlaceRight];
+        [self addChild:[self fireButton]];
         
-        //shoot button
-        NSString *ShootButton;
-        ShootButton = @"Shoot";
-        
-        SKLabelNode *myShootLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
-        
-        myShootLabel.text = ShootButton;
-        myShootLabel.fontSize = 20;
-        myShootLabel.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myShootLabel.position = CGPointMake(self.frame.size.width- 100, 20);
-        myShootLabel.name = @"shoot";
-        
-        [self addChild:myShootLabel];
+        [self setupDisplay];
     }
     
-//    _monster = [Monster initNewMonster:self startingPoint:CGPointMake(self.frame.size.width-300, 40)];
-//    [_monster spawnInScene:self];
     return self;
-    
 }
+
+
+#pragma mark Setting up the Display of the main scene
+
+-(void)setupDisplay {
+    
+    SKLabelNode* scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
+    
+    scoreLabel.name = kScoreName;
+    scoreLabel.fontSize = 15;
+    
+    scoreLabel.fontColor = [SKColor greenColor];
+    scoreLabel.text = [NSString stringWithFormat:@"Score: %04u", 0];
+    
+    scoreLabel.position = CGPointMake(20 + scoreLabel.frame.size.width/2, self.size.height - (20 + scoreLabel.frame.size.height/2));
+    [self addChild:scoreLabel];
+    
+    SKLabelNode* healthLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
+    
+    healthLabel.name = kHealthName;
+    healthLabel.fontSize = 15;
+    
+    healthLabel.fontColor = [SKColor redColor];
+    healthLabel.text = [NSString stringWithFormat:@"Health: %.1f%%", self.playerHealth * 100.0f];
+    
+    healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - 20, self.size.height - (20 + healthLabel.frame.size.height/2));
+    [self addChild:healthLabel];
+    
+    SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
+    
+    livesLabel.name = kLivesName;
+    livesLabel.fontSize = 15;
+    
+    livesLabel.fontColor = [SKColor greenColor];
+    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
+    
+    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
+    [self addChild:livesLabel];
+}
+
+
+-(void)adjustPlayerHealth:(CGFloat)healthAdjustment {
+    
+    self.playerHealth = MAX(self.playerHealth + healthAdjustment, 0);
+    
+    SKLabelNode* health = (SKLabelNode*)[self childNodeWithName:kHealthName];
+    health.text = [NSString stringWithFormat:@"Health: %.1f%%", self.playerHealth * 100];
+}
+
+
+-(void)adjustScoreBy:(NSUInteger)points {
+    self.score += points;
+    SKLabelNode* score = (SKLabelNode*)[self childNodeWithName:kScoreName];
+    score.text = [NSString stringWithFormat:@"Score: %04u", self.score];
+}
+
+
+-(SKSpriteNode* ) fireButton{
+    
+    SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
+    fire.position = CGPointMake(self.frame.size.width- 100, 20);
+    
+    fire.name = @"fireButton";
+    fire.zPosition = 1.0;
+    fire.size = CGSizeMake(50, 50);
+    return fire;
+    
+    return fire;
+}
+
+
+#pragma mark Setup Collisions
+
+-(void)didBeginContact:(SKPhysicsContact*)contact {
+    
+    // 1 Create local variables for two physics bodies
+    SKPhysicsBody* firstBody;
+    SKPhysicsBody* secondBody;
+    
+    // 2 Assign the two physics bodies so that the one with the lower category is always stored in firstBody
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        firstBody = contact.bodyA;
+        secondBody = contact.bodyB;
+    } else {
+        firstBody = contact.bodyB;
+        secondBody = contact.bodyA;
+    }
+    
+    //react to the contact between coin and player
+    if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & coinCategory) != 0) {
+        NSLog(@"the coin disappears");
+        [secondBody.node removeFromParent];
+        [self adjustScoreBy:100];
+    }
+    
+    //react to the contact between bullet and monster
+    else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
+        NSLog(@"the monster disappears");
+        
+        self.counter++;
+        [self adjustScoreBy:100];
+        [[self.monsterArray firstObject] die];
+        if([self.monsterArray count] > 0){
+            [self.monsterArray removeObjectAtIndex:0];
+            [firstBody.node removeFromParent];
+        }
+        [secondBody.node removeFromParent];
+    }
+    
+    //react to the contact between monster and player
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
+        [secondBody.node removeFromParent];
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        GameOverScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        [self.view presentScene:gameOverScene transition: reveal];
+        [_player playerWasHit];
+        NSLog(@"the lives are reduced");
+        
+    }
+    
+    //react to the contact between player and monsterBullet
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
+        
+        [self adjustPlayerHealth:-0.10f];
+        [secondBody.node removeFromParent];
+        if(self.playerHealth <= 0.0f){
+            
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            gameOverScene.finalScore = self.score;
+            
+            [self.view presentScene:gameOverScene transition: reveal];
+        }
+    }
+}
+
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    
+    for(UITouch* touch in touches){
+        
+        PlayerStatus status = _player.playerStatus;
+        
+        UITouch *touch = [touches anyObject];
+        CGPoint location = [touch locationInNode:self];
+        SKNode *node = [self nodeAtPoint:location];
+        
+        if([node.name isEqualToString:@"fireButton"]){
+            
+            if (status == PlayerFacingRight || status == PlayerRunningRight || status == PlayerSkiddingRight){
+                _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
+                
+                [_bullet shootRight];
+                
+                //adding collision logic between bullet and monster
+                _bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_bullet.frame.size];
+                _bullet.physicsBody.restitution = 0.1f;
+                _bullet.physicsBody.friction = 0.4f;
+                
+                // make physicsBody static
+                _bullet.physicsBody.dynamic = YES;
+                _bullet.name = @"bullet";
+                
+                _bullet.physicsBody.categoryBitMask = bulletCategory;
+                _bullet.physicsBody.contactTestBitMask = monsterCategory;
+                _bullet.physicsBody.collisionBitMask = 0;
+                
+                
+            }
+            if (status == PlayerFacingLeft || status == PlayerRunningLeft || status == PlayerSkiddingLeft ){
+                _bullet = [Bullet initNewBulletLeft3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
+                [_bullet shootLeft];
+            }
+        }
+        
+        else {
+            
+            if (location.y >= (self.frame.size.height / 2 )) {
+                // user touched upper half of the screen (zero = bottom of screen)
+                if (status != PlayerJumpingLeft && status != PlayerJumpingRight && status != PlayerJumpingUpFacingLeft && status != PlayerJumpingUpFacingRight) {
+                    [_player jump];
+                }
+            } else if (location.x <= ( self.frame.size.width / 2 )) {
+                // user touched left side of screen
+                if (status == PlayerRunningRight) {
+                    [_player skidRight];
+                    [_player runOnPlaceRight];
+                } else if (status == PlayerFacingLeft || status == PlayerFacingRight) {
+                    [_player runLeft];
+                }
+            } else {
+                // user touched right side of screen
+                if (status == PlayerRunningLeft) {
+                    [_player skidLeft];
+                    [_player runOnPlaceLeft];
+                } else if (status == PlayerFacingLeft || status == PlayerFacingRight) {
+                    [_player runRight];
+                }
+            }
+            
+        }
+    }
+}
+
+-(NSInteger) random{
+    int minX = _player.size.height / 2;
+    int maxY = self.frame.size.height - _player.size.height / 2;
+    int rangeY = maxY - minX;
+    int actualY = (arc4random() % rangeY) + minX;
+    
+    return actualY;
+}
+
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
-//    
-//    self.lastSpawnTimeInterval += timeSinceLast;
-//    if (self.lastSpawnTimeInterval > 2) {
-//        self.lastSpawnTimeInterval = 0;
-//        _monster = [Monster initNewMonster:self startingPoint:CGPointMake(self.frame.size.width - 300,self.frame.size.height/2)];
-//        
-////        _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 100,self.frame.size.height)];
-//        
-//        [_monster spawnInScene:self];
-//    }
+    self.lastSpawnTimeInterval += timeSinceLast;
+    self.runningTime +=timeSinceLast;
+    
+    
+    if (self.lastSpawnTimeInterval > 10) {
+        self.lastSpawnTimeInterval = 0;
+        
+        if(self.runningTime > 30){
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            GameSceneLevel2* winning = [[GameSceneLevel2 alloc] initWithSize:self.size];
+            [self.view presentScene:winning transition:reveal];
+            
+            /*  GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+             gameOverScene.finalScore = self.score;
+             NSLog(@"final score: %ld",(long)gameOverScene.finalScore);
+             
+             [gameOverScene updated];
+             [self.view presentScene:gameOverScene transition: reveal];*/
+        }
+        
+        _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
+        _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
+        
+        _bullet = [Bullet initNewAcidLeft:self startingPoint:CGPointMake(self.frame.size.width,70)];
+        [_coin moveLeft];
+        NSInteger spawnAtX = [self random];
+        _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
+        [_coin2 spawnInSceneVerticaly];
+        
+        _monster = [[Monster alloc]initNewMonster:self];
+        [_monster spawnInScene:self];
+        [_monster shoot:self];
+        [self.monsterArray addObject:_monster];
+        
+        //shooting all monsters
+        for(int index  = 0 ; index < self.monsterArray.count; index++){
+            [self.monsterArray[index] shoot:self];
+        }
+    }
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     
-    
     [self.scrollingBackground update:currentTime];
     
     if(_player.position.x > self.size.width - 10){
-        [_player runLeft];
+        [_player stopMoving];
     }
-    if(_player.position.x < 10){
-//        [_player runRight];
+    if(_player.position.x < 100){
+        [_player stopMoving];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
@@ -89,64 +370,7 @@
         timeSinceLast = 1.0 / 60.0;
         self.lastUpdateTimeInterval = currentTime;
     }
-    
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
 }
-    
-    
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
-    SKNode *node = [self nodeAtPoint:location];
-    PlayerStatus status = _player.playerStatus;
-    
-    if ([node.name isEqualToString:@"shoot"]) {
-        if (status == PlayerFacingRight || status == PlayerRunningRight || status == PlayerSkiddingRight){
-            _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
-            
-            [_bullet shootRight];
-        }
-        if (status == PlayerFacingLeft || status == PlayerRunningLeft || status == PlayerSkiddingLeft ){
-            _bullet = [Bullet initNewBulletLeft3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
-            [_bullet shootLeft];
-        }
-    }
-    
-    
-    else{
-    
-    if(location.y >= (self.frame.size.height / 2) ){
-        
 
-        if(status != PlayerJumpingLeft && status != PlayerJumpingRight && status != PlayerJumpingUpFacingLeft && status != PlayerJumpingUpFacingRight){
-            [_player jump];
-        }
-
-    }
-    else if(location.x <= (self.frame.size.width / 2)){
-        if(status == PlayerRunningRight){
-            [_player skidRight];
-        }
-        else if((status == PlayerFacingLeft || status == PlayerFacingRight)){
-            [_player runLeft];
-        }
-    }
-    else{
-        if(status == PlayerRunningLeft){
-            [_player skidLeft];
-        }
-        else if( status == PlayerFacingLeft || PlayerFacingRight){
-//            [_player runRight];
-        }
-    }
-    }
-    
-}
-
-
--(void)didMoveToView:(SKView *)view{
-}
--(void)didBeginContact:(SKPhysicsContact *)contact{
-    
-}
 @end

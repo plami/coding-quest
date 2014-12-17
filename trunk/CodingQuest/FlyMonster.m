@@ -11,6 +11,7 @@
 @property FlyMonster* flyMonster;
 
 @end
+
 @implementation FlyMonster
 
 -(FlyMonster *)initNewMonster:(SKScene *)whichScene{
