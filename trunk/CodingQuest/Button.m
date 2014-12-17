@@ -16,11 +16,11 @@
 
 #pragma mark Init Method
 
--(instancetype)initWithImageNamed:(NSString *)name andScene: (SKScene*) scene{
+-(instancetype)initWithScene: (SKScene*) scene{
     self = [super init];
     
     if(self){
-        self.image = name;
+      
         self.name = @"fireButton";
         self.zPosition = 1.0;
         self.size = CGSizeMake(50, 50);
@@ -31,6 +31,16 @@
     return self;
 }
 
+
+-(SKSpriteNode *)fireButton{
+    SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
+    fire.position = CGPointMake(400, 30);
+    
+    fire.name = @"fireButton";
+    fire.zPosition = 1.0;
+    fire.size = CGSizeMake(50, 50);
+    return fire;
+}
 
 #pragma mark Setting the Fire Button
 
