@@ -6,6 +6,7 @@
 @property (nonatomic, strong) SKSpriteNode *background;
 @property (nonatomic, strong) SKSpriteNode *mirrorBackground;
 @property (nonatomic) CGFloat currentSpeed;
+@property SKAction* backgroundMusic;
 
 @end
 
@@ -14,11 +15,15 @@
 
 #pragma mark Init Method
 
--(instancetype)initWithBackground:(NSString *)background size:(CGSize)size speed:(CGFloat)speed{
+-(instancetype)initWithBackground:(NSString *)background size:(CGSize)size speed:(CGFloat)speed andMusic:(NSString *)sound{
     
     self = [super init];
     if (self)
     {
+        //load background music
+        _backgroundMusic = [SKAction playSoundFileNamed:[NSString stringWithFormat:@"%@", sound] waitForCompletion:NO];
+        [self runAction:self.backgroundMusic];
+        
         // load background image
         self.background = [[SKSpriteNode alloc] initWithImageNamed:background];
         

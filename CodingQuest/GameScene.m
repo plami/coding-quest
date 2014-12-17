@@ -32,6 +32,10 @@
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property NSTimeInterval lastHorizontalCoinSpawnInterval;
 @property NSTimeInterval lastVerticalCoinSpawnInterval;
+@property SKAction* getBonusSound;
+@property SKAction* playerBeingHitSound;
+@property SKAction* playerShootSound;
+@property AVAudioPlayer* backgroundMusicPlayer;
 @end
 
 @implementation GameScene
@@ -50,7 +54,8 @@
              
             //[self addChild: [self.score createScoreNode]];
              NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
-             Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
+             Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1 andMusic:@"backgroundSound1.wav"];
+             [self playBackgroundMusic:@"backgroundSound1.wav"];
              
              self.scrollingBackground = scrollingBackground;
              [self addChild: self.scrollingBackground];
@@ -170,6 +175,8 @@
         NSLog(@"the coin disappears");
         [secondBody.node removeFromParent];
         [self adjustScoreBy:5];
+        _getBonusSound = [SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO];
+        [self runAction:self.getBonusSound];
     }
     
     //react to the contact between bullet and monster
@@ -197,6 +204,8 @@
     
     //react to the contact between player and monsterBullet
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
+        _playerBeingHitSound = [SKAction playSoundFileNamed:@"playerBeingHit.mp3" waitForCompletion:NO];
+        [self runAction:self.playerBeingHitSound];
         
         [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
@@ -223,6 +232,9 @@
         SKNode *node = [self nodeAtPoint:location];
         
         if([node.name isEqualToString:@"fireButton"]){
+            
+            _playerShootSound = [SKAction playSoundFileNamed:@"shoot.mp3" waitForCompletion:NO];
+            [self runAction:self.playerShootSound];
             
             if (status == PlayerFacingRight || status == PlayerRunningRight || status == PlayerSkiddingRight){
                 _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
@@ -287,6 +299,7 @@
         self.lastSpawnTimeInterval = 0;
         
         if(self.runningTime > 10){
+            [_backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene* transition = [[TransitionScene alloc] initWithSize:self.size];
             [self.view presentScene:transition transition:reveal];
@@ -324,5 +337,16 @@
     [self updateWithTimeSinceLastUpdate:timeSinceLast];
 }
 
+- (void)playBackgroundMusic:(NSString *)filename
+{
+    NSError *error;
+    NSURL *backgroundMusicURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+    _backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    _backgroundMusicPlayer.numberOfLoops = -1;
+    _backgroundMusicPlayer.volume = 0.8;
+    _backgroundMusicPlayer.delegate = self;
+    [_backgroundMusicPlayer prepareToPlay];
+    [_backgroundMusicPlayer play];
+}
 
 @end

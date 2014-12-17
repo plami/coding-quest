@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1C19AE31A41B1E700500C6F /* backgroundMusic2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19ADB1A41B1E700500C6F /* backgroundMusic2.mp3 */; };
+		C1C19AE41A41B1E700500C6F /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19ADC1A41B1E700500C6F /* coin.mp3 */; };
+		C1C19AE51A41B1E700500C6F /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1C19ADD1A41B1E700500C6F /* gameOver.wav */; };
+		C1C19AE61A41B1E700500C6F /* monsterDeath.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19ADE1A41B1E700500C6F /* monsterDeath.mp3 */; };
+		C1C19AE71A41B1E700500C6F /* monsterShoot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19ADF1A41B1E700500C6F /* monsterShoot.mp3 */; };
+		C1C19AE81A41B1E700500C6F /* playerBeingHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19AE01A41B1E700500C6F /* playerBeingHit.mp3 */; };
+		C1C19AE91A41B1E700500C6F /* shoot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19AE11A41B1E700500C6F /* shoot.mp3 */; };
+		C1C19AEA1A41B1E700500C6F /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19AE21A41B1E700500C6F /* start.mp3 */; };
+		C1C19AEF1A41D01E00500C6F /* backgroundSound1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1C19AEB1A41D01E00500C6F /* backgroundSound1.wav */; };
+		C1C19AF01A41D01E00500C6F /* backgroundSound2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19AEC1A41D01E00500C6F /* backgroundSound2.mp3 */; };
+		C1C19AF11A41D01E00500C6F /* backgroundSound3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19AED1A41D01E00500C6F /* backgroundSound3.mp3 */; };
+		C1C19AF21A41D01E00500C6F /* backgroundStartScreen.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1C19AEE1A41D01E00500C6F /* backgroundStartScreen.mp3 */; };
 		C1EB45681A3B1E7800153D92 /* spaceshipBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C1EB45671A3B1E7800153D92 /* spaceshipBackground.jpg */; };
 		C1EB456B1A3B1E8500153D92 /* GameSceneLevel3.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EB456A1A3B1E8500153D92 /* GameSceneLevel3.m */; };
 		C1EB456E1A3B38A300153D92 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EB456D1A3B38A300153D92 /* Bullet.m */; };
@@ -67,6 +79,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1C19ADB1A41B1E700500C6F /* backgroundMusic2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic2.mp3; sourceTree = "<group>"; };
+		C1C19ADC1A41B1E700500C6F /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
+		C1C19ADD1A41B1E700500C6F /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
+		C1C19ADE1A41B1E700500C6F /* monsterDeath.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monsterDeath.mp3; sourceTree = "<group>"; };
+		C1C19ADF1A41B1E700500C6F /* monsterShoot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monsterShoot.mp3; sourceTree = "<group>"; };
+		C1C19AE01A41B1E700500C6F /* playerBeingHit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerBeingHit.mp3; sourceTree = "<group>"; };
+		C1C19AE11A41B1E700500C6F /* shoot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shoot.mp3; sourceTree = "<group>"; };
+		C1C19AE21A41B1E700500C6F /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = start.mp3; sourceTree = "<group>"; };
+		C1C19AEB1A41D01E00500C6F /* backgroundSound1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = backgroundSound1.wav; sourceTree = "<group>"; };
+		C1C19AEC1A41D01E00500C6F /* backgroundSound2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSound2.mp3; sourceTree = "<group>"; };
+		C1C19AED1A41D01E00500C6F /* backgroundSound3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSound3.mp3; sourceTree = "<group>"; };
+		C1C19AEE1A41D01E00500C6F /* backgroundStartScreen.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundStartScreen.mp3; sourceTree = "<group>"; };
 		C1EB45671A3B1E7800153D92 /* spaceshipBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spaceshipBackground.jpg; sourceTree = "<group>"; };
 		C1EB45691A3B1E8500153D92 /* GameSceneLevel3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSceneLevel3.h; sourceTree = "<group>"; };
 		C1EB456A1A3B1E8500153D92 /* GameSceneLevel3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSceneLevel3.m; sourceTree = "<group>"; };
@@ -159,6 +183,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1C19ADA1A41B1DB00500C6F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C1C19ADB1A41B1E700500C6F /* backgroundMusic2.mp3 */,
+				C1C19ADC1A41B1E700500C6F /* coin.mp3 */,
+				C1C19ADD1A41B1E700500C6F /* gameOver.wav */,
+				C1C19ADE1A41B1E700500C6F /* monsterDeath.mp3 */,
+				C1C19ADF1A41B1E700500C6F /* monsterShoot.mp3 */,
+				C1C19AE01A41B1E700500C6F /* playerBeingHit.mp3 */,
+				C1C19AE11A41B1E700500C6F /* shoot.mp3 */,
+				C1C19AE21A41B1E700500C6F /* start.mp3 */,
+				C1C19AEB1A41D01E00500C6F /* backgroundSound1.wav */,
+				C1C19AEC1A41D01E00500C6F /* backgroundSound2.mp3 */,
+				C1C19AED1A41D01E00500C6F /* backgroundSound3.mp3 */,
+				C1C19AEE1A41D01E00500C6F /* backgroundStartScreen.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		CD0DD89A1A35DF1D00192C22 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +314,7 @@
 		CD202AC21A1F7D74000D7A8F /* CodingQuest */ = {
 			isa = PBXGroup;
 			children = (
+				C1C19ADA1A41B1DB00500C6F /* Sounds */,
 				CD0DD89A1A35DF1D00192C22 /* View */,
 				CD0DD89B1A35DF5900192C22 /* Model */,
 				CD0DD89C1A35E5E600192C22 /* Controller */,
@@ -392,8 +436,10 @@
 				CF9C9FE11A39E00900D05DA1 /* rightJump.atlas in Resources */,
 				CF9C9FE21A39E00900D05DA1 /* rightRunning.atlas in Resources */,
 				C1EB45681A3B1E7800153D92 /* spaceshipBackground.jpg in Resources */,
+				C1C19AE81A41B1E700500C6F /* playerBeingHit.mp3 in Resources */,
 				C1EB45761A3C998D00153D92 /* acidAttackLeft.png in Resources */,
 				CD0DD91B1A39E47000192C22 /* secondBugMoving.atlas in Resources */,
+				C1C19AE41A41B1E700500C6F /* coin.mp3 in Resources */,
 				CF9C9FDF1A39E00900D05DA1 /* leftJump.atlas in Resources */,
 				CDBDD9AB1A41C0D300ADA436 /* life.png in Resources */,
 				CD0DD9151A39E45B00192C22 /* thirdBugHit.atlas in Resources */,
@@ -404,16 +450,26 @@
 				CD0DD91D1A39E47600192C22 /* firstBugHit.atlas in Resources */,
 				CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */,
 				CD202ACE1A1F7D74000D7A8F /* GameScene.sks in Resources */,
+				C1C19AE51A41B1E700500C6F /* gameOver.wav in Resources */,
 				CD0DD9191A39E46800192C22 /* secondBugHit.atlas in Resources */,
 				CD0DD8A51A35F5B600192C22 /* itTalents.png in Resources */,
 				CF9C9FDE1A39E00900D05DA1 /* ground.atlas in Resources */,
+				C1C19AE71A41B1E700500C6F /* monsterShoot.mp3 in Resources */,
+				C1C19AF21A41D01E00500C6F /* backgroundStartScreen.mp3 in Resources */,
+				C1C19AEA1A41B1E700500C6F /* start.mp3 in Resources */,
 				C1EB45781A3C999300153D92 /* acidAttackDown.png in Resources */,
+				C1C19AE61A41B1E700500C6F /* monsterDeath.mp3 in Resources */,
+				C1C19AE31A41B1E700500C6F /* backgroundMusic2.mp3 in Resources */,
 				CD0DD9311A3B409800192C22 /* coin.atlas in Resources */,
+				C1C19AE91A41B1E700500C6F /* shoot.mp3 in Resources */,
 				CD0DD8911A35CE2900192C22 /* background.jpg in Resources */,
 				CF9C9FE01A39E00900D05DA1 /* leftRunning.atlas in Resources */,
 				CF52ADC61A3D9732009B1943 /* button.png in Resources */,
 				CD202AD41A1F7D74000D7A8F /* Main.storyboard in Resources */,
+				C1C19AEF1A41D01E00500C6F /* backgroundSound1.wav in Resources */,
+				C1C19AF11A41D01E00500C6F /* backgroundSound3.mp3 in Resources */,
 				CD0DD91F1A39E47C00192C22 /* firstBugMoving.atlas in Resources */,
+				C1C19AF01A41D01E00500C6F /* backgroundSound2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
