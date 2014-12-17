@@ -6,6 +6,7 @@
 
 @property NSString* endScore;
 @property SKLabelNode* scoreLabel;
+
 @end
 
 @implementation GameOverScene

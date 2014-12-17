@@ -20,6 +20,7 @@ typedef enum: int{
 @interface Player : SKSpriteNode
 
 @property (readonly)PlayerStatus playerStatus;
+@property (readonly)NSInteger playerLives;
 
 +(Player*) initNewPlayer:(SKScene*) whichScene1 startingPoint: (CGPoint) location;
 

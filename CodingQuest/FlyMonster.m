@@ -17,7 +17,6 @@
 
 -(FlyMonster *)initNewMonster:(SKScene *)whichScene{
 
-    
     SpriteTextures* monsterTexture = [[SpriteTextures alloc] init];
     
     [monsterTexture createFlyingAnimation];
@@ -45,7 +44,6 @@
 
 }
 
-
 /*
 -(void)die{
     SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures ] timePerFrame:0.5];
@@ -61,6 +59,7 @@
     
     [self moveLeft];
 }
+
 
 -(void)moveLeft{
     
@@ -81,7 +80,6 @@
     
     downAcid.size = CGSizeMake(10, 20);
     [downAcid spitDown];
-    
 }
 
 @end
