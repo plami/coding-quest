@@ -16,7 +16,7 @@
 @property Player* player;
 @property FlyMonster* flyMonster;
 @property Bonus* coin;
-@property Bonus* coin2;
+@property Bonus* life;
 @property Bullet* bullet;
 @property SKTextureAtlas* runAtlas;
 @property (readwrite)SpriteTextures* spriteTextures;
@@ -168,44 +168,8 @@
         [self adjustScoreBy:100];
     }
     
-    //react to the contact between bullet and monster
-    else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
-        NSLog(@"the monster disappears");
-        
-        self.counter++;
-        [self adjustScoreBy:100];
-        [[self.monsterArray firstObject] die];
-        if([self.monsterArray count] > 0){
-            [self.monsterArray removeObjectAtIndex:0];
-            [firstBody.node removeFromParent];
-        }
-        [secondBody.node removeFromParent];
-    }
-    
-    //react to the contact between monster and player
-    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
-        [secondBody.node removeFromParent];
-        [_player playerWasHit];
-        NSLog(@"the lives are reduced");
-    }
-    
     //react to the contact between player and flyingMonsteBullet
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & flyingMonsterBulletCategory) != 0) {
-        
-        [self adjustPlayerHealth:-0.10f];
-        [secondBody.node removeFromParent];
-        if(self.playerHealth <= 0.0f){
-            
-            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
-            gameOverScene.finalScore = self.score;
-            
-            [self.view presentScene:gameOverScene transition: reveal];
-        }
-    }
-    
-    //react to the contact between player and monsterBullet
-    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
         
         [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
@@ -303,10 +267,10 @@
     self.runningTime +=timeSinceLast;
     
     
-    if (self.lastSpawnTimeInterval > 20) {
+    if (self.lastSpawnTimeInterval > 5) {
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 10){
+        if(self.runningTime > 30){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene2* winning = [[TransitionScene2 alloc] initWithSize:self.size];
             [self.view presentScene:winning transition:reveal];
@@ -321,8 +285,8 @@
         NSInteger spawnAtX = [self random];
         
         //creating bonuses
-        _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
-        [_coin2 spawnInSceneVerticaly];
+        _life = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
+        [_life spawnInSceneVerticaly];
         
         //creating flying bugs
         _flyMonster = [[FlyMonster alloc]initNewMonster:self];

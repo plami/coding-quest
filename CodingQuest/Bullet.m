@@ -90,7 +90,22 @@
     acid.position = location;
     acid.spriteTextures = acidTexture;
     acid.size = CGSizeMake(10,20);
-    acid.physicsBody.affectedByGravity = NO;
+    
+    acid.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:acid.frame.size.width/2];
+    acid.physicsBody.friction = 0.0f;
+    acid.physicsBody.restitution = 1.0f;
+    acid.physicsBody.linearDamping = 0.0f;
+    acid.physicsBody.allowsRotation = NO;
+    acid.position = location;
+    acid.physicsBody.dynamic = YES;
+    acid.name = @"monsterBullet";
+    
+    //collision between monsterBullet and player
+    acid.physicsBody.categoryBitMask = monsterBulletCategory;
+    acid.physicsBody.contactTestBitMask = playerCategory;
+    acid.physicsBody.collisionBitMask = 0;
+    
+    
     [whichScene3 addChild:acid];
     
     return acid;
