@@ -10,6 +10,7 @@
 #import "FlyMonster.h"
 #import "YouWonPage.h"
 #import "TransitionScene.h"
+#import "Button.h"
 
 @interface GameScene ()
 
@@ -23,7 +24,7 @@
 @property (readwrite)SpriteTextures* spriteTextures;
 @property Background* scrollingBackground;
 @property Player* lives;
-
+@property Button* normalButton;
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
 @property NSTimeInterval runningTime;
@@ -50,6 +51,8 @@
             self.monsterArray = [[NSMutableArray alloc]init];
             self.backgroundColor = [SKColor whiteColor];
              
+             
+             self.normalButton = [[Button alloc] initWithScene:self];
            //  self.score = [[Scores alloc]initWithScore:0];
              
             //[self addChild: [self.score createScoreNode]];
@@ -75,7 +78,7 @@
              _playerHealth = 1.0f;
              
              [_player runOnPlaceRight];
-             [self addChild:[self fireButton]];
+             
 
              [self setupDisplay];
          }
@@ -135,21 +138,7 @@
 -(void)adjustScoreBy:(NSUInteger)points {
     self.score += points;
     SKLabelNode* score = (SKLabelNode*)[self childNodeWithName:kScoreName];
-    score.text = [NSString stringWithFormat:@"Score: %04u", self.score];
-}
-
-
--(SKSpriteNode* ) fireButton{
-    
-    SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
-    fire.position = CGPointMake(self.frame.size.width- 100, 20);
-    
-    fire.name = @"fireButton";
-    fire.zPosition = 1.0;
-    fire.size = CGSizeMake(50, 50);
-    return fire;
-    
-    return fire;
+    score.text = [NSString stringWithFormat:@"Score: %04lu", (unsigned long)self.score];
 }
 
 
@@ -197,8 +186,12 @@
     //react to the contact between monster and player
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         [secondBody.node removeFromParent];
-        [_player playerWasHit];
-         NSLog(@"the lives are reduced");
+        
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        gameOverScene.finalScore = self.score;
+        [gameOverScene updated];
+        [self.view presentScene:gameOverScene transition: reveal];
         
     }
     
@@ -213,7 +206,7 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
-
+            [gameOverScene updated];
             [self.view presentScene:gameOverScene transition: reveal];
         }
     }
@@ -298,7 +291,7 @@
 
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 10){
+        if(self.runningTime > 15){
             [_backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene* transition = [[TransitionScene alloc] initWithSize:self.size];

@@ -64,12 +64,8 @@
         self.counter = 0;
         
         _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
-        
         _playerHealth = 1.0f;
-        
         [_player runOnPlaceRight];
-        [self addChild:[self fireButton]];
-        
         [self setupDisplay];
     }
     
@@ -142,7 +138,7 @@
 -(void)adjustScoreBy:(NSUInteger)points {
     self.score += points;
     SKLabelNode* score = (SKLabelNode*)[self childNodeWithName:kScoreName];
-    score.text = [NSString stringWithFormat:@"Score: %04u", self.score];
+    score.text = [NSString stringWithFormat:@"Score: %04lu", (unsigned long)self.score];
 }
 
 
@@ -167,7 +163,7 @@
     if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & coinCategory) != 0) {
         NSLog(@"the coin disappears");
         [secondBody.node removeFromParent];
-        [self adjustScoreBy:100];
+        [self adjustScoreBy:5];
         _getBonusSound = [SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO];
         [self runAction:self.getBonusSound];
     }
@@ -211,7 +207,7 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
-            
+            [gameOverScene updated];
             [self.view presentScene:gameOverScene transition: reveal];
             
         }
@@ -254,24 +250,9 @@
             
             if (status == PlayerFacingRight || status == PlayerRunningRight || status == PlayerSkiddingRight){
                 _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
-                
                 [_bullet shootRight];
                 
-                //adding collision logic between bullet and monster
-                _bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_bullet.frame.size];
-                _bullet.physicsBody.restitution = 0.1f;
-                _bullet.physicsBody.friction = 0.4f;
-                
-                // make physicsBody static
-                _bullet.physicsBody.dynamic = YES;
-                _bullet.name = @"bullet";
-                
-                _bullet.physicsBody.categoryBitMask = bulletCategory;
-                _bullet.physicsBody.contactTestBitMask = monsterCategory;
-                _bullet.physicsBody.collisionBitMask = 0;
-                
-                
-            }
+                           }
             if (status == PlayerFacingLeft || status == PlayerRunningLeft || status == PlayerSkiddingLeft ){
                 _bullet = [Bullet initNewBulletLeft3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
                 [_bullet shootLeft];
@@ -307,15 +288,6 @@
     }
 }
 
--(NSInteger) random{
-    int minX = _player.size.height / 2;
-    int maxY = self.frame.size.height - _player.size.height / 2;
-    int rangeY = maxY - minX;
-    int actualY = (arc4random() % rangeY) + minX;
-    
-    return actualY;
-}
-
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
     self.lastSpawnTimeInterval += timeSinceLast;
     self.runningTime +=timeSinceLast;
@@ -334,15 +306,14 @@
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
         _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
         
-        _bullet = [Bullet initNewAcidLeft:self startingPoint:CGPointMake(self.frame.size.width,70)];
         [_coin moveLeft];
-        NSInteger spawnAtX = [self random];
+      
         
         //creating bonuses
-        _life = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
+        _life = [Bonus initNewBonus:self startingPoint:CGPointMake([_player randomPlace:self], self.frame.size.height)];
         [_life spawnInSceneVerticaly];
         
-        //creating flying bugs
+        //creating falling bugs
         _flyMonster = [[FlyMonster alloc]initNewMonster:self];
         [_flyMonster spawnInScene:self];
         [_flyMonster shoot:self];
@@ -361,6 +332,7 @@
     [self.scrollingBackground update:currentTime];
     
     if(_player.position.x > self.size.width - 10){
+        
     }
     if(_player.position.x < 100){
 

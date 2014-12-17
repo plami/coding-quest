@@ -9,6 +9,7 @@
 #import "Constants.h"
 #import "FlyMonster.h"
 #import "YouWonPage.h"
+#import "Button.h"
 
 @interface GameSceneLevel3 ()
 
@@ -22,6 +23,7 @@
 @property (readwrite)SpriteTextures* spriteTextures;
 @property Background* scrollingBackground;
 @property Player* lives;
+@property Button* thisButton;
 @property (readwrite)NSUInteger score;
 
 @property NSInteger counter;
@@ -54,6 +56,7 @@
         [self addChild: self.scrollingBackground];
         [self.scrollingBackground setScale:1.7];
         
+        self.thisButton = [[Button alloc]initWithScene:self];
         
         //the scene is set as delegate in physicsWorld
         self.physicsWorld.contactDelegate = self;
@@ -68,7 +71,6 @@
         _playerHealth = 1.0f;
         
         [_player runOnPlaceRight];
-        [self addChild:[self fireButton]];
         
         [self setupDisplay];
     }
@@ -128,23 +130,8 @@
 -(void)adjustScoreBy:(NSUInteger)points {
     self.score += points;
     SKLabelNode* score = (SKLabelNode*)[self childNodeWithName:kScoreName];
-    score.text = [NSString stringWithFormat:@"Score: %04u", self.score];
+    score.text = [NSString stringWithFormat:@"Score: %04lu", (unsigned long)self.score];
 }
-
-
--(SKSpriteNode* ) fireButton{
-    
-    SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
-    fire.position = CGPointMake(self.frame.size.width- 100, 20);
-    
-    fire.name = @"fireButton";
-    fire.zPosition = 1.0;
-    fire.size = CGSizeMake(50, 50);
-    return fire;
-    
-    return fire;
-}
-
 
 #pragma mark Setup Collisions
 
@@ -246,21 +233,7 @@
                 _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
                 
                 [_bullet shootRight];
-                
-                //adding collision logic between bullet and monster
-                _bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_bullet.frame.size];
-                _bullet.physicsBody.restitution = 0.1f;
-                _bullet.physicsBody.friction = 0.4f;
-                
-                // make physicsBody static
-                _bullet.physicsBody.dynamic = YES;
-                _bullet.name = @"bullet";
-                
-                _bullet.physicsBody.categoryBitMask = bulletCategory;
-                _bullet.physicsBody.contactTestBitMask = monsterCategory;
-                _bullet.physicsBody.collisionBitMask = 0;
-                
-                
+               
             }
             if (status == PlayerFacingLeft || status == PlayerRunningLeft || status == PlayerSkiddingLeft ){
                 _bullet = [Bullet initNewBulletLeft3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
@@ -321,15 +294,14 @@
         }
         
         //creating bonuses
-        _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
+        _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,[_player randomPlace:self])];
         _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
         
-        _bullet = [Bullet initNewAcidLeft:self startingPoint:CGPointMake(self.frame.size.width,70)];
+        
         [_coin moveLeft];
-        NSInteger spawnAtX = [self random];
         
         //creating bonuses
-        _life = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
+        _life = [Bonus initNewBonus:self startingPoint:CGPointMake([_player randomPlace:self], self.frame.size.height)];
         [_life spawnInSceneVerticaly];
         
         //creating flying bugs
@@ -360,6 +332,7 @@
 
     }
     if(_player.position.x < 100){
+        
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;

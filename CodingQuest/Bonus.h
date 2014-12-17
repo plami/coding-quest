@@ -13,7 +13,7 @@ typedef enum: int{
 
 +(Bonus*) initNewBonus: (SKScene*)whichScene startingPoint:(CGPoint) location;
 
--(void)addedInScene:(SKScene *)whichScene;
+
 -(void) moveLeft;
 -(void) spawnInSceneVerticaly;
 

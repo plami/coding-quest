@@ -168,7 +168,7 @@
     
     [self runOnPlaceLeft];
     _playerStatus = PlayerRunningLeft;
-    SKAction* moveLeft = [SKAction moveByX:-kPlayerRunOnLeftSpeed y:0 duration:2];
+    SKAction* moveLeft = [SKAction moveByX:-kPlayerRunOnLeftSpeed y:0 duration:1];
     SKAction* moveForever = [SKAction repeatActionForever:moveLeft];
     
     [self runAction:moveForever];

@@ -3,7 +3,7 @@
 
 @interface Button :SKSpriteNode
 
--(instancetype)initWithImageNamed:(NSString *)name andScene: (SKScene*) scene;
+-(instancetype)initWithScene: (SKScene*) scene;
 
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event andScene: (SKScene*) scene;
 
