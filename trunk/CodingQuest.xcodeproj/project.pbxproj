@@ -36,6 +36,8 @@
 		CD202AD61A1F7D74000D7A8F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD202AD51A1F7D74000D7A8F /* Images.xcassets */; };
 		CD202AE51A1F7D74000D7A8F /* CodingQuestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */; };
 		CDA9D2551A40449800183126 /* YouWonPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA9D2541A40449800183126 /* YouWonPage.m */; };
+		CDBDD9A61A41AF8F00ADA436 /* TransitionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBDD9A51A41AF8F00ADA436 /* TransitionScene.m */; };
+		CDBDD9A91A41B32500ADA436 /* TransitionScene2.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBDD9A81A41B32500ADA436 /* TransitionScene2.m */; };
 		CF4CA3631A3CA4720037F4EA /* FlyMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CA3621A3CA4720037F4EA /* FlyMonster.m */; };
 		CF52ADC31A3D94CB009B1943 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52ADC21A3D94CB009B1943 /* Button.m */; };
 		CF52ADC61A3D9732009B1943 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = CF52ADC51A3D9732009B1943 /* button.png */; };
@@ -107,6 +109,10 @@
 		CD202AE41A1F7D74000D7A8F /* CodingQuestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingQuestTests.m; sourceTree = "<group>"; };
 		CDA9D2531A40449800183126 /* YouWonPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWonPage.h; sourceTree = "<group>"; };
 		CDA9D2541A40449800183126 /* YouWonPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWonPage.m; sourceTree = "<group>"; };
+		CDBDD9A41A41AF8F00ADA436 /* TransitionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionScene.h; sourceTree = "<group>"; };
+		CDBDD9A51A41AF8F00ADA436 /* TransitionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionScene.m; sourceTree = "<group>"; };
+		CDBDD9A71A41B32500ADA436 /* TransitionScene2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionScene2.h; sourceTree = "<group>"; };
+		CDBDD9A81A41B32500ADA436 /* TransitionScene2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionScene2.m; sourceTree = "<group>"; };
 		CF4CA3611A3CA4720037F4EA /* FlyMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyMonster.h; sourceTree = "<group>"; };
 		CF4CA3621A3CA4720037F4EA /* FlyMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyMonster.m; sourceTree = "<group>"; };
 		CF52ADC11A3D94CB009B1943 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
@@ -214,6 +220,10 @@
 				CF4CA3621A3CA4720037F4EA /* FlyMonster.m */,
 				CDA9D2531A40449800183126 /* YouWonPage.h */,
 				CDA9D2541A40449800183126 /* YouWonPage.m */,
+				CDBDD9A41A41AF8F00ADA436 /* TransitionScene.h */,
+				CDBDD9A51A41AF8F00ADA436 /* TransitionScene.m */,
+				CDBDD9A71A41B32500ADA436 /* TransitionScene2.h */,
+				CDBDD9A81A41B32500ADA436 /* TransitionScene2.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -429,9 +439,11 @@
 				CD202ACC1A1F7D74000D7A8F /* GameScene.m in Sources */,
 				CD202AC61A1F7D74000D7A8F /* main.m in Sources */,
 				CFA347B51A2C73CD004B671E /* SpriteTextures.m in Sources */,
+				CDBDD9A61A41AF8F00ADA436 /* TransitionScene.m in Sources */,
 				CF4CA3631A3CA4720037F4EA /* FlyMonster.m in Sources */,
 				CFA93B501A3C530D00AC9A8C /* GameOverScene.m in Sources */,
 				CD0DD9341A3B40B400192C22 /* Bonus.m in Sources */,
+				CDBDD9A91A41B32500ADA436 /* TransitionScene2.m in Sources */,
 				CD0DD89F1A35E63600192C22 /* GameSceneLevel2.m in Sources */,
 				CF9C9FD61A39DFFF00D05DA1 /* Background.m in Sources */,
 				C1EB456E1A3B38A300153D92 /* Bullet.m in Sources */,

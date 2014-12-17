@@ -9,6 +9,5 @@
 -(void) spawnInScene: (SKScene*) whichScene;
 -(void) moveLeft;
 -(void) shoot: (SKScene*) scene;
--(void) die;
 
 @end

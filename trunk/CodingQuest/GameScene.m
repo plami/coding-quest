@@ -9,6 +9,7 @@
 #import "Constants.h"
 #import "FlyMonster.h"
 #import "YouWonPage.h"
+#import "TransitionScene.h"
 
 @interface GameScene ()
 
@@ -187,10 +188,7 @@
     //react to the contact between monster and player
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         [secondBody.node removeFromParent];
-        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-        GameOverScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
-        [self.view presentScene:gameOverScene transition: reveal];
-               [_player playerWasHit];
+        [_player playerWasHit];
          NSLog(@"the lives are reduced");
         
     }
@@ -275,11 +273,7 @@
         self.lastHorizontalCoinSpawnInterval = 0;
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,[_player randomPlace:self])];
         [_coin moveLeft];
-        
-       
     }
-    
-
     if(self.lastVerticalCoinSpawnInterval > 2){
         
         self.lastVerticalCoinSpawnInterval = 0;
@@ -287,15 +281,14 @@
         [_coin2 spawnInSceneVerticaly];
 
     }
-    
     if (self.lastSpawnTimeInterval > 5) {
 
         self.lastSpawnTimeInterval = 0;
         
         if(self.runningTime > 10){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            GameSceneLevel2* winning = [[GameSceneLevel2 alloc] initWithSize:self.size];
-            [self.view presentScene:winning transition:reveal];
+            TransitionScene* transition = [[TransitionScene alloc] initWithSize:self.size];
+            [self.view presentScene:transition transition:reveal];
         }
 
        _monster = [[Monster alloc]initNewMonster:self];
@@ -308,7 +301,6 @@
             [self.monsterArray[index] shoot:self];
         }
     }
-    
   }
 
 -(void)update:(CFTimeInterval)currentTime {

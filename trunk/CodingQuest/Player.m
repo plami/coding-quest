@@ -8,7 +8,7 @@
 @property SKTextureAtlas* runAtlas;
 @property SpriteTextures* spriteTextures;
 @property (readwrite)PlayerStatus playerStatus;
-@property NSInteger playerLives;
+@property (readwrite)NSInteger playerLives;
 @property CGPoint* currentLocation;
 @end
 
@@ -67,6 +67,8 @@
 
 -(void)playerWasHit{
     self.playerLives--;
+    SKLabelNode* livesLabel = (SKLabelNode*)[self.parent childNodeWithName:kLivesName];
+    [livesLabel setText:[NSString stringWithFormat:@"Lives: %d",self.playerLives]];
 }
 
 
