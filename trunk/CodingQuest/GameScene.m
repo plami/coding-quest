@@ -29,7 +29,8 @@
 @property CGFloat playerHealth;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
-
+@property NSTimeInterval lastHorizontalCoinSpawnInterval;
+@property NSTimeInterval lastVerticalCoinSpawnInterval;
 @end
 
 @implementation GameScene
@@ -64,30 +65,7 @@
              self.counter = 0;
              
              _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
-             
-             _player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_player.frame.size];
-             _player.physicsBody.restitution = 0.1f;
-             _player.physicsBody.friction = 0.4f;
-             
-             // make physicsBody static
-             _player.physicsBody.dynamic = YES;
-             _player.name = @"player";
-             
-             //collision between player and coin
-             _player.physicsBody.categoryBitMask = playerCategory;
-             _player.physicsBody.contactTestBitMask = coinCategory;
-             _player.physicsBody.collisionBitMask = 0;
-             
-             //collision between player and monster
-             _player.physicsBody.categoryBitMask = playerCategory;
-             _player.physicsBody.contactTestBitMask = monsterCategory;
-             _player.physicsBody.collisionBitMask = 0;
-             
-             //collision between monsterBullet and player
-             _player.physicsBody.categoryBitMask = playerCategory;
-             _player.physicsBody.contactTestBitMask = monsterBulletCategory;
-             _player.physicsBody.collisionBitMask = 0;
-             
+            
              _playerHealth = 1.0f;
              
              [_player runOnPlaceRight];
@@ -190,7 +168,7 @@
     if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & coinCategory) != 0) {
         NSLog(@"the coin disappears");
         [secondBody.node removeFromParent];
-        [self adjustScoreBy:100];
+        [self adjustScoreBy:5];
     }
     
     //react to the contact between bullet and monster
@@ -198,9 +176,8 @@
         NSLog(@"the monster disappears");
         
         self.counter++;
-        [self adjustScoreBy:100];
-        [[self.monsterArray firstObject] die];
-        if([self.monsterArray count] > 0){
+        [self adjustScoreBy:1];
+        [[self.monsterArray firstObject] die];        if([self.monsterArray count] > 0){
             [self.monsterArray removeObjectAtIndex:0];
             [firstBody.node removeFromParent];
         }
@@ -252,21 +229,6 @@
                 _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
                 
                 [_bullet shootRight];
-                
-                //adding collision logic between bullet and monster
-                _bullet.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_bullet.frame.size];
-                _bullet.physicsBody.restitution = 0.1f;
-                _bullet.physicsBody.friction = 0.4f;
-                
-                // make physicsBody static
-                _bullet.physicsBody.dynamic = YES;
-                _bullet.name = @"bullet";
-                
-                _bullet.physicsBody.categoryBitMask = bulletCategory;
-                _bullet.physicsBody.contactTestBitMask = monsterCategory;
-                _bullet.physicsBody.collisionBitMask = 0;
-                
-                
             }
             if (status == PlayerFacingLeft || status == PlayerRunningLeft || status == PlayerSkiddingLeft ){
                 _bullet = [Bullet initNewBulletLeft3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];
@@ -303,21 +265,31 @@
     }
 }
 
--(NSInteger) random{
-    int minX = _player.size.height / 2;
-    int maxY = self.frame.size.height - _player.size.height / 2;
-    int rangeY = maxY - minX;
-    int actualY = (arc4random() % rangeY) + minX;
-    
-    return actualY;
-}
-
 - (void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLast {
-     self.lastSpawnTimeInterval += timeSinceLast;
+    self.lastSpawnTimeInterval += timeSinceLast;
+    self.lastHorizontalCoinSpawnInterval +=timeSinceLast;
     self.runningTime +=timeSinceLast;
+    self.lastVerticalCoinSpawnInterval +=timeSinceLast;
     
+    if(self.lastHorizontalCoinSpawnInterval > 3){
+        self.lastHorizontalCoinSpawnInterval = 0;
+        _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,[_player randomPlace:self])];
+        [_coin moveLeft];
+        
+       
+    }
     
-    if (self.lastSpawnTimeInterval > 20) {
+
+    if(self.lastVerticalCoinSpawnInterval > 2){
+        
+        self.lastVerticalCoinSpawnInterval = 0;
+        _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake([_player randomPlace:self], self.frame.size.height)];
+        [_coin2 spawnInSceneVerticaly];
+
+    }
+    
+    if (self.lastSpawnTimeInterval > 5) {
+
         self.lastSpawnTimeInterval = 0;
         
         if(self.runningTime > 30){
@@ -333,14 +305,6 @@
              [self.view presentScene:gameOverScene transition: reveal];*/
         }
 
-        _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
-        _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
-        
-        _bullet = [Bullet initNewAcidLeft:self startingPoint:CGPointMake(self.frame.size.width,70)];
-        [_coin moveLeft];
-        NSInteger spawnAtX = [self random];
-        _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
-        [_coin2 spawnInSceneVerticaly];
         
        _monster = [[Monster alloc]initNewMonster:self];
        [_monster spawnInScene:self];
@@ -360,10 +324,10 @@
     [self.scrollingBackground update:currentTime];
     
     if(_player.position.x > self.size.width - 10){
-        [_player stopMoving];
+        [_player runLeft];
     }
-    if(_player.position.x < 100){
-        [_player stopMoving];
+    if(_player.position.x < 10){
+        [_player runRight];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;
