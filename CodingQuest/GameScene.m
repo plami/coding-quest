@@ -292,20 +292,12 @@
 
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 30){
+        if(self.runningTime > 10){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameSceneLevel2* winning = [[GameSceneLevel2 alloc] initWithSize:self.size];
             [self.view presentScene:winning transition:reveal];
-            
-            /*  GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
-             gameOverScene.finalScore = self.score;
-             NSLog(@"final score: %ld",(long)gameOverScene.finalScore);
-             
-             [gameOverScene updated];
-             [self.view presentScene:gameOverScene transition: reveal];*/
         }
 
-        
        _monster = [[Monster alloc]initNewMonster:self];
        [_monster spawnInScene:self];
        [_monster shoot:self];

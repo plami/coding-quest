@@ -63,29 +63,6 @@
         
         _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
         
-        _player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:_player.frame.size];
-        _player.physicsBody.restitution = 0.1f;
-        _player.physicsBody.friction = 0.4f;
-        
-        // make physicsBody static
-        _player.physicsBody.dynamic = YES;
-        _player.name = @"player";
-        
-        //collision between player and coin
-        _player.physicsBody.categoryBitMask = playerCategory;
-        _player.physicsBody.contactTestBitMask = coinCategory;
-        _player.physicsBody.collisionBitMask = 0;
-        
-        //collision between player and monster
-        _player.physicsBody.categoryBitMask = playerCategory;
-        _player.physicsBody.contactTestBitMask = monsterCategory;
-        _player.physicsBody.collisionBitMask = 0;
-        
-        //collision between monsterBullet and player
-        _player.physicsBody.categoryBitMask = playerCategory;
-        _player.physicsBody.contactTestBitMask = monsterBulletCategory;
-        _player.physicsBody.collisionBitMask = 0;
-        
         _playerHealth = 1.0f;
         
         [_player runOnPlaceRight];
@@ -216,6 +193,21 @@
         
     }
     
+    //react to the contact between player and flyingMonsteBullet
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & flyingMonsterBulletCategory) != 0) {
+        
+        [self adjustPlayerHealth:-0.10f];
+        [secondBody.node removeFromParent];
+        if(self.playerHealth <= 0.0f){
+            
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            gameOverScene.finalScore = self.score;
+            
+            [self.view presentScene:gameOverScene transition: reveal];
+        }
+    }
+    
     //react to the contact between player and monsterBullet
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
         
@@ -320,26 +312,29 @@
         
         if(self.runningTime > 30){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            GameSceneLevel2* winning = [[GameSceneLevel2 alloc] initWithSize:self.size];
+            GameOverScene* winning = [[GameOverScene alloc] initWithSize:self.size];
             [self.view presentScene:winning transition:reveal];
-            
-            /*  GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
-             gameOverScene.finalScore = self.score;
-             NSLog(@"final score: %ld",(long)gameOverScene.finalScore);
-             
-             [gameOverScene updated];
-             [self.view presentScene:gameOverScene transition: reveal];*/
         }
         
+        //creating bonuses
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,self.frame.size.height/2)];
         _coin.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:_coin.frame.size.width/2];
         
         _bullet = [Bullet initNewAcidLeft:self startingPoint:CGPointMake(self.frame.size.width,70)];
         [_coin moveLeft];
         NSInteger spawnAtX = [self random];
+        
+        //creating bonuses
         _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
         [_coin2 spawnInSceneVerticaly];
         
+        //creating flying bugs
+        _flyMonster = [[FlyMonster alloc]initNewMonster:self];
+        [_flyMonster spawnInScene:self];
+        [_flyMonster shoot:self];
+        [self.monsterArray addObject:_flyMonster];
+        
+        //creating normal bugs
         _monster = [[Monster alloc]initNewMonster:self];
         [_monster spawnInScene:self];
         [_monster shoot:self];
@@ -358,10 +353,9 @@
     [self.scrollingBackground update:currentTime];
     
     if(_player.position.x > self.size.width - 10){
-        [_player stopMoving];
+
     }
     if(_player.position.x < 100){
-        [_player stopMoving];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;

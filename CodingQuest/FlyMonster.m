@@ -2,6 +2,7 @@
 #import "SpriteTextures.h"
 #import "Constants.h"
 #import "Bullet.h"
+
 @interface FlyMonster ()
 
 
@@ -21,13 +22,26 @@
     
     [monsterTexture createFlyingAnimation];
     SKTexture* f1 = [SKTexture textureWithImageNamed:@"bug1Moving.png"];
-    FlyMonster* fly = [FlyMonster spriteNodeWithTexture:f1];
-    fly.spriteTextures = monsterTexture;
-    fly.size = CGSizeMake(70, 70);
+    FlyMonster* flyingMonster = [FlyMonster spriteNodeWithTexture:f1];
+    flyingMonster.spriteTextures = monsterTexture;
+    flyingMonster.size = CGSizeMake(kFlyingMonsterWidthSize, kFlyingMonsterHighSize);
     
+    flyingMonster.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:flyingMonster.frame.size.width/2];
+    flyingMonster.physicsBody.friction = 0.0f;
+    flyingMonster.physicsBody.restitution = 1.0f;
+    flyingMonster.physicsBody.linearDamping = 0.0f;
+    flyingMonster.physicsBody.allowsRotation = NO;
+    flyingMonster.physicsBody.dynamic = YES;
+    flyingMonster.name = @"flying monster";
     
-    [whichScene addChild:fly];
-    return fly;
+    //collision between monster and bullet, monster and player
+    flyingMonster.physicsBody.categoryBitMask = monsterCategory;
+    flyingMonster.physicsBody.contactTestBitMask = monsterBulletCategory | playerCategory;
+    
+    flyingMonster.physicsBody.collisionBitMask = 0;
+    
+    [whichScene addChild:flyingMonster];
+    return flyingMonster;
 
 }
 
@@ -39,6 +53,7 @@
     [self runAction:dieAction];
 }
 */
+
 -(void)spawnInScene:(SKScene *)whichScene{
     
     self.position = CGPointMake(whichScene.frame.size.width + kMonsterSpawnX, whichScene.frame.size.height /2

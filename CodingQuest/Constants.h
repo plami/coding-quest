@@ -1,10 +1,11 @@
 #import <Foundation/Foundation.h>
 
-static const uint32_t playerCategory        = 0x1 << 0;      // 000001
-static const uint32_t coinCategory          = 0x1 << 1;      // 000010
-static const uint32_t bulletCategory        = 0x1 << 2;      // 000100
-static const uint32_t monsterCategory       = 0x1 << 3;      // 001000
-static const uint32_t monsterBulletCategory = 0X1 << 4;      // 010000
+static const uint32_t playerCategory               = 0x1 << 0;      // 000001
+static const uint32_t coinCategory                 = 0x1 << 1;      // 000010
+static const uint32_t bulletCategory               = 0x1 << 2;      // 000100
+static const uint32_t monsterCategory              = 0x1 << 3;      // 001000
+static const uint32_t monsterBulletCategory        = 0X1 << 4;      // 010000
+static const uint32_t flyingMonsterBulletCategory  = 0X1 << 5;      // 100000
 
 @protocol Constants <NSObject>
 
@@ -43,6 +44,8 @@ static const uint32_t monsterBulletCategory = 0X1 << 4;      // 010000
 
 #define kMonsterHighSize                    70
 #define kMonsterWidthSize                   70
+#define kFlyingMonsterHighSize              70
+#define kFlyingMonsterWidthSize             70
 #define kMonsterMovingLeftSpeed             80
 #define kMonsterSpawnX                      20
 #define kMonsterSpawnY                      60
