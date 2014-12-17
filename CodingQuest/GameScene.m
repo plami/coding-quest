@@ -36,7 +36,9 @@
 @property SKAction* getBonusSound;
 @property SKAction* playerBeingHitSound;
 @property SKAction* playerShootSound;
+@property SKAction* monsterDieSound;
 @property AVAudioPlayer* backgroundMusicPlayer;
+
 @end
 
 @implementation GameScene
@@ -57,7 +59,7 @@
              
             //[self addChild: [self.score createScoreNode]];
              NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
-             Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1 andMusic:@"backgroundSound1.wav"];
+             Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
              [self playBackgroundMusic:@"backgroundSound1.wav"];
              
              self.scrollingBackground = scrollingBackground;
@@ -171,7 +173,8 @@
     //react to the contact between bullet and monster
     else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         NSLog(@"the monster disappears");
-        
+        _monsterDieSound = [SKAction playSoundFileNamed:@"monsterDeath.mp3" waitForCompletion:NO];
+        [self runAction:self.monsterDieSound];
         self.counter++;
         [self adjustScoreBy:1];
         [[self.monsterArray firstObject] die];
@@ -186,7 +189,7 @@
     //react to the contact between monster and player
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         [secondBody.node removeFromParent];
-        
+        [self.backgroundMusicPlayer stop];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
         gameOverScene.finalScore = self.score;
@@ -206,7 +209,11 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
+
+            [self.backgroundMusicPlayer stop];
+
             [gameOverScene updated];
+
             [self.view presentScene:gameOverScene transition: reveal];
         }
     }
