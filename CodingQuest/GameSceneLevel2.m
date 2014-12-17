@@ -9,6 +9,7 @@
 #import "Constants.h"
 #import "FlyMonster.h"
 #import "YouWonPage.h"
+#import "TransitionScene2.h"
 
 @interface GameSceneLevel2 ()
 
@@ -307,7 +308,7 @@
         
         if(self.runningTime > 10){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-            GameSceneLevel3* winning = [[GameSceneLevel3 alloc] initWithSize:self.size];
+            TransitionScene2* winning = [[TransitionScene2 alloc] initWithSize:self.size];
             [self.view presentScene:winning transition:reveal];
         }
         
