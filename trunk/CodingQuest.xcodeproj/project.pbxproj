@@ -38,6 +38,7 @@
 		CDA9D2551A40449800183126 /* YouWonPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA9D2541A40449800183126 /* YouWonPage.m */; };
 		CDBDD9A61A41AF8F00ADA436 /* TransitionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBDD9A51A41AF8F00ADA436 /* TransitionScene.m */; };
 		CDBDD9A91A41B32500ADA436 /* TransitionScene2.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBDD9A81A41B32500ADA436 /* TransitionScene2.m */; };
+		CDBDD9AB1A41C0D300ADA436 /* life.png in Resources */ = {isa = PBXBuildFile; fileRef = CDBDD9AA1A41C0D300ADA436 /* life.png */; };
 		CF4CA3631A3CA4720037F4EA /* FlyMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4CA3621A3CA4720037F4EA /* FlyMonster.m */; };
 		CF52ADC31A3D94CB009B1943 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = CF52ADC21A3D94CB009B1943 /* Button.m */; };
 		CF52ADC61A3D9732009B1943 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = CF52ADC51A3D9732009B1943 /* button.png */; };
@@ -113,6 +114,7 @@
 		CDBDD9A51A41AF8F00ADA436 /* TransitionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionScene.m; sourceTree = "<group>"; };
 		CDBDD9A71A41B32500ADA436 /* TransitionScene2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionScene2.h; sourceTree = "<group>"; };
 		CDBDD9A81A41B32500ADA436 /* TransitionScene2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionScene2.m; sourceTree = "<group>"; };
+		CDBDD9AA1A41C0D300ADA436 /* life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = life.png; sourceTree = "<group>"; };
 		CF4CA3611A3CA4720037F4EA /* FlyMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyMonster.h; sourceTree = "<group>"; };
 		CF4CA3621A3CA4720037F4EA /* FlyMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyMonster.m; sourceTree = "<group>"; };
 		CF52ADC11A3D94CB009B1943 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		CD0DD8AC1A35FB6700192C22 /* logos */ = {
 			isa = PBXGroup;
 			children = (
+				CDBDD9AA1A41C0D300ADA436 /* life.png */,
 				CD0DD8901A35CE2900192C22 /* background.jpg */,
 				CD0DD8A41A35F5B600192C22 /* itTalents.png */,
 			);
@@ -392,6 +395,7 @@
 				C1EB45761A3C998D00153D92 /* acidAttackLeft.png in Resources */,
 				CD0DD91B1A39E47000192C22 /* secondBugMoving.atlas in Resources */,
 				CF9C9FDF1A39E00900D05DA1 /* leftJump.atlas in Resources */,
+				CDBDD9AB1A41C0D300ADA436 /* life.png in Resources */,
 				CD0DD9151A39E45B00192C22 /* thirdBugHit.atlas in Resources */,
 				C1EB45701A3C6C5F00153D92 /* bulletLeft.png in Resources */,
 				CD0DD9131A39E43800192C22 /* backgroundLevel2.jpeg in Resources */,

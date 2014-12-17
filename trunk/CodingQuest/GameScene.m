@@ -17,7 +17,7 @@
 @property Monster* monster;
 @property FlyMonster* flyMonster;
 @property Bonus* coin;
-@property Bonus* coin2;
+@property Bonus* life;
 @property Bullet* bullet;
 @property SKTextureAtlas* runAtlas;
 @property (readwrite)SpriteTextures* spriteTextures;
@@ -178,7 +178,9 @@
         
         self.counter++;
         [self adjustScoreBy:1];
-        [[self.monsterArray firstObject] die];        if([self.monsterArray count] > 0){
+        [[self.monsterArray firstObject] die];
+        
+        if([self.monsterArray count] > 0){
             [self.monsterArray removeObjectAtIndex:0];
             [firstBody.node removeFromParent];
         }
@@ -199,7 +201,6 @@
         [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
         if(self.playerHealth <= 0.0f){
-        
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
@@ -277,8 +278,8 @@
     if(self.lastVerticalCoinSpawnInterval > 2){
         
         self.lastVerticalCoinSpawnInterval = 0;
-        _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake([_player randomPlace:self], self.frame.size.height)];
-        [_coin2 spawnInSceneVerticaly];
+        _life = [Bonus initNewBonus:self startingPoint:CGPointMake([_player randomPlace:self], self.frame.size.height)];
+        [_life spawnInSceneVerticaly];
 
     }
     if (self.lastSpawnTimeInterval > 5) {

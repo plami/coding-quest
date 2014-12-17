@@ -16,7 +16,7 @@
 @property Monster* monster;
 @property FlyMonster* flyMonster;
 @property Bonus* coin;
-@property Bonus* coin2;
+@property Bonus* life;
 @property Bullet* bullet;
 @property SKTextureAtlas* runAtlas;
 @property (readwrite)SpriteTextures* spriteTextures;
@@ -189,8 +189,9 @@
         NSLog(@"the lives are reduced");
     }
     
-    //react to the contact between player and flyingMonsteBullet
-    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & flyingMonsterBulletCategory) != 0) {
+
+    //react to the contact between player and monsterBullet
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
         
         [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
@@ -203,9 +204,8 @@
             [self.view presentScene:gameOverScene transition: reveal];
         }
     }
-    
-    //react to the contact between player and monsterBullet
-    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
+    //react to the contact between player and flyingMonsteBullet
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & flyingMonsterBulletCategory) != 0) {
         
         [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
@@ -321,8 +321,8 @@
         NSInteger spawnAtX = [self random];
         
         //creating bonuses
-        _coin2 = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
-        [_coin2 spawnInSceneVerticaly];
+        _life = [Bonus initNewBonus:self startingPoint:CGPointMake(spawnAtX, self.frame.size.height)];
+        [_life spawnInSceneVerticaly];
         
         //creating flying bugs
         _flyMonster = [[FlyMonster alloc]initNewMonster:self];

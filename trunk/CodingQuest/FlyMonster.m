@@ -25,20 +25,6 @@
     flyingMonster.spriteTextures = monsterTexture;
     flyingMonster.size = CGSizeMake(kFlyingMonsterWidthSize, kFlyingMonsterHighSize);
     
-    flyingMonster.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:flyingMonster.frame.size.width/2];
-    flyingMonster.physicsBody.friction = 0.0f;
-    flyingMonster.physicsBody.restitution = 1.0f;
-    flyingMonster.physicsBody.linearDamping = 0.0f;
-    flyingMonster.physicsBody.allowsRotation = NO;
-    flyingMonster.physicsBody.dynamic = YES;
-    flyingMonster.name = @"flying monster";
-    
-    //collision between monster and bullet, monster and player
-    flyingMonster.physicsBody.categoryBitMask = monsterCategory;
-    flyingMonster.physicsBody.contactTestBitMask = monsterBulletCategory | playerCategory;
-    
-    flyingMonster.physicsBody.collisionBitMask = 0;
-    
     [whichScene addChild:flyingMonster];
     return flyingMonster;
 
@@ -79,6 +65,21 @@
     Bullet* downAcid = [Bullet initNewAcidDown:scene startingPoint:self.position];
     
     downAcid.size = CGSizeMake(10, 20);
+    
+    downAcid.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:downAcid.frame.size.width/2];
+    downAcid.physicsBody.friction = 0.0f;
+    downAcid.physicsBody.restitution = 1.0f;
+    downAcid.physicsBody.linearDamping = 0.0f;
+    downAcid.physicsBody.allowsRotation = NO;
+    downAcid.physicsBody.dynamic = YES;
+    downAcid.name = @"flyingMonsterBullet";
+    
+    //collision between flying flyingMonster bullet and player
+    downAcid.physicsBody.categoryBitMask = flyingMonsterBulletCategory;
+    downAcid.physicsBody.contactTestBitMask = flyingMonsterBulletCategory | playerCategory;
+    
+    downAcid.physicsBody.collisionBitMask = 0;
+    
     [downAcid spitDown];
 }
 
