@@ -5,7 +5,7 @@
 
 - (instancetype)initWithBackground:(NSString *)background
                     size:(CGSize)size
-                   speed:(CGFloat)speed;
+                             speed:(CGFloat)spee andMusic: (NSString*) sound;
 
 - (void)update:(NSTimeInterval)currentTime;
 

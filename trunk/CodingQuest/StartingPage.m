@@ -3,6 +3,9 @@
 #import "GameSceneLevel2.h"
 #import "GameSceneLevel3.h"
 
+@interface StartingPage ()
+@property AVAudioPlayer* backgroundMusicPlayer;
+@end
 @implementation StartingPage
 
 
@@ -12,6 +15,9 @@
     if (self = [super initWithSize:size]) {
         
         /* Setup your scene here */
+        
+        //adding background sound
+        [self playBackgroundMusic:@"backgroundStartScreen.mp3"];
         
         //adding background
         SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
@@ -57,6 +63,18 @@
     return self;
 }
 
+- (void)playBackgroundMusic:(NSString *)filename
+{
+    NSError *error;
+    NSURL *backgroundMusicURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+    _backgroundMusicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:backgroundMusicURL error:&error];
+    _backgroundMusicPlayer.numberOfLoops = -1;
+    _backgroundMusicPlayer.volume = 0.8;
+    _backgroundMusicPlayer.delegate = self;
+    [_backgroundMusicPlayer prepareToPlay];
+    [_backgroundMusicPlayer play];
+}
+
 
 #pragma mark Display for transition between the levels
 
@@ -68,12 +86,13 @@
     SKNode *node = [self nodeAtPoint:location];
     
     if ([node.name isEqualToString:@"Play button"]) {
-        
+        [_backgroundMusicPlayer stop];
         SKTransition *reveal = [SKTransition fadeWithDuration:2];
         
         GameScene *scene = [GameScene sceneWithSize:self.view.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene:scene transition:reveal];
+        [self removeActionForKey:@"music"];
     }
 }
 

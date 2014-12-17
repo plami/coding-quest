@@ -30,7 +30,9 @@
 @property CGFloat playerHealth;
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
-
+@property SKAction* getBonusSound;
+@property SKAction* playerBeingHitSound;
+@property SKAction* playerShootSound;
 @end
 
 @implementation GameSceneLevel2
@@ -46,7 +48,7 @@
         self.backgroundColor = [SKColor whiteColor];
         
         NSString* imageName = [NSString stringWithFormat:@"backgroundLevel2.jpeg"];
-        Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
+        Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1 andMusic:@"backgroundSound2.mp3"];
         
         self.scrollingBackground = scrollingBackground;
         [self addChild: self.scrollingBackground];
@@ -166,11 +168,60 @@
         NSLog(@"the coin disappears");
         [secondBody.node removeFromParent];
         [self adjustScoreBy:100];
+        _getBonusSound = [SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO];
+        [self runAction:self.getBonusSound];
     }
     
+
+    //react to the contact between bullet and monster
+    else if (((firstBody.node.physicsBody.categoryBitMask & bulletCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
+        NSLog(@"the monster disappears");
+        
+        self.counter++;
+        [self adjustScoreBy:100];
+        [[self.monsterArray firstObject] die];
+        if([self.monsterArray count] > 0){
+            [self.monsterArray removeObjectAtIndex:0];
+            [firstBody.node removeFromParent];
+        }
+        [secondBody.node removeFromParent];
+    }
+    
+    //react to the contact between monster and player
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
+        [secondBody.node removeFromParent];
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        GameOverScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        [self.view presentScene:gameOverScene transition: reveal];
+        [_player playerWasHit];
+        NSLog(@"the lives are reduced");
+        
+        
+    }
+    
+
     //react to the contact between player and flyingMonsteBullet
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & flyingMonsterBulletCategory) != 0) {
-        
+        _playerBeingHitSound = [SKAction playSoundFileNamed:@"playerBeingHit.mp3" waitForCompletion:NO];
+        [self runAction:self.playerBeingHitSound];
+        [self adjustPlayerHealth:-0.10f];
+        [secondBody.node removeFromParent];
+        if(self.playerHealth <= 0.0f){
+            
+            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+            gameOverScene.finalScore = self.score;
+            
+            [self.view presentScene:gameOverScene transition: reveal];
+            
+        }
+    }
+
+    
+    //react to the contact between player and monsterBullet
+    else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterBulletCategory) != 0) {
+        _playerBeingHitSound = [SKAction playSoundFileNamed:@"playerBeingHit.mp3" waitForCompletion:NO];
+        [self runAction:self.playerBeingHitSound];
         [self adjustPlayerHealth:-0.10f];
         [secondBody.node removeFromParent];
         if(self.playerHealth <= 0.0f){
@@ -182,6 +233,7 @@
             [self.view presentScene:gameOverScene transition: reveal];
         }
     }
+
 }
 
 
@@ -197,6 +249,8 @@
         SKNode *node = [self nodeAtPoint:location];
         
         if([node.name isEqualToString:@"fireButton"]){
+            _playerShootSound = [SKAction playSoundFileNamed:@"shoot.mp3" waitForCompletion:NO];
+            [self runAction:self.playerShootSound];
             
             if (status == PlayerFacingRight || status == PlayerRunningRight || status == PlayerSkiddingRight){
                 _bullet = [Bullet initNewBullet3:self startingPoint:CGPointMake(self.player.position.x, self.player.position.y)];

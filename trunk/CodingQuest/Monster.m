@@ -15,7 +15,8 @@
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property Monster* monster;
-
+@property SKAction* monsterShootSound;
+@property SKAction* monsterDeathSound;
 
 
 @end
@@ -78,6 +79,8 @@
 -(void)die{
     SKAction* dieAction = [SKAction animateWithTextures:[_spriteTextures dyingMonster] timePerFrame:0.5];
     [self runAction:dieAction];
+    _monsterDeathSound = [SKAction playSoundFileNamed:@"monsterDeath.mp3" waitForCompletion:NO];
+    [self runAction:self.monsterDeathSound];
 }
 
 
@@ -91,6 +94,9 @@
     Bullet *leftAcit = [Bullet initNewAcidLeft:scene startingPoint:self.position];
     leftAcit.size = CGSizeMake(10, 20);
     [leftAcit spitLeft];
+    _monsterShootSound = [SKAction playSoundFileNamed:@"monsterShoot.mp3" waitForCompletion:NO];
+    [self runAction:self.monsterShootSound];
+    
 }
 
 

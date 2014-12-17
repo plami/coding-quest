@@ -7,6 +7,8 @@
 @property NSString* endScore;
 @property SKLabelNode* scoreLabel;
 
+@property SKAction* gameOverSound;
+
 @end
 
 @implementation GameOverScene
@@ -16,6 +18,9 @@
 
 -(instancetype) initWithSize:(CGSize)size{
     if (self = [super initWithSize:size]) {
+        
+        _gameOverSound = [SKAction playSoundFileNamed:@"gameOver.wav" waitForCompletion:NO];
+        [self runAction:self.gameOverSound];
 
         //adding background
         SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
