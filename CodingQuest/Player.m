@@ -29,18 +29,35 @@
     player.position = location;
     player.spriteTextures = playerTexture;
     player.size = CGSizeMake(kPlayerSizeWidth, kPlayerSizeHigh);
-    player.physicsBody.affectedByGravity = YES;
-    [whichScene1 addChild:player];
+    player.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:player.frame.size];
+    player.physicsBody.restitution = 0.1f;
+    player.physicsBody.friction = 0.4f;
+    
+    // make physicsBody static
+    player.physicsBody.dynamic = YES;
+    player.name = @"player";
+    
+    //collision between player and coin, player and monster, player and monster's bullet
+    player.physicsBody.categoryBitMask = playerCategory;
+    player.physicsBody.contactTestBitMask = coinCategory | monsterCategory | monsterBulletCategory;
+    player.physicsBody.collisionBitMask = 0;
     player.playerStatus = PlayerFacingRight;
     player.playerLives = kPlayerLives;
+    
+    [whichScene1 addChild:player];
+   
   
     return player;
 }
--(void) stopMoving{
-   
-    SKAction* stopAction = [SKAction moveByX:0 y:0 duration:100];
-    [self runAction:stopAction];
+
+-(NSInteger)randomPlace:(SKScene *)scene{
     
+    int minX = self.size.height / 2;
+    int maxY = scene.frame.size.height - self.size.height / 2;
+    int rangeY = maxY - minX;
+    int actualY = (arc4random() % rangeY) + minX;
+    
+    return actualY;
 }
 
 -(NSInteger)livesRemaining{
@@ -51,6 +68,7 @@
 -(void)playerWasHit{
     self.playerLives--;
 }
+
 
 #pragma mark - Animation and Actions for Player
 
