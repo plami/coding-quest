@@ -20,11 +20,11 @@
         [self addChild:logo];
         
         NSString * message;
-        message = @"You Won";
+        message = @"Coding Quest 1 completed";
         
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         label.text = message;
-        label.fontSize = 60;
+        label.fontSize = 40;
         label.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
         label.position = CGPointMake(self.size.width/2, self.size.height/2 + 50);
         [self addChild:label];
