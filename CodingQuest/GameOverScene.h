@@ -4,7 +4,7 @@
 @interface GameOverScene : SKScene
 
 @property NSInteger finalScore;
-@property GameScene* theScene;
+
 
 -(instancetype) initWithSize:(CGSize)size ;
 -(void) updated;

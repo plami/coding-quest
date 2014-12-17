@@ -2,7 +2,7 @@
 
 @interface GameSceneLevel2 : SKScene<SKPhysicsContactDelegate>
 
-@property (readonly)NSUInteger score;
+@property NSUInteger score;
 - (void)playBackgroundMusic:(NSString *)filename;
 
 @end

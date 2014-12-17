@@ -22,7 +22,7 @@
 @property (readwrite)SpriteTextures* spriteTextures;
 @property Background* scrollingBackground;
 @property Player* lives;
-@property (readwrite)NSUInteger score;
+
 
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
@@ -66,7 +66,7 @@
         
         self.counter = 0;
         
-        _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
+        _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60)];
         _playerHealth = 1.0f;
         [_player runOnPlaceRight];
         [self setupDisplay];
@@ -193,7 +193,9 @@
         [self.backgroundMusicPlayer stop];
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         GameOverScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        NSLog(@"score: %ld",(long)self.score);
         [self.view presentScene:gameOverScene transition: reveal];
+        
         [_player playerWasHit];
         NSLog(@"the lives are reduced");
         
@@ -305,6 +307,7 @@
             [self.backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene2* winning = [[TransitionScene2 alloc] initWithSize:self.size];
+            winning.currentScoreLevel2 = self.score;
             [self.view presentScene:winning transition:reveal];
         }
         

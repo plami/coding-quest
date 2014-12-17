@@ -14,18 +14,20 @@
 
 @implementation Player
 
+
 #pragma mark Init Method
+
 
 +(Player *)initNewPlayer:(SKScene *)whichScene1 startingPoint:(CGPoint)location{
     
     SpriteTextures* playerTexture = [[SpriteTextures alloc]init];
     [playerTexture createRunningAnimation];
-    [playerTexture createJumpingAnimation];
+   
     [playerTexture createSkiddingAnimation];
     [playerTexture createStillAnimation];
     SKTexture* f1 = [SKTexture textureWithImageNamed:@"playerStillRight.png"];
     
-    Player *player = [Player spriteNodeWithTexture:f1];
+    Player* player = [Player spriteNodeWithTexture:f1];
     player.position = location;
     player.spriteTextures = playerTexture;
     player.size = CGSizeMake(kPlayerSizeWidth, kPlayerSizeHigh);
@@ -46,7 +48,6 @@
     
     [whichScene1 addChild:player];
    
-  
     return player;
 }
 
@@ -179,6 +180,7 @@
 
 -(void)jump{
     
+    [_spriteTextures createJumpingAnimation];
     PlayerStatus nextPlayerStatus = 0;
     NSArray* playerJumpTexture = nil;
     
@@ -258,5 +260,26 @@
     
 }
 
++(id)sharedPlayer{
+    static Player* character = nil;
+    if(character == nil){
+        character = [[super alloc]init];
+    }
+    return character;
+}
+
+-(id)copy{
+    
+    return [Player sharedPlayer];
+}
+
+-(id)mutableCopy{
+
+    return [Player sharedPlayer];
+}
+
++(instancetype)alloc{
+    return [Player sharedPlayer];
+}
 
 @end

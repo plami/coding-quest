@@ -63,7 +63,7 @@
 #pragma mark Setting the Display of Game Over Scene
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
+    NSLog(@"%ld",(long)self.result);
     UITouch* touch= [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode* node = [self nodeAtPoint:location];

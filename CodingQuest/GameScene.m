@@ -302,6 +302,8 @@
             [_backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene* transition = [[TransitionScene alloc] initWithSize:self.size];
+            transition.currentScore = self.score;
+            NSLog(@"asdasdad %ld",(long)transition.currentScore);
             [self.view presentScene:transition transition:reveal];
         }
 
