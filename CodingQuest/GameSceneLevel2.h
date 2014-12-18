@@ -4,6 +4,8 @@
 @interface GameSceneLevel2 : SKScene<SKPhysicsContactDelegate,AVAudioPlayerDelegate>
 
 @property NSUInteger score;
+@property CGFloat playerHealth;
 - (void)playBackgroundMusic:(NSString *)filename;
 - (void) updated;
+- (void) setupDisplay;
 @end

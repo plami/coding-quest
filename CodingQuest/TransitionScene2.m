@@ -60,9 +60,11 @@
         SKTransition* reveal = [SKTransition flipHorizontalWithDuration:0.5];
         GameSceneLevel3* scene = [GameSceneLevel3 sceneWithSize:self.view.bounds.size];
         scene.score = self.currentScoreLevel2;
-        NSLog(@"%ld",scene.score);
+        scene.playerHealth = self.currentHealth;
+        NSLog(@"%ld",(long)scene.score);
         scene.scaleMode = SKSceneScaleModeFill;
         [scene scoreUpdated];
+        [scene setupDisplay];
         [self.view presentScene:scene transition:reveal];
         
     }

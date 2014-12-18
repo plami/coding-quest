@@ -64,13 +64,6 @@
     return self.playerLives;
 }
 
-//-(void)playerWasHit{
-//    self.playerLives--;
-//    SKLabelNode* livesLabel = (SKLabelNode*)[self.parent childNodeWithName:kLivesName];
-//    [livesLabel setText:[NSString stringWithFormat:@"Lives: %d",self.playerLives]];
-//}
-
-
 #pragma mark - Animation and Actions for Player
 
 

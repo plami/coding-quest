@@ -2,5 +2,5 @@
 
 @interface TransitionScene : SKScene
 @property NSInteger currentScore;
-
+@property CGFloat currentHealth;
 @end
