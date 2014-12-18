@@ -1,11 +1,12 @@
 #import <Foundation/Foundation.h>
 
-static const uint32_t playerCategory               = 0x1 << 0;      // 000001
-static const uint32_t coinCategory                 = 0x1 << 1;      // 000010
-static const uint32_t bulletCategory               = 0x1 << 2;      // 000100
-static const uint32_t monsterCategory              = 0x1 << 3;      // 001000
-static const uint32_t monsterBulletCategory        = 0X1 << 4;      // 010000
-static const uint32_t flyingMonsterBulletCategory  = 0X1 << 5;      // 100000
+static const uint32_t playerCategory               = 0x1 << 0;      // 0000001
+static const uint32_t coinCategory                 = 0x1 << 1;      // 0000010
+static const uint32_t bulletCategory               = 0x1 << 2;      // 0000100
+static const uint32_t monsterCategory              = 0x1 << 3;      // 0001000
+static const uint32_t monsterBulletCategory        = 0X1 << 4;      // 0010000
+static const uint32_t flyingMonsterBulletCategory  = 0X1 << 5;      // 0100000
+static const uint32_t bottomCategory               = 0x1 << 1;      // 1000000
 
 @protocol Constants <NSObject>
 
