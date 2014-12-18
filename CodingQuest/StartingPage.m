@@ -2,9 +2,12 @@
 #import "GameScene.h"
 #import "GameSceneLevel2.h"
 #import "GameSceneLevel3.h"
+#import "Constants.h"
 
 @interface StartingPage ()
+
 @property AVAudioPlayer* backgroundMusicPlayer;
+
 @end
 @implementation StartingPage
 
@@ -38,7 +41,7 @@
         myLabelTitle.text = GameTitle;
         myLabelTitle.fontSize = 120;
         myLabelTitle.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelTitle.position = CGPointMake(500, 350);
+        myLabelTitle.position = CGPointMake(kGameTitleMax, kGameTitleMin);
         myLabelTitle.name = @"Level 1 button";
         myLabelTitle.zPosition = 1;
         
@@ -53,7 +56,7 @@
         myLabelPlay.text = PlayButton;
         myLabelPlay.fontSize = 80;
         myLabelPlay.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        myLabelPlay.position = CGPointMake(500, 200);
+        myLabelPlay.position = CGPointMake(kGamePlayMax, kGamePlayMin);
         myLabelPlay.name = @"Play button";
         myLabelPlay.zPosition = 1;
         

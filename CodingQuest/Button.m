@@ -1,6 +1,7 @@
 #import "Button.h"
 #import "Bullet.h"
 #import "Player.h"
+#import "Constants.h"
 
 @interface Button ()
 
@@ -23,7 +24,7 @@
       
         self.name = @"fireButton";
         self.zPosition = 1.0;
-        self.size = CGSizeMake(50, 50);
+        self.size = CGSizeMake(kMaxSizeButton, kMaxSizeButton);
        
         [scene addChild: [self fireButton]];
         
