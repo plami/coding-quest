@@ -17,19 +17,14 @@
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
-        //adding logos
-        SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"itTalents.png"];
-        logo.position = CGPointMake(830, 580);
-        [self addChild:logo];
-        
         NSString * message;
         message = @"You won";
         
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         label.text = message;
         label.fontSize = 60;
-        label.fontColor = [SKColor redColor];
-        label.position = CGPointMake(self.size.width/2, self.size.height/2 + 50);
+        label.fontColor = [SKColor blackColor];
+        label.position = CGPointMake(self.size.width/2, self.size.height/2 + 20);
         [self addChild:label];
         
         
@@ -37,10 +32,10 @@
         retrymessage = @"Replay Game";
         SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         retryButton.text = retrymessage;
-        retryButton.fontColor = [SKColor redColor];
-        retryButton.position = CGPointMake(self.size.width/2, 120);
+        retryButton.fontColor = [SKColor blackColor];
+        retryButton.position = CGPointMake(self.size.width/2, 100);
         retryButton.name = @"retry";
-        [retryButton setScale:.6];
+        [retryButton setScale:.7];
         
         [self addChild:retryButton];
         
@@ -48,10 +43,10 @@
         menuMessage = @"Back to menu";
         SKLabelNode* backButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         backButton.text = menuMessage;
-        backButton.fontColor = [SKColor redColor];
-        backButton.position = CGPointMake(self.size.width / 2, 160);
+        backButton.fontColor = [SKColor blackColor];
+        backButton.position = CGPointMake(self.size.width / 2, 140);
         backButton.name = @"back";
-        [backButton setScale:.6];
+        [backButton setScale:.7];
         
         [self addChild:backButton];
         
