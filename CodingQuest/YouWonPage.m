@@ -24,7 +24,7 @@
         label.text = message;
         label.fontSize = 60;
         label.fontColor = [SKColor blackColor];
-        label.position = CGPointMake(self.size.width/2, self.size.height/2 + 20);
+        label.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:label];
         
         
@@ -33,7 +33,7 @@
         SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         retryButton.text = retrymessage;
         retryButton.fontColor = [SKColor blackColor];
-        retryButton.position = CGPointMake(self.size.width/2, 100);
+        retryButton.position = CGPointMake(self.size.width/2, 40);
         retryButton.name = @"retry";
         [retryButton setScale:.7];
         
@@ -44,7 +44,7 @@
         SKLabelNode* backButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         backButton.text = menuMessage;
         backButton.fontColor = [SKColor blackColor];
-        backButton.position = CGPointMake(self.size.width / 2, 140);
+        backButton.position = CGPointMake(self.size.width / 2, 100);
         backButton.name = @"back";
         [backButton setScale:.7];
         
