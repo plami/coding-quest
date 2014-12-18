@@ -68,7 +68,7 @@
         
         self.counter = 0;
         
-        _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
+        _player  = [Player initNewPlayer:self startingPoint:CGPointMake(kPlayerStartX, kPlayerStartY) ];
         
         [_player runOnPlaceRight];
 
@@ -147,7 +147,7 @@
     if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & coinCategory) != 0) {
         NSLog(@"the coin disappears");
         [secondBody.node removeFromParent];
-        [self adjustScoreBy:100];
+        [self adjustScoreBy:5];
         _getBonusSound = [SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO];
         [self runAction:self.getBonusSound];
     }
@@ -158,7 +158,7 @@
         _monsterDieSound = [SKAction playSoundFileNamed:@"monsterDeath.mp3" waitForCompletion:NO];
         [self runAction:self.monsterDieSound];
         self.counter++;
-        [self adjustScoreBy:100];
+        [self adjustScoreBy:1];
         [[self.monsterArray firstObject] die];
         if([self.monsterArray count] > 0){
             [self.monsterArray removeObjectAtIndex:0];
@@ -192,7 +192,7 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
-            
+            [gameOverScene updated];
             [self.view presentScene:gameOverScene transition: reveal];
         }
     }
@@ -207,7 +207,7 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
-            
+            [gameOverScene updated];
             [self.view presentScene:gameOverScene transition: reveal];
         }
     }
@@ -329,10 +329,11 @@
     [self.scrollingBackground update:currentTime];
     
     if(_player.position.x > self.size.width - 10){
-
-    }
-    if(_player.position.x < 100){
         
+        [_player runLeft];
+    }
+    if(_player.position.x < 10){
+        [_player runRight];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;

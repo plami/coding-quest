@@ -66,7 +66,7 @@
         
         self.counter = 0;
         
-        _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60)];
+        _player  = [Player initNewPlayer:self startingPoint:CGPointMake(kPlayerStartX, kPlayerStartY)];
         [_player runOnPlaceRight];
 
     }
@@ -157,7 +157,7 @@
         _monsterDieSound = [SKAction playSoundFileNamed:@"monsterDeath.mp3" waitForCompletion:NO];
         [self runAction:self.monsterDieSound];
         self.counter++;
-        [self adjustScoreBy:100];
+        [self adjustScoreBy:1];
         [[self.monsterArray firstObject] die];
         if([self.monsterArray count] > 0){
             [self.monsterArray removeObjectAtIndex:0];
@@ -279,7 +279,7 @@
     if (self.lastSpawnTimeInterval > 5) {
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 5){
+        if(self.runningTime > kPlayerRunningTime){
             [self.backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene2* winning = [[TransitionScene2 alloc] initWithSize:self.size];
@@ -318,10 +318,10 @@
     [self.scrollingBackground update:currentTime];
     
     if(_player.position.x > self.size.width - 10){
-        
+        [_player runLeft];
     }
-    if(_player.position.x < 100){
-
+    if(_player.position.x < 10){
+        [_player runRight];
     }
     
     CFTimeInterval timeSinceLast = currentTime - self.lastUpdateTimeInterval;

@@ -41,6 +41,7 @@
 
 @end
 
+
 @implementation GameScene
 
 
@@ -64,7 +65,7 @@
              
              self.scrollingBackground = scrollingBackground;
              [self addChild: self.scrollingBackground];
-             [self.scrollingBackground setScale:1.7];
+             [self.scrollingBackground setScale:kBackGroundScale];
              
              
              //the scene is set as delegate in physicsWorld
@@ -75,9 +76,9 @@
              
              self.counter = 0;
              
-             _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
+             _player  = [Player initNewPlayer:self startingPoint:CGPointMake(kPlayerStartX,kPlayerStartY) ];
             
-             _playerHealth = 1.0f;
+             _playerHealth = kHealthConst2;
              
              [_player runOnPlaceRight];
              [self setupDisplay];
@@ -101,7 +102,7 @@
     scoreLabel.fontColor = [SKColor greenColor];
     scoreLabel.text = [NSString stringWithFormat:@"Score: %04u", 0];
     
-    scoreLabel.position = CGPointMake(20 + scoreLabel.frame.size.width/2, self.size.height - (20 + scoreLabel.frame.size.height/2));
+    scoreLabel.position = CGPointMake(kScoreLabelPosition + scoreLabel.frame.size.width/2, self.size.height - (kScoreLabelPosition + scoreLabel.frame.size.height/2));
     [self addChild:scoreLabel];
     
     SKLabelNode* healthLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
@@ -110,11 +111,11 @@
     healthLabel.fontSize = 15;
     
     healthLabel.fontColor = [SKColor redColor];
-    healthLabel.text = [NSString stringWithFormat:@"Health: %.1f%%", self.playerHealth * 100.0f];
+    healthLabel.text = [NSString stringWithFormat:@"Health: %.1f%%", self.playerHealth * kHealthConst];
     
-    healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - 20, self.size.height - (20 + healthLabel.frame.size.height/2));
+    healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - kScoreLabelPosition, self.size.height - (kScoreLabelPosition + healthLabel.frame.size.height/2));
     [self addChild:healthLabel];
-    
+
 }
 
 
@@ -123,7 +124,7 @@
     self.playerHealth = MAX(self.playerHealth + healthAdjustment, 0);
     
     SKLabelNode* health = (SKLabelNode*)[self childNodeWithName:kHealthName];
-    health.text = [NSString stringWithFormat:@"Health: %.1f%%", self.playerHealth * 100];
+    health.text = [NSString stringWithFormat:@"Health: %.1f%%", self.playerHealth * kHealthConst1];
 }
 
 
@@ -270,23 +271,23 @@
     self.runningTime +=timeSinceLast;
     self.lastVerticalCoinSpawnInterval +=timeSinceLast;
     
-    if(self.lastHorizontalCoinSpawnInterval > 3){
+    if(self.lastHorizontalCoinSpawnInterval > kCoinHorizontSpawnTime){
         self.lastHorizontalCoinSpawnInterval = 0;
         _coin = [Bonus initNewBonus:self startingPoint:CGPointMake(self.frame.size.width - 10 ,[_player randomPlace:self])];
         [_coin moveLeft];
     }
-    if(self.lastVerticalCoinSpawnInterval > 2){
+    if(self.lastVerticalCoinSpawnInterval > KCoinVerticalSpawnTime){
         
         self.lastVerticalCoinSpawnInterval = 0;
         _life = [Bonus initNewBonus:self startingPoint:CGPointMake([_player randomPlace:self], self.frame.size.height)];
         [_life spawnInSceneVerticaly];
 
     }
-    if (self.lastSpawnTimeInterval > 3) {
+    if (self.lastSpawnTimeInterval > kMonsterSpawnTime) {
 
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 10){
+        if(self.counter == kPlayerKills){
             [_backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition crossFadeWithDuration:3];
             TransitionScene* transition = [[TransitionScene alloc] initWithSize:self.size];

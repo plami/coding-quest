@@ -23,10 +23,24 @@ static const uint32_t bottomCategory               = 0x1 << 1;      // 1000000
 #define kPlayerStillFacingRight             @"playerStillRight.png"
 
 #define kBackgroundsetScale                 0.33
+#define kBackGroundScale                    1.7
+#define kHealthConst2                       1.0f
+#define kScoreLabelPosition                 20
+#define kMaxSizeButton                      50
+#define kMaxSizeButton                      50
+#define kGameTitleMax                       500
+#define kGameTitleMin                       350
+#define kGamePlayMax                        500
+#define kGamePlayMin                        200
+#define kHealthConst                        100.0f
 
+#define kHealthConst1                       100
 #define kCoinMinSize                        40
 #define kCoinMaxSize                        40
 
+
+#define kPlayerStartX                       20
+#define kPlayerStartY                       60
 #define kPlayerSizeHigh                     70
 #define kPlayerSizeWidth                    50
 #define kPlayerRunOnPlaceTimePerFrame       0.1
@@ -37,6 +51,8 @@ static const uint32_t bottomCategory               = 0x1 << 1;      // 1000000
 #define kPlayerSkidRight                    50
 #define kPlayerSkidLeft                     50
 #define kPlayerLives                        3
+#define kPlayerRunningTime                  60
+#define kPlayerKills                        10
 
 #define kMonsterRunningAnimationNumber      4
 #define kPlayerRunningAnimationNumber       13
@@ -51,5 +67,9 @@ static const uint32_t bottomCategory               = 0x1 << 1;      // 1000000
 #define kMonsterSpawnX                      20
 #define kMonsterSpawnY                      60
 
+#define kCoinHorizontSpawnTime             4
+#define KCoinVerticalSpawnTime             3
 
+#define kMonsterSpawnTime                  5
+#define kFlyMonsterSpawnTime               3
 @end
