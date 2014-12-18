@@ -3,6 +3,9 @@
 #import "GameScene.h"
 #import "GameSceneLevel2.h"
 #import "GameSceneLevel3.h"
+@interface YouWonPage()
+@property SKAction* youWonSound;
+@end
 
 @implementation YouWonPage
 
@@ -17,6 +20,17 @@
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
+
+        //playing you won sound
+        _youWonSound = [SKAction playSoundFileNamed:@"youWon.mp3" waitForCompletion:NO];
+        [self runAction:self.youWonSound];
+        
+        //adding logos
+        SKSpriteNode *logo = [SKSpriteNode spriteNodeWithImageNamed:@"itTalents.png"];
+        logo.position = CGPointMake(830, 580);
+        [self addChild:logo];
+        
+
         NSString * message;
         message = @"You won";
         
