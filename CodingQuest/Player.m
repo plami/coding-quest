@@ -9,6 +9,7 @@
 @property SpriteTextures* spriteTextures;
 @property (readwrite)PlayerStatus playerStatus;
 @property CGPoint* currentLocation;
+@property SKAction* jumpSound;
 @end
 
 @implementation Player
@@ -170,6 +171,9 @@
 
 
 -(void)jump{
+    
+    _jumpSound = [SKAction playSoundFileNamed:@"jumpSound.wav" waitForCompletion:NO];
+    [self runAction:self.jumpSound];
     
     [_spriteTextures createJumpingAnimation];
     PlayerStatus nextPlayerStatus = 0;
