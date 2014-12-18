@@ -33,8 +33,6 @@ typedef enum: int{
 -(void) skidRight;
 -(void) skidLeft;
 -(void) runOnPlaceLeft;
--(void) playerWasHit;
 
--(NSInteger) livesRemaining;
 
 @end

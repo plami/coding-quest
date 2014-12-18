@@ -8,7 +8,6 @@
 @property SKTextureAtlas* runAtlas;
 @property SpriteTextures* spriteTextures;
 @property (readwrite)PlayerStatus playerStatus;
-@property (readwrite)NSInteger playerLives;
 @property CGPoint* currentLocation;
 @end
 
@@ -44,7 +43,6 @@
     player.physicsBody.contactTestBitMask = coinCategory | monsterCategory | monsterBulletCategory;
     player.physicsBody.collisionBitMask = 0;
     player.playerStatus = PlayerFacingRight;
-    player.playerLives = kPlayerLives;
     
     [whichScene1 addChild:player];
    
@@ -66,11 +64,11 @@
     return self.playerLives;
 }
 
--(void)playerWasHit{
-    self.playerLives--;
-    SKLabelNode* livesLabel = (SKLabelNode*)[self.parent childNodeWithName:kLivesName];
-    [livesLabel setText:[NSString stringWithFormat:@"Lives: %d",self.playerLives]];
-}
+//-(void)playerWasHit{
+//    self.playerLives--;
+//    SKLabelNode* livesLabel = (SKLabelNode*)[self.parent childNodeWithName:kLivesName];
+//    [livesLabel setText:[NSString stringWithFormat:@"Lives: %d",self.playerLives]];
+//}
 
 
 #pragma mark - Animation and Actions for Player

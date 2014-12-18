@@ -107,16 +107,16 @@
     healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - 20, self.size.height - (20 + healthLabel.frame.size.height/2));
     [self addChild:healthLabel];
     
-    SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
-    
-    livesLabel.name = kLivesName;
-    livesLabel.fontSize = 15;
-    
-    livesLabel.fontColor = [SKColor greenColor];
-    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
-    
-    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
-    [self addChild:livesLabel];
+//    SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
+//    
+//    livesLabel.name = kLivesName;
+//    livesLabel.fontSize = 15;
+//    
+//    livesLabel.fontColor = [SKColor greenColor];
+//    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
+//    
+//    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
+//    [self addChild:livesLabel];
 }
 
 
@@ -180,8 +180,6 @@
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         [self.backgroundMusicPlayer stop];
         [secondBody.node removeFromParent];
-        [_player playerWasHit];
-        NSLog(@"the lives are reduced");
     }
     
 
@@ -291,7 +289,7 @@
     if (self.lastSpawnTimeInterval > 10) {
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 10){
+        if(self.runningTime > 5){
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             YouWonPage* winning = [[YouWonPage alloc] initWithSize:self.size];
             winning.result = self.score;

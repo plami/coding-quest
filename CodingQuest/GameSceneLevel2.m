@@ -104,14 +104,14 @@
     
     SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
     
-    livesLabel.name = kLivesName;
-    livesLabel.fontSize = 15;
-    
-    livesLabel.fontColor = [SKColor greenColor];
-    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
-    
-    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
-    [self addChild:livesLabel];
+//    livesLabel.name = kLivesName;
+//    livesLabel.fontSize = 15;
+//    
+//    livesLabel.fontColor = [SKColor greenColor];
+//    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
+//    
+//    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
+//    [self addChild:livesLabel];
 }
 
 
@@ -195,10 +195,6 @@
         GameOverScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
         NSLog(@"score: %ld",(long)self.score);
         [self.view presentScene:gameOverScene transition: reveal];
-        
-        [_player playerWasHit];
-        NSLog(@"the lives are reduced");
-        
         
     }
     
@@ -303,7 +299,7 @@
     if (self.lastSpawnTimeInterval > 5) {
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 30){
+        if(self.runningTime > 5){
             [self.backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene2* winning = [[TransitionScene2 alloc] initWithSize:self.size];
