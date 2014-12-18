@@ -13,7 +13,7 @@
     if (self = [super initWithSize:size]) {
         
         //adding background
-        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"background.jpg"];
+        SKSpriteNode *bgImage = [SKSpriteNode spriteNodeWithImageNamed:@"finalScene.jpg"];
         bgImage.position = CGPointMake(self.size.width/2, self.size.height/2);
         [self addChild:bgImage];
         
@@ -28,7 +28,7 @@
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         label.text = message;
         label.fontSize = 60;
-        label.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
+        label.fontColor = [SKColor redColor];
         label.position = CGPointMake(self.size.width/2, self.size.height/2 + 50);
         [self addChild:label];
         
@@ -37,8 +37,8 @@
         retrymessage = @"Replay Game";
         SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         retryButton.text = retrymessage;
-        retryButton.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        retryButton.position = CGPointMake(self.size.width/2, 70);
+        retryButton.fontColor = [SKColor redColor];
+        retryButton.position = CGPointMake(self.size.width/2, 120);
         retryButton.name = @"retry";
         [retryButton setScale:.6];
         
@@ -48,8 +48,8 @@
         menuMessage = @"Back to menu";
         SKLabelNode* backButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         backButton.text = menuMessage;
-        backButton.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
-        backButton.position = CGPointMake(self.size.width / 2, 120);
+        backButton.fontColor = [SKColor redColor];
+        backButton.position = CGPointMake(self.size.width / 2, 160);
         backButton.name = @"back";
         [backButton setScale:.6];
         

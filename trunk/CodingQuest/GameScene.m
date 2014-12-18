@@ -117,14 +117,14 @@
     
     SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
     
-    livesLabel.name = kLivesName;
-    livesLabel.fontSize = 15;
-    
-    livesLabel.fontColor = [SKColor greenColor];
-    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
-    
-    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
-    [self addChild:livesLabel];
+//    livesLabel.name = kLivesName;
+//    livesLabel.fontSize = 15;
+//    
+//    livesLabel.fontColor = [SKColor greenColor];
+//    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
+//    
+//    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
+//    [self addChild:livesLabel];
 }
 
 
@@ -298,7 +298,7 @@
 
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 15){
+        if(self.runningTime > 2){
             [_backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene* transition = [[TransitionScene alloc] initWithSize:self.size];
