@@ -3,7 +3,7 @@
 #import "Scores.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface GameScene : SKScene<SKPhysicsContactDelegate>
+@interface GameScene : SKScene<SKPhysicsContactDelegate,AVAudioPlayerDelegate>
 
 @property (readonly)SpriteTextures* spriteTextures;
 @property NSUInteger score;

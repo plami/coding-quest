@@ -61,6 +61,7 @@
         GameSceneLevel2* scene = [GameSceneLevel2 sceneWithSize:self.view.bounds.size];
         NSLog(@"current score: %ld",(long)self.currentScore);
         scene.score = self.currentScore;
+        [scene updated];
         scene.scaleMode = SKSceneScaleModeFill;
         
         [self.view presentScene:scene transition:reveal];

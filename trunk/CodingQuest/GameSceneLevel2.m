@@ -50,7 +50,7 @@
         self.backgroundColor = [SKColor whiteColor];
         
         [self playBackgroundMusic:@"backgroundSound2.mp3"];
-        NSString* imageName = [NSString stringWithFormat:@"backgroundLevel2.jpeg"];
+        NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
         Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
         
         self.scrollingBackground = scrollingBackground;
@@ -75,10 +75,7 @@
     return self;
 }
 
-
-#pragma mark Setting up the Display of the main scene
-
--(void)setupDisplay {
+-(void)updated{
     
     SKLabelNode* scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
     
@@ -86,10 +83,17 @@
     scoreLabel.fontSize = 15;
     
     scoreLabel.fontColor = [SKColor greenColor];
-    scoreLabel.text = [NSString stringWithFormat:@"Score: %04u", 0];
+    scoreLabel.text = [NSString stringWithFormat:@"Score: %04lu", (unsigned long)                       self.score];
     
     scoreLabel.position = CGPointMake(20 + scoreLabel.frame.size.width/2, self.size.height - (20 + scoreLabel.frame.size.height/2));
     [self addChild:scoreLabel];
+    
+}
+
+
+#pragma mark Setting up the Display of the main scene
+
+-(void)setupDisplay {
     
     SKLabelNode* healthLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
     
@@ -113,21 +117,6 @@
 //    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
 //    [self addChild:livesLabel];
 }
-
-
--(SKSpriteNode* ) fireButton{
-    
-    SKSpriteNode* fire = [SKSpriteNode spriteNodeWithImageNamed:@"button.png"];
-    fire.position = CGPointMake(self.frame.size.width- 100, 20);
-    
-    fire.name = @"fireButton";
-    fire.zPosition = 1.0;
-    fire.size = CGSizeMake(50, 50);
-    return fire;
-    
-    return fire;
-}
-
 
 -(void)adjustPlayerHealth:(CGFloat)healthAdjustment {
     

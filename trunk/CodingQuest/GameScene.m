@@ -60,7 +60,7 @@
             //[self addChild: [self.score createScoreNode]];
              NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
              Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
-             [self playBackgroundMusic:@"backgroundSound1.wav"];
+            
              
              self.scrollingBackground = scrollingBackground;
              [self addChild: self.scrollingBackground];
@@ -80,9 +80,8 @@
              _playerHealth = 1.0f;
              
              [_player runOnPlaceRight];
-             
-
              [self setupDisplay];
+             [self playBackgroundMusic:@"backgroundSound1.wav"];
          }
 
     return self;
@@ -90,6 +89,7 @@
 
 
 #pragma mark Setting up the Display of the main scene
+
 
 -(void)setupDisplay {
     
@@ -209,9 +209,7 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
-
             [self.backgroundMusicPlayer stop];
-
             [gameOverScene updated];
 
             [self.view presentScene:gameOverScene transition: reveal];
@@ -300,7 +298,7 @@
         
         if(self.runningTime > 2){
             [_backgroundMusicPlayer stop];
-            SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+            SKTransition *reveal = [SKTransition crossFadeWithDuration:3];
             TransitionScene* transition = [[TransitionScene alloc] initWithSize:self.size];
             transition.currentScore = self.score;
             NSLog(@"asdasdad %ld",(long)transition.currentScore);

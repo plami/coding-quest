@@ -83,18 +83,22 @@
 
 #pragma mark Setting up the Display of the main scene
 
--(void)setupDisplay {
-    
+-(void)scoreUpdated{
+
     SKLabelNode* scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
     
     scoreLabel.name = kScoreName;
     scoreLabel.fontSize = 15;
     
     scoreLabel.fontColor = [SKColor greenColor];
-    scoreLabel.text = [NSString stringWithFormat:@"Score: %04u", 0];
+    scoreLabel.text = [NSString stringWithFormat:@"Score: %04lu", (unsigned long)                       self.score];
     
     scoreLabel.position = CGPointMake(20 + scoreLabel.frame.size.width/2, self.size.height - (20 + scoreLabel.frame.size.height/2));
     [self addChild:scoreLabel];
+
+}
+
+-(void)setupDisplay {
     
     SKLabelNode* healthLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier"];
     
@@ -107,16 +111,6 @@
     healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - 20, self.size.height - (20 + healthLabel.frame.size.height/2));
     [self addChild:healthLabel];
     
-//    SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
-//    
-//    livesLabel.name = kLivesName;
-//    livesLabel.fontSize = 15;
-//    
-//    livesLabel.fontColor = [SKColor greenColor];
-//    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
-//    
-//    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
-//    [self addChild:livesLabel];
 }
 
 
@@ -179,7 +173,14 @@
     //react to the contact between monster and player
     else if (((firstBody.node.physicsBody.categoryBitMask & playerCategory) != 0) && (secondBody.node.physicsBody.categoryBitMask & monsterCategory) != 0) {
         [self.backgroundMusicPlayer stop];
+
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
+        gameOverScene.finalScore = self.score;
+        [self.view presentScene:gameOverScene transition: reveal];
+
         [secondBody.node removeFromParent];
+
     }
     
 
@@ -286,7 +287,7 @@
     self.runningTime +=timeSinceLast;
     
     
-    if (self.lastSpawnTimeInterval > 10) {
+    if (self.lastSpawnTimeInterval > 3) {
         self.lastSpawnTimeInterval = 0;
         
         if(self.runningTime > 5){
@@ -311,7 +312,6 @@
         _flyMonster = [[FlyMonster alloc]initNewMonster:self];
         [_flyMonster spawnInScene:self];
         [_flyMonster shoot:self];
-        [self.monsterArray addObject:_flyMonster];
         
         //creating normal bugs
         _monster = [[Monster alloc]initNewMonster:self];
