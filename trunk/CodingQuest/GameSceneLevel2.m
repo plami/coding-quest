@@ -27,7 +27,7 @@
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
 @property NSTimeInterval runningTime;
-@property CGFloat playerHealth;
+
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property SKAction* getBonusSound;
@@ -50,7 +50,7 @@
         self.backgroundColor = [SKColor whiteColor];
         
         [self playBackgroundMusic:@"backgroundSound2.mp3"];
-        NSString* imageName = [NSString stringWithFormat:@"gameBackground.png"];
+        NSString* imageName = [NSString stringWithFormat:@"backgroundLevel2.png"];
         Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
         
         self.scrollingBackground = scrollingBackground;
@@ -67,9 +67,8 @@
         self.counter = 0;
         
         _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60)];
-        _playerHealth = 1.0f;
         [_player runOnPlaceRight];
-        [self setupDisplay];
+
     }
     
     return self;
@@ -105,17 +104,8 @@
     
     healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - 20, self.size.height - (20 + healthLabel.frame.size.height/2));
     [self addChild:healthLabel];
-    
-    SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
-    
-//    livesLabel.name = kLivesName;
-//    livesLabel.fontSize = 15;
-//    
-//    livesLabel.fontColor = [SKColor greenColor];
-//    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
-//    
-//    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
-//    [self addChild:livesLabel];
+   
+
 }
 
 -(void)adjustPlayerHealth:(CGFloat)healthAdjustment {
@@ -199,6 +189,7 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             GameOverScene* gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
             gameOverScene.finalScore = self.score;
+            
             [gameOverScene updated];
             [self.view presentScene:gameOverScene transition: reveal];
             
@@ -293,6 +284,7 @@
             SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
             TransitionScene2* winning = [[TransitionScene2 alloc] initWithSize:self.size];
             winning.currentScoreLevel2 = self.score;
+            winning.currentHealth = self.playerHealth;
             [self.view presentScene:winning transition:reveal];
         }
         

@@ -29,7 +29,7 @@
 @property NSInteger counter;
 @property NSMutableArray* monsterArray;
 @property NSTimeInterval runningTime;
-@property CGFloat playerHealth;
+
 @property (nonatomic) NSTimeInterval lastSpawnTimeInterval;
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
 @property SKAction* getBonusSound;
@@ -51,7 +51,7 @@
         self.monsterArray = [[NSMutableArray alloc]init];
         self.backgroundColor = [SKColor whiteColor];
         [self playBackgroundMusic:@"backgroundSound3.mp3"];
-        NSString* imageName = [NSString stringWithFormat:@"spaceshipBackground.jpg"];
+        NSString* imageName = [NSString stringWithFormat:@"spaceshipBackgroundLevel3.png"];
         Background* scrollingBackground = [[Background alloc]initWithBackground: imageName size:size speed:1];
         
         self.scrollingBackground = scrollingBackground;
@@ -70,11 +70,8 @@
         
         _player  = [Player initNewPlayer:self startingPoint:CGPointMake(20, 60) ];
         
-        _playerHealth = 1.0f;
-        
         [_player runOnPlaceRight];
-        
-        [self setupDisplay];
+
     }
     
     return self;

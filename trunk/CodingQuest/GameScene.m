@@ -115,16 +115,6 @@
     healthLabel.position = CGPointMake(self.size.width - healthLabel.frame.size.width/2 - 20, self.size.height - (20 + healthLabel.frame.size.height/2));
     [self addChild:healthLabel];
     
-    SKLabelNode* livesLabel = [SKLabelNode labelNodeWithFontNamed:@"Lives"];
-    
-//    livesLabel.name = kLivesName;
-//    livesLabel.fontSize = 15;
-//    
-//    livesLabel.fontColor = [SKColor greenColor];
-//    livesLabel.text = [NSString stringWithFormat:@"Lives: %ld", (long)[_player livesRemaining]];
-//    
-//    livesLabel.position = CGPointMake(self.size.width - livesLabel.frame.size.width/2 - 200, self.size.height - (19 + livesLabel.frame.size.height/2));
-//    [self addChild:livesLabel];
 }
 
 
@@ -292,15 +282,16 @@
         [_life spawnInSceneVerticaly];
 
     }
-    if (self.lastSpawnTimeInterval > 5) {
+    if (self.lastSpawnTimeInterval > 3) {
 
         self.lastSpawnTimeInterval = 0;
         
-        if(self.runningTime > 2){
+        if(self.runningTime > 10){
             [_backgroundMusicPlayer stop];
             SKTransition *reveal = [SKTransition crossFadeWithDuration:3];
             TransitionScene* transition = [[TransitionScene alloc] initWithSize:self.size];
             transition.currentScore = self.score;
+            transition.currentHealth = self.playerHealth;
             NSLog(@"asdasdad %ld",(long)transition.currentScore);
             [self.view presentScene:transition transition:reveal];
         }
