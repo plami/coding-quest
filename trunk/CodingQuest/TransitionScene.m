@@ -31,7 +31,7 @@
         
         
         NSString * nextLevel;
-        nextLevel = @"Continue to the next level";
+        nextLevel = @"Continue to Level 2";
         SKLabelNode *nextLevelButton = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
         nextLevelButton.text = nextLevel;
         nextLevelButton.fontColor = [SKColor colorWithRed:0.1 green:0.3 blue:1.5 alpha:0.9];
